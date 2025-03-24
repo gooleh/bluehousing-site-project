@@ -18,7 +18,7 @@ import Blog from './pages/Blog';
 function App() {
   return (
     <HelmetProvider>
-      <Router>
+      <Router basename="/bluehousing-site-project">
         <Header />
         <main className="min-h-screen">
           <Routes>
