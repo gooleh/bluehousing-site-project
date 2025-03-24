@@ -32,7 +32,7 @@ function App() {
             <Route path="/articles/mbc" element={<MbcArticle />} />
             <Route path="/articles/industry" element={<IndustryArticle />} />
             <Route path="/articles/chosun" element={<ChosunArticle />} />
-            <Route path="/blog" element={<Blog />} /> {/* 추가 */}
+            <Route path="/blog" element={<Blog />} />
           </Routes>
         </main>
         <Footer />
