@@ -8,18 +8,24 @@ import article3Img from '../assets/images/articles/article3.jpeg';
 import article4Img from '../assets/images/articles/article4.jpeg';
 
 const mediaArticles = [
-    { title: '땅집go기사', link: '/articles/landhouse', image: article1Img },
-    { title: 'mbc오늘아침', link: '/articles/mbc', image: article2Img },
-    { title: '한국경제산업', link: '/articles/industry', image: article3Img },
-    { title: '조선일보', link: '/articles/chosun', image: article4Img },
-  ];
+  { title: '땅집go기사', link: '/articles/landhouse', image: article1Img },
+  { title: 'mbc오늘아침', link: '/articles/mbc', image: article2Img },
+  { title: '한국경제산업', link: '/articles/industry', image: article3Img },
+  { title: '조선일보', link: '/articles/chosun', image: article4Img },
+];
 
 const MediaCoverage = () => (
   <section className="py-16 px-4 bg-white">
     <div className="max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold mb-12 text-center text-gray-900">
-        언론 속의 블루하우징
-      </h2>
+      <div className="mb-8">
+        <h2 
+          className="text-2xl font-bold text-left"
+          style={{ color: 'gray' }}  // 제목 연한 회색
+        >
+          언론 속의 블루하우징
+        </h2>
+        <hr className="mt-4 border-t-2" style={{ borderColor: 'lightgray' }} />
+      </div>
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {mediaArticles.map((article, index) => (
           <Link

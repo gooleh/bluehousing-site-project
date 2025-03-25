@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { StarIcon } from 'lucide-react';
+import { DiamondIcon } from 'lucide-react';
 import Modal from '../components/Modal';
 
 // 배너 이미지 임포트
@@ -111,20 +111,27 @@ const ShowroomDetail = () => {
     <div className="bg-white">
       <Helmet>
         <title>블루하우징 전시장 상세페이지 | 30년 경력 인테리어 전문기업</title>
-        <meta name="description" content="블루하우징 전시장에서 다양한 스타일 욕실 시공 사례를 만나보세요. 모던스타일, 브라운계열, 최신 트렌드 제공." />
+        <meta
+          name="description"
+          content="블루하우징 전시장에서 만나볼 수 있는 품격 있는 욕실 시공 사례를 소개합니다. 모던하고 우아한 스타일을 확인해보세요."
+        />
       </Helmet>
 
       {/* 배너 이미지 */}
       <div className="relative h-72 md:h-96">
         <img src={banner1} alt="Showroom Banner" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">블루하우징 전시장</h1>
-          <p className="text-white max-w-2xl px-4">30년 경력 마이스터가 시공하는 종합 인테리어 전문기업, 블루하우징 전시장에서 다양한 시공 사례를 만나보세요.</p>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 flex flex-col items-center justify-center text-center">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-wider text-white mb-4">
+            블루하우징 전시장
+          </h1>
+          <p className="text-white max-w-2xl px-4 text-sm md:text-base">
+            30년 경력 마이스터의 노하우로 완성된 다양한 스타일의 시공 사례를 한눈에 만나보세요.
+          </p>
         </div>
       </div>
 
       {showroomData.map((section, idx) => (
-        <ShowroomSection 
+        <ShowroomSection
           key={idx}
           title={section.title}
           images={section.images}
@@ -134,13 +141,13 @@ const ShowroomDetail = () => {
       ))}
 
       {modalOpen && (
-        <Modal 
-          isOpen={modalOpen} 
-          imgList={currentImageList} 
-          currentIndex={currentIndex} 
-          onClose={closeModal} 
-          onPrev={prevImage} 
-          onNext={nextImage} 
+        <Modal
+          isOpen={modalOpen}
+          imgList={currentImageList}
+          currentIndex={currentIndex}
+          onClose={closeModal}
+          onPrev={prevImage}
+          onNext={nextImage}
           setCurrentIndex={setCurrentIndex}
         />
       )}
@@ -151,21 +158,21 @@ const ShowroomDetail = () => {
 const ShowroomSection = ({ title, images, description, onImageClick }) => (
   <section className="py-20 bg-white border-t">
     <div className="max-w-7xl mx-auto px-6">
-      <h2 className="flex items-center text-lg md:text-xl font-semibold text-gray-800 mb-8">
-        <StarIcon className="w-6 h-6 text-yellow-500 mr-2" />
+      <h2 className="flex items-center text-lg md:text-xl font-semibold text-gray-900 mb-8">
+        <DiamondIcon className="w-6 h-6 text-gray-900 mr-3" />
         {title}
       </h2>
   
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         {images.map((img, index) => (
-          <div 
-            key={index} 
-            className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group"
+          <div
+            key={index}
+            className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer group"
             onClick={() => onImageClick(images, index)}
           >
-            <img 
-              src={img} 
-              alt={`${title} ${index + 1}`} 
+            <img
+              src={img}
+              alt={`${title} ${index + 1}`}
               className="object-cover w-full h-[280px] md:h-[380px] transition-transform duration-500 group-hover:scale-105 group-hover:brightness-90"
               loading="lazy"
             />
@@ -174,11 +181,13 @@ const ShowroomSection = ({ title, images, description, onImageClick }) => (
       </div>
   
       <div className="max-w-3xl mx-auto text-left border-t pt-8">
-        <h3 className="text-lg font-semibold mb-4 text-gray-800">욕실 시공 구성</h3>
+        <h3 className="text-lg font-semibold mb-4 text-gray-900 tracking-wide">
+          욕실 시공 구성
+        </h3>
         <ul className="text-gray-700 leading-relaxed space-y-2">
           {description.map((desc, idx) => (
             <li key={idx} className="flex items-start">
-              <span className="text-gray-800 mr-2 font-bold">{idx + 1}.</span> 
+              <span className="mr-2 font-bold text-gray-900">{idx + 1}.</span> 
               <span>{desc}</span>
             </li>
           ))}

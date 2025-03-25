@@ -13,17 +13,15 @@ const ShowroomIntro = lazy(() => import('../sections/ShowroomIntro'));
 const MediaCoverage = lazy(() => import('../sections/MediaCoverage'));
 const GallerySection = lazy(() => import('../sections/GallerySection'));
 const SNSLinks = lazy(() => import('../sections/SNSLinks'));
-const EstimateRequest = lazy(() => import('../sections/EstimateRequest'));
 const Notices = lazy(() => import('../sections/Notices'));
-const CustomerReviews = lazy(() => import('../sections/CustomerReviews'));
-const LocationInfo = lazy(() => import('../sections/LocationInfo'));
+const EstimateRequest = lazy(() => import('../sections/EstimateRequest'));
+// CustomerReviews와 LocationInfo 섹션은 제거
 
 const slideImages = [slide1, slide2, slide3, slide4];
 
 const Home = () => {
   return (
     <div className="bg-white">
-
       {/* 이미지 슬라이더 */}
       <div className="relative pt-20">
         <ImageSlider images={slideImages} interval={4000} />
@@ -41,17 +39,13 @@ const Home = () => {
 
       {/* Lazy Loaded Sections */}
       <Suspense fallback={<div className="text-center py-12">로딩 중...</div>}>
-
         <SectionWrapper><ShowroomIntro /></SectionWrapper>
         <SectionWrapper><MediaCoverage /></SectionWrapper>
         <SectionWrapper><GallerySection /></SectionWrapper>
         <SectionWrapper><SNSLinks /></SectionWrapper>
         <SectionWrapper><Notices /></SectionWrapper>
-        <SectionWrapper><CustomerReviews /></SectionWrapper>
         <SectionWrapper><EstimateRequest /></SectionWrapper>
-        <SectionWrapper><LocationInfo /></SectionWrapper>
       </Suspense>
-
     </div>
   );
 };
