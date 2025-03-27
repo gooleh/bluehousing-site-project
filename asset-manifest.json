@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/bluehousing-site-project/static/css/main.d3256081.css",
-    "main.js": "/bluehousing-site-project/static/js/main.024accb9.js",
+    "main.css": "/bluehousing-site-project/static/css/main.3b80d350.css",
+    "main.js": "/bluehousing-site-project/static/js/main.b0fa2212.js",
     "static/js/797.c37a5375.chunk.js": "/bluehousing-site-project/static/js/797.c37a5375.chunk.js",
     "static/js/615.9a9809ad.chunk.js": "/bluehousing-site-project/static/js/615.9a9809ad.chunk.js",
     "static/js/780.45c786b6.chunk.js": "/bluehousing-site-project/static/js/780.45c786b6.chunk.js",
@@ -9,12 +9,16 @@
     "static/js/120.309637d5.chunk.js": "/bluehousing-site-project/static/js/120.309637d5.chunk.js",
     "static/js/62.fa53e81e.chunk.js": "/bluehousing-site-project/static/js/62.fa53e81e.chunk.js",
     "static/media/slide2.png": "/bluehousing-site-project/static/media/slide2.cf62dbf5d57d5213702e.png",
+    "static/media/banner4.png": "/bluehousing-site-project/static/media/banner4.93aa2665de56cb728b31.png",
     "static/media/slide4.png": "/bluehousing-site-project/static/media/slide4.93aa2665de56cb728b31.png",
     "static/media/banner.png": "/bluehousing-site-project/static/media/banner.e7e6cac766a8e7b4f496.png",
+    "static/media/banner3.png": "/bluehousing-site-project/static/media/banner3.e7e6cac766a8e7b4f496.png",
     "static/media/slide3.png": "/bluehousing-site-project/static/media/slide3.e7e6cac766a8e7b4f496.png",
     "static/media/banner1.png": "/bluehousing-site-project/static/media/banner1.08e561743c5af3b012b8.png",
     "static/media/slide1.png": "/bluehousing-site-project/static/media/slide1.08e561743c5af3b012b8.png",
+    "static/media/service3.jpg": "/bluehousing-site-project/static/media/service3.19634d627e575789ce48.jpg",
     "static/media/article8.jpeg": "/bluehousing-site-project/static/media/article8.9249bb968354c52a9025.jpeg",
+    "static/media/service1.jpg": "/bluehousing-site-project/static/media/service1.c48d619385af7edc7c81.jpg",
     "static/media/blog7.png": "/bluehousing-site-project/static/media/blog7.69342375e34198a1f221.png",
     "static/media/blog9.png": "/bluehousing-site-project/static/media/blog9.bcb7d98211ca81beb3ef.png",
     "static/media/blog6.png": "/bluehousing-site-project/static/media/blog6.0eafb4da0f1141238ed8.png",
@@ -25,6 +29,7 @@
     "static/media/article9.jpeg": "/bluehousing-site-project/static/media/article9.e7662c719cd9822a47db.jpeg",
     "static/media/blog8.png": "/bluehousing-site-project/static/media/blog8.932d6c9f17b102361844.png",
     "static/media/blog5.png": "/bluehousing-site-project/static/media/blog5.787834d800eadf2e7630.png",
+    "static/media/service2.jpg": "/bluehousing-site-project/static/media/service2.a60416dd1d548273c2ab.jpg",
     "static/media/article10.jpeg": "/bluehousing-site-project/static/media/article10.ffad9a9bcf276672a83a.jpeg",
     "static/media/showroom1.jpeg": "/bluehousing-site-project/static/media/showroom1.7f6014012892c555f3d4.jpeg",
     "static/media/showroom2.jpeg": "/bluehousing-site-project/static/media/showroom2.eb50761d690ab69fbf97.jpeg",
@@ -57,8 +62,8 @@
     "static/media/article4.jpeg": "/bluehousing-site-project/static/media/article4.2aa166125eea8d1dd87b.jpeg",
     "static/media/article1.jpeg": "/bluehousing-site-project/static/media/article1.c0d24cd6a0c778dcd215.jpeg",
     "index.html": "/bluehousing-site-project/index.html",
-    "main.d3256081.css.map": "/bluehousing-site-project/static/css/main.d3256081.css.map",
-    "main.024accb9.js.map": "/bluehousing-site-project/static/js/main.024accb9.js.map",
+    "main.3b80d350.css.map": "/bluehousing-site-project/static/css/main.3b80d350.css.map",
+    "main.b0fa2212.js.map": "/bluehousing-site-project/static/js/main.b0fa2212.js.map",
     "797.c37a5375.chunk.js.map": "/bluehousing-site-project/static/js/797.c37a5375.chunk.js.map",
     "615.9a9809ad.chunk.js.map": "/bluehousing-site-project/static/js/615.9a9809ad.chunk.js.map",
     "780.45c786b6.chunk.js.map": "/bluehousing-site-project/static/js/780.45c786b6.chunk.js.map",
@@ -67,7 +72,7 @@
     "62.fa53e81e.chunk.js.map": "/bluehousing-site-project/static/js/62.fa53e81e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3256081.css",
-    "static/js/main.024accb9.js"
+    "static/css/main.3b80d350.css",
+    "static/js/main.b0fa2212.js"
   ]
 }
