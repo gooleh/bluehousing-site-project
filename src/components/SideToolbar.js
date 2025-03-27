@@ -18,7 +18,7 @@ import {
 const menuItems = [
   { label: '기업소개', link: '/about', icon: <MdBusiness className="mr-2 text-2xl" /> },
   { label: '서비스', link: '/services', icon: <MdBuild className="mr-2 text-2xl" /> },
-  { label: '갤러리', link: '/gallery', icon: <MdPhotoLibrary className="mr-2 text-2xl" /> },
+  { label: '갤러리', link: '/showroom-detail', icon: <MdPhotoLibrary className="mr-2 text-2xl" /> },
   { label: '시공사례', link: '/cases', icon: <MdConstruction className="mr-2 text-2xl" /> },
   { label: '블로그', link: '/blog', icon: <MdRssFeed className="mr-2 text-2xl" /> },
   { label: '공지사항', link: '/notices', icon: <MdAnnouncement className="mr-2 text-2xl" /> },

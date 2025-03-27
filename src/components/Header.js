@@ -1,4 +1,5 @@
 // src/components/Header.js
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
@@ -8,13 +9,9 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  // 기존 코드: articles 페이지 처리
+  // 특정 페이지에서 스크롤 고정 (articles, notices 예시)
   const isArticles = location.pathname.startsWith('/articles');
-
-  // 추가 코드: notice 페이지 처리
   const isNotice = location.pathname === '/notices';
-
-  // 두 조건 중 하나라도 true이면 항상 스크롤 상태로
   const effectiveScrolled = isArticles || isNotice || isScrolled;
 
   useEffect(() => {
@@ -22,7 +19,6 @@ const Header = () => {
   }, [location]);
 
   useEffect(() => {
-    // 이미 isArticles 또는 isNotice가 true면 스크롤 리스너 필요 X
     if (!isArticles && !isNotice) {
       const onScroll = () => setIsScrolled(window.scrollY > 100);
       window.addEventListener('scroll', onScroll);
@@ -30,11 +26,11 @@ const Header = () => {
     }
   }, [isArticles, isNotice]);
 
-  // 필요에 따라 로고 숨기는 예시
+  // 특정 경로에서 로고 숨기기 (예시)
   const hideLogoPaths = ['/showroom-detail'];
   const shouldHideLogo = hideLogoPaths.includes(location.pathname);
 
-  // effectiveScrolled에 따라 다른 스타일 적용
+  // 스크롤 상태에 따라 헤더 배경 및 텍스트 색상
   const headerClass = effectiveScrolled
     ? 'bg-gray-800 shadow-lg py-2'
     : 'bg-transparent py-5';
@@ -43,18 +39,44 @@ const Header = () => {
     ? 'text-white hover:text-blue-300'
     : 'text-gray-800 hover:text-blue-500';
 
-  return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-200 ${headerClass}`}>
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-3 items-center">
-        <div />
+  // 7개 메뉴
+  const navPaths = [
+    '/',            // 홈
+    '/about',       // 기업소개
+    '/services',    // 서비스
+    '/showroom-detail',     // 갤러리
+    '/cases',       // 시공사례
+    '/estimate',    // 견적문의
+    '/location'     // 오시는길
+  ];
 
-        {/* 로고 */}
+  const navLabels = [
+    '홈',
+    '기업소개',
+    '서비스',
+    '갤러리',
+    '시공사례',
+    '견적문의',
+    '오시는길'
+  ];
+
+  return (
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-200 ${headerClass}`}
+    >
+      {/**
+       * 3컬럼 그리드:
+       *  - col-start-1: 왼쪽은 비워둠
+       *  - col-start-2: 로고 가운데 정렬
+       *  - col-start-3: 메뉴 & 버튼 (오른쪽)
+       */}
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-3 items-center">
+        {/* 왼쪽 공간 */}
+        <div className="col-start-1" />
+
+        {/* 가운데 로고 */}
         {!shouldHideLogo && (
-          <div
-            className={`${
-              effectiveScrolled ? 'col-start-1 justify-start' : 'col-start-2 justify-center'
-            } flex transition-all duration-100`}
-          >
+          <div className="col-start-2 flex justify-center">
             <Link to="/">
               <img
                 src={logo}
@@ -67,27 +89,31 @@ const Header = () => {
           </div>
         )}
 
-        {/* 네비게이션 */}
-        <nav className="col-start-3 flex justify-end">
-          <ul className="hidden md:flex space-x-8">
-            {['/', '/about', '/services', '/gallery', '/contact'].map((path, idx) => {
-              const labels = ['홈', '기업소개', '서비스', '갤러리', '연락처'];
-              return (
-                <li key={idx}>
-                  <Link
-                    to={path}
-                    className={`font-medium transition duration-100 ${menuTextClass}`}
-                  >
-                    {labels[idx]}
-                  </Link>
-                </li>
-              );
-            })}
+        {/**
+         * 오른쪽 영역:
+         *  - 데스크톱: 가로메뉴 (md:flex)
+         *  - 모바일: 햄버거 버튼 (md:hidden)
+         * 
+         * 'space-x-6 whitespace-nowrap ml-8' -> 첫 메뉴 항목과 로고 사이에 여유가 생김
+         */}
+        <div className="col-start-3 flex items-center justify-end">
+          <ul className="hidden md:flex space-x-6 whitespace-nowrap ml-8">
+            {navPaths.map((path, idx) => (
+              <li key={idx}>
+                <Link
+                  to={path}
+                  className={`font-medium transition duration-100 ${menuTextClass}`}
+                >
+                  {navLabels[idx]}
+                </Link>
+              </li>
+            ))}
           </ul>
 
+          {/* 모바일 햄버거 버튼 */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`md:hidden focus:outline-none transition duration-100 ${menuTextClass}`}
+            className={`md:hidden focus:outline-none transition duration-100 ml-4 ${menuTextClass}`}
           >
             <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isOpen ? (
@@ -107,24 +133,22 @@ const Header = () => {
               )}
             </svg>
           </button>
-        </nav>
+        </div>
       </div>
 
+      {/* 모바일 메뉴 (세로) */}
       {isOpen && (
         <ul className="md:hidden bg-white w-full px-6 py-4 space-y-4 transition duration-100">
-          {['/', '/about', '/services', '/gallery', '/contact'].map((path, idx) => {
-            const labels = ['홈', '기업소개', '서비스', '갤러리', '연락처'];
-            return (
-              <li key={idx}>
-                <Link
-                  to={path}
-                  className="block font-medium text-gray-800 hover:text-gray-600 transition duration-100"
-                >
-                  {labels[idx]}
-                </Link>
-              </li>
-            );
-          })}
+          {navPaths.map((path, idx) => (
+            <li key={idx}>
+              <Link
+                to={path}
+                className="block font-medium text-gray-800 hover:text-gray-600 transition duration-100"
+              >
+                {navLabels[idx]}
+              </Link>
+            </li>
+          ))}
         </ul>
       )}
     </header>

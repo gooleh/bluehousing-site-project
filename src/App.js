@@ -18,15 +18,16 @@ import ChosunArticle from './pages/articles/ChosunArticle';
 import Blog from './pages/Blog';
 import Notice from './pages/Notice';
 import Estimate from './pages/Estimate';
+// 오시는길 페이지
+import Location from './pages/Location'; // <- 새로 추가
 
 function App() {
   return (
     <HelmetProvider>
       <Router basename="/bluehousing-site-project">
         <Header />
-        {/* 오른쪽 툴바 */}
         <SideToolbar />
-
+        
         <main className="min-h-screen">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -42,8 +43,12 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/notices" element={<Notice />} />
             <Route path="/estimate" element={<Estimate />} />
+
+            {/* 오시는길 라우터 추가 */}
+            <Route path="/location" element={<Location />} />
           </Routes>
         </main>
+
         <Footer />
       </Router>
     </HelmetProvider>

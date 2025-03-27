@@ -4,7 +4,7 @@ import { DiamondIcon } from 'lucide-react';
 import Modal from '../components/Modal';
 
 // 배너 이미지 임포트
-import banner1 from '../assets/images/banner/banner1.png';
+import banner1 from '../assets/images/banner/banner4.png';
 
 // 이미지 임포트 (Showroom 폴더)
 import showroom1 from '../assets/images/Showroom/showroom1.jpeg';
