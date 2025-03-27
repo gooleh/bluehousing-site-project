@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bluehousing-site-project/static/css/main.3b80d350.css",
-    "main.js": "/bluehousing-site-project/static/js/main.b0fa2212.js",
+    "main.js": "/bluehousing-site-project/static/js/main.14140c93.js",
     "static/js/797.c37a5375.chunk.js": "/bluehousing-site-project/static/js/797.c37a5375.chunk.js",
     "static/js/615.9a9809ad.chunk.js": "/bluehousing-site-project/static/js/615.9a9809ad.chunk.js",
     "static/js/780.45c786b6.chunk.js": "/bluehousing-site-project/static/js/780.45c786b6.chunk.js",
@@ -63,7 +63,7 @@
     "static/media/article1.jpeg": "/bluehousing-site-project/static/media/article1.c0d24cd6a0c778dcd215.jpeg",
     "index.html": "/bluehousing-site-project/index.html",
     "main.3b80d350.css.map": "/bluehousing-site-project/static/css/main.3b80d350.css.map",
-    "main.b0fa2212.js.map": "/bluehousing-site-project/static/js/main.b0fa2212.js.map",
+    "main.14140c93.js.map": "/bluehousing-site-project/static/js/main.14140c93.js.map",
     "797.c37a5375.chunk.js.map": "/bluehousing-site-project/static/js/797.c37a5375.chunk.js.map",
     "615.9a9809ad.chunk.js.map": "/bluehousing-site-project/static/js/615.9a9809ad.chunk.js.map",
     "780.45c786b6.chunk.js.map": "/bluehousing-site-project/static/js/780.45c786b6.chunk.js.map",
@@ -73,6 +73,6 @@
   },
   "entrypoints": [
     "static/css/main.3b80d350.css",
-    "static/js/main.b0fa2212.js"
+    "static/js/main.14140c93.js"
   ]
 }
