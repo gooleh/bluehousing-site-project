@@ -1,5 +1,4 @@
 // src/components/Header.js
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
@@ -30,22 +29,28 @@ const Header = () => {
   const hideLogoPaths = ['/showroom-detail'];
   const shouldHideLogo = hideLogoPaths.includes(location.pathname);
 
-  // 스크롤 상태에 따라 헤더 배경 및 텍스트 색상
+  // showroom-detail 페이지 여부 체크
+  const isShowroomDetail = location.pathname === '/showroom-detail';
+
+  // 스크롤 상태에 따라 기본 헤더 배경 및 텍스트 색상
   const headerClass = effectiveScrolled
     ? 'bg-gray-800 shadow-lg py-2'
     : 'bg-transparent py-5';
 
-  const menuTextClass = effectiveScrolled
-    ? 'text-white hover:text-blue-300'
-    : 'text-gray-800 hover:text-blue-500';
+  // 메뉴 텍스트 색상: showroom-detail 페이지라면 별도 색상 사용
+  const menuTextClass = isShowroomDetail
+    ? 'text-gray-300 hover:text-blue-300'
+    : effectiveScrolled
+      ? 'text-white hover:text-blue-300'
+      : 'text-gray-800 hover:text-blue-500';
 
-  // 7개 메뉴
+  // 7개 메뉴 항목
   const navPaths = [
     '/',            // 홈
     '/about',       // 기업소개
     '/services',    // 서비스
-    '/showroom-detail',     // 갤러리
-    '/cases',       // 시공사례
+    '/showroom-detail',     // 전시장
+    '/gallery',       // 갤러리
     '/estimate',    // 견적문의
     '/location'     // 오시는길
   ];
@@ -54,22 +59,14 @@ const Header = () => {
     '홈',
     '기업소개',
     '서비스',
+    '전시장',
     '갤러리',
-    '시공사례',
     '견적문의',
     '오시는길'
   ];
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-200 ${headerClass}`}
-    >
-      {/**
-       * 3컬럼 그리드:
-       *  - col-start-1: 왼쪽은 비워둠
-       *  - col-start-2: 로고 가운데 정렬
-       *  - col-start-3: 메뉴 & 버튼 (오른쪽)
-       */}
+    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-200 ${headerClass}`}>
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-3 items-center">
         {/* 왼쪽 공간 */}
         <div className="col-start-1" />
@@ -89,13 +86,7 @@ const Header = () => {
           </div>
         )}
 
-        {/**
-         * 오른쪽 영역:
-         *  - 데스크톱: 가로메뉴 (md:flex)
-         *  - 모바일: 햄버거 버튼 (md:hidden)
-         * 
-         * 'space-x-6 whitespace-nowrap ml-8' -> 첫 메뉴 항목과 로고 사이에 여유가 생김
-         */}
+        {/* 오른쪽 영역: 데스크톱 메뉴 + 모바일 버튼 */}
         <div className="col-start-3 flex items-center justify-end">
           <ul className="hidden md:flex space-x-6 whitespace-nowrap ml-8">
             {navPaths.map((path, idx) => (
@@ -110,7 +101,6 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* 모바일 햄버거 버튼 */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`md:hidden focus:outline-none transition duration-100 ml-4 ${menuTextClass}`}

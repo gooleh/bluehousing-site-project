@@ -33,7 +33,7 @@ const Services = () => {
             서비스
           </h1>
           <p className="text-white max-w-2xl text-sm md:text-base drop-shadow">
-            당신의 공간을 새롭게, 우리만의 스타일로 완성해드립니다.
+            당신의 공간을 새롭게, 블루하우징만의 스타일로 완성해드립니다.
           </p>
         </div>
       </div>
