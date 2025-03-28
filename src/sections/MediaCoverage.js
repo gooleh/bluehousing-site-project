@@ -1,7 +1,7 @@
+// src/components/MediaCoverage.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// 이미지 임포트 (경로는 프로젝트 구조에 맞게 수정)
 import article1Img from '../assets/images/articles/article1.jpeg';
 import article2Img from '../assets/images/articles/article2.jpeg';
 import article3Img from '../assets/images/articles/article3.jpeg';
@@ -22,7 +22,10 @@ const MediaCoverage = () => (
           className="text-2xl font-bold text-left"
           style={{ color: 'gray' }}  // 제목 연한 회색
         >
-          언론 속의 블루하우징
+          언론 속의 블루하우징{' '}
+          <span className="text-base font-medium text-gray-600">
+            (BlueHousing News)
+          </span>
         </h2>
         <hr className="mt-4 border-t-2" style={{ borderColor: 'lightgray' }} />
       </div>

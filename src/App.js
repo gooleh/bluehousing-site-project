@@ -18,8 +18,8 @@ import ChosunArticle from './pages/articles/ChosunArticle';
 import Blog from './pages/Blog';
 import Notice from './pages/Notice';
 import Estimate from './pages/Estimate';
-// 오시는길 페이지
-import Location from './pages/Location'; // <- 새로 추가
+import Location from './pages/Location'; // 오시는길 페이지
+import Reviews from './pages/Reviews';   // 이용후기 페이지 추가
 
 function App() {
   return (
@@ -43,9 +43,8 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/notices" element={<Notice />} />
             <Route path="/estimate" element={<Estimate />} />
-
-            {/* 오시는길 라우터 추가 */}
             <Route path="/location" element={<Location />} />
+            <Route path="/reviews" element={<Reviews />} /> {/* 이용후기 페이지 */}
           </Routes>
         </main>
 

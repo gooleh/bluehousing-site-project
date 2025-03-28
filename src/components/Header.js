@@ -8,7 +8,6 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  // 특정 페이지에서 스크롤 고정 (articles, notices 예시)
   const isArticles = location.pathname.startsWith('/articles');
   const isNotice = location.pathname === '/notices';
   const effectiveScrolled = isArticles || isNotice || isScrolled;
@@ -25,34 +24,38 @@ const Header = () => {
     }
   }, [isArticles, isNotice]);
 
-  // 특정 경로에서 로고 숨기기 (예시)
-  const hideLogoPaths = ['/showroom-detail'];
+  // 특정 경로에서 로고 숨기기
+  const hideLogoPaths = ['/showroom-detail','/reviews'];
   const shouldHideLogo = hideLogoPaths.includes(location.pathname);
 
-  // showroom-detail 페이지 여부 체크
+  // showroom-detail 및 estimate 페이지 여부 체크
   const isShowroomDetail = location.pathname === '/showroom-detail';
+  const isEstimate = location.pathname === '/estimate';
 
-  // 스크롤 상태에 따라 기본 헤더 배경 및 텍스트 색상
   const headerClass = effectiveScrolled
     ? 'bg-gray-800 shadow-lg py-2'
     : 'bg-transparent py-5';
 
-  // 메뉴 텍스트 색상: showroom-detail 페이지라면 별도 색상 사용
+  // 메뉴 텍스트 색상: 
+  // - showroom-detail 페이지 → 연한 회색
+  // - estimate 페이지 → 항상 흰색
+  // - 그 외 → 스크롤 상태에 따라 다름
   const menuTextClass = isShowroomDetail
     ? 'text-gray-300 hover:text-blue-300'
-    : effectiveScrolled
+    : isEstimate
       ? 'text-white hover:text-blue-300'
-      : 'text-gray-800 hover:text-blue-500';
+      : effectiveScrolled
+        ? 'text-white hover:text-blue-300'
+        : 'text-gray-800 hover:text-blue-500';
 
-  // 7개 메뉴 항목
   const navPaths = [
-    '/',            // 홈
-    '/about',       // 기업소개
-    '/services',    // 서비스
-    '/showroom-detail',     // 전시장
-    '/gallery',       // 갤러리
-    '/estimate',    // 견적문의
-    '/location'     // 오시는길
+    '/',            
+    '/about',       
+    '/services',    
+    '/showroom-detail',     
+    '/gallery',       
+    '/estimate',    
+    '/location'     
   ];
 
   const navLabels = [
@@ -63,6 +66,16 @@ const Header = () => {
     '갤러리',
     '견적문의',
     '오시는길'
+  ];
+
+  const navEnglishLabels = [
+    'Home',
+    'About us',
+    'Services',
+    'Exhibition',
+    'Showroom',
+    'Contact us',
+    'Location'
   ];
 
   return (
@@ -90,13 +103,16 @@ const Header = () => {
         <div className="col-start-3 flex items-center justify-end">
           <ul className="hidden md:flex space-x-6 whitespace-nowrap ml-8">
             {navPaths.map((path, idx) => (
-              <li key={idx}>
+              <li key={idx} className="group relative">
                 <Link
                   to={path}
                   className={`font-medium transition duration-100 ${menuTextClass}`}
                 >
                   {navLabels[idx]}
                 </Link>
+                <span className="absolute left-1/2 transform -translate-x-1/2 -top-10 px-3 py-1 bg-black text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  {navEnglishLabels[idx]}
+                </span>
               </li>
             ))}
           </ul>

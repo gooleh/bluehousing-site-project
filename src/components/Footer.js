@@ -29,7 +29,7 @@ const Footer = () => {
           <h3 className="text-white font-bold text-lg mb-4">SNS</h3>
           <ul className="space-y-4">
             <li className="flex items-center space-x-2">
-              <a href="https://blog.naver.com/" target="_blank" rel="noreferrer" className="flex items-center hover:text-white transition transform hover:scale-105">
+              <a href="https://blog.naver.com/jkleeht" target="_blank" rel="noreferrer" className="flex items-center hover:text-white transition transform hover:scale-105">
                 <SiNaver className="w-6 h-6" /><span className="ml-2 text-sm">네이버 블로그</span>
               </a>
             </li>

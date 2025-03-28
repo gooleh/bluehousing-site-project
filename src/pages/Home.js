@@ -1,3 +1,4 @@
+// src/Home.js
 import React, { Suspense, lazy } from 'react';
 import ImageSlider from '../components/ImageSlider';
 import SectionWrapper from '../components/SectionWrapper';
@@ -33,6 +34,10 @@ const Home = () => {
           </h1>
           <p className="mt-4 text-sm md:text-lg text-gray-700 max-w-xl px-4 leading-relaxed">
             30년 경력 마이스터가 시공하는 종합 인테리어 전문기업
+            <br />
+            <span className="mt-2 block text-xs md:text-base text-gray-600">
+              A comprehensive interior design company led by a master with 30 years of experience.
+            </span>
           </p>
         </div>
       </div>

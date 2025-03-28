@@ -1,10 +1,9 @@
 // src/pages/Estimate.js
 import React, { useState } from 'react';
-// 예시 배너 이미지 import
 import bannerEstimate from '../assets/images/banner/banner1.png';
 
 const Estimate = () => {
-  // 폼 입력값을 상태로 관리
+  // 폼 입력값 상태 관리
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -18,13 +17,11 @@ const Estimate = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // 폼 제출 시 처리할 로직 (예: API 요청)
+  // 폼 제출 처리
   const handleSubmit = (e) => {
     e.preventDefault();
-    // 실제 환경에서는 이 부분에서 서버로 견적 요청 데이터를 전송
     console.log('견적 요청 데이터:', formData);
-    // 폼 초기화 등 후속 작업
-    // setFormData({ name: '', phone: '', email: '', details: '' });
+    // 필요시 폼 초기화 및 후속 처리
   };
 
   return (
@@ -40,9 +37,7 @@ const Estimate = () => {
           <h2 className="text-2xl md:text-3xl font-semibold mb-2 drop-shadow">
             견적 의뢰 / Request for Estimate
           </h2>
-          <p className="max-w-xl text-sm md:text-base drop-shadow-sm">
-          When you complete the form below, we will contact you with a quick draft.
-          </p>
+          {/* 배너에서는 한글 제목만 표시 */}
         </div>
       </div>
 
@@ -50,8 +45,12 @@ const Estimate = () => {
       <div className="max-w-3xl mx-auto -mt-12 px-4 pb-16 relative z-10">
         <div className="bg-white rounded shadow p-8">
           {/* 안내 문구 */}
-          <p className="text-gray-700 mb-8 text-center">
+          <p className="text-gray-700 mb-2 text-center">
             아래 양식에 맞춰 정보를 입력해 주시면 빠른 시일 내에 연락드리겠습니다.
+          </p>
+          {/* 영문 안내 문구를 추가 */}
+          <p className="text-gray-500 mb-8 text-center text-sm">
+            When you complete the form below, we will contact you with a quick draft.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -64,8 +63,7 @@ const Estimate = () => {
                 type="text"
                 id="name"
                 name="name"
-                className="w-full border border-gray-300 rounded px-3 py-2 
-                           focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="예) 홍길동 / e.g. Hong Gil-dong"
                 value={formData.name}
                 onChange={handleChange}
@@ -82,8 +80,7 @@ const Estimate = () => {
                 type="tel"
                 id="phone"
                 name="phone"
-                className="w-full border border-gray-300 rounded px-3 py-2 
-                           focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="예) 010-1234-5678 / e.g. 010-1234-5678"
                 value={formData.phone}
                 onChange={handleChange}
@@ -100,8 +97,7 @@ const Estimate = () => {
                 type="email"
                 id="email"
                 name="email"
-                className="w-full border border-gray-300 rounded px-3 py-2 
-                           focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="예) example@domain.com"
                 value={formData.email}
                 onChange={handleChange}
@@ -118,8 +114,7 @@ const Estimate = () => {
                 id="details"
                 name="details"
                 rows="5"
-                className="w-full border border-gray-300 rounded px-3 py-2 
-                           focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="시공 위치, 희망 일정, 예산 등 자세한 내용을 알려주세요."
                 value={formData.details}
                 onChange={handleChange}
@@ -129,8 +124,7 @@ const Estimate = () => {
             {/* 제출 버튼 */}
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded 
-                         transition-all duration-200"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition-all duration-200"
             >
               견적 요청 보내기
             </button>

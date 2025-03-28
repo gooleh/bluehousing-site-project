@@ -4,45 +4,70 @@ import LazyLoad from 'react-lazyload';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 
-// 100장이 넘는 이미지 URL 배열 (예시)
+// 이미지 데이터 배열 (파일들은 public/Gallery 폴더 내에 위치)
 const galleryImages = [
-  '/assets/images/gallery1.jpg',
-  '/assets/images/gallery2.jpg',
-  '/assets/images/gallery3.jpg',
-  // ... 97개 이상의 이미지 URL 추가
+  { src: '/Gallery/1.jpeg', caption: '시공 사례 1' },
+  { src: '/Gallery/2.jpeg', caption: '시공 사례 2' },
+  { src: '/Gallery/3.jpeg', caption: '시공 사례 3' },
+  // ... 추가 이미지 객체: 예를 들어, { src: '/Gallery/4.jpeg', caption: '시공 사례 4' } 등
 ];
+
+const fallbackImage = '/Gallery/fallback.png'; // 에러 발생 시 사용할 대체 이미지
 
 const Gallery = () => {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [imageError, setImageError] = useState({});
+
+  // 이미지 로딩 에러 핸들러
+  const handleImageError = (index) => {
+    setImageError((prev) => ({ ...prev, [index]: true }));
+  };
 
   return (
     <section className="py-12 px-4 bg-gray-50">
       <h2 className="text-2xl md:text-3xl font-semibold text-center mb-8">시공 사례</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {galleryImages.map((src, index) => (
+        {galleryImages.map((image, index) => (
           <div key={index} className="border rounded-lg overflow-hidden shadow">
-            <LazyLoad height={200} once>
+            <LazyLoad
+              height={200}
+              once
+              placeholder={<div className="bg-gray-200 animate-pulse w-full h-48" />}
+            >
               <img
-                src={src}
-                alt={`시공 사례 ${index + 1}`}
+                src={imageError[index] ? fallbackImage : image.src}
+                alt={image.caption}
                 className="w-full h-48 object-cover cursor-pointer"
+                loading="lazy"
                 onClick={() => {
                   setPhotoIndex(index);
                   setIsOpen(true);
                 }}
-                loading="lazy"
+                onError={() => handleImageError(index)}
               />
             </LazyLoad>
+            {/* 이미지 캡션 */}
+            <div className="p-2 text-center text-sm text-gray-700">
+              {image.caption}
+            </div>
           </div>
         ))}
       </div>
 
       {isOpen && (
         <Lightbox
-          mainSrc={galleryImages[photoIndex]}
-          nextSrc={galleryImages[(photoIndex + 1) % galleryImages.length]}
-          prevSrc={galleryImages[(photoIndex + galleryImages.length - 1) % galleryImages.length]}
+          mainSrc={imageError[photoIndex] ? fallbackImage : galleryImages[photoIndex].src}
+          nextSrc={
+            imageError[(photoIndex + 1) % galleryImages.length]
+              ? fallbackImage
+              : galleryImages[(photoIndex + 1) % galleryImages.length].src
+          }
+          prevSrc={
+            imageError[(photoIndex + galleryImages.length - 1) % galleryImages.length]
+              ? fallbackImage
+              : galleryImages[(photoIndex + galleryImages.length - 1) % galleryImages.length].src
+          }
           onCloseRequest={() => setIsOpen(false)}
           onMovePrevRequest={() =>
             setPhotoIndex((photoIndex + galleryImages.length - 1) % galleryImages.length)
@@ -50,6 +75,9 @@ const Gallery = () => {
           onMoveNextRequest={() =>
             setPhotoIndex((photoIndex + 1) % galleryImages.length)
           }
+          imageCaption={galleryImages[photoIndex].caption}
+          enableZoom={false}
+          reactModalStyle={{ overlay: { zIndex: 1000 } }}
         />
       )}
     </section>

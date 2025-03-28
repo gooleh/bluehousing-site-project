@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  MdBusiness,
-  MdBuild,
+  MdBusinessCenter,
+  MdDesignServices,
+  MdStorefront,
   MdPhotoLibrary,
-  MdConstruction,
-  MdRssFeed,
+  MdArticle,
   MdAnnouncement,
   MdRequestQuote,
   MdRateReview,
@@ -16,15 +16,15 @@ import {
 } from 'react-icons/md';
 
 const menuItems = [
-  { label: '기업소개', link: '/about', icon: <MdBusiness className="mr-2 text-2xl" /> },
-  { label: '서비스', link: '/services', icon: <MdBuild className="mr-2 text-2xl" /> },
-  { label: '갤러리', link: '/showroom-detail', icon: <MdPhotoLibrary className="mr-2 text-2xl" /> },
-  { label: '시공사례', link: '/cases', icon: <MdConstruction className="mr-2 text-2xl" /> },
-  { label: '블로그', link: '/blog', icon: <MdRssFeed className="mr-2 text-2xl" /> },
-  { label: '공지사항', link: '/notices', icon: <MdAnnouncement className="mr-2 text-2xl" /> },
-  { label: '견적의뢰', link: '/estimate', icon: <MdRequestQuote className="mr-2 text-2xl" /> },
-  { label: '이용후기', link: '/reviews', icon: <MdRateReview className="mr-2 text-2xl" /> },
-  { label: '오시는길', link: '/location', icon: <MdLocationOn className="mr-2 text-2xl" /> },
+  { label: '기업소개', english: 'About Us', link: '/about', icon: <MdBusinessCenter className="mr-2 text-2xl" /> },
+  { label: '서비스', english: 'Services', link: '/services', icon: <MdDesignServices className="mr-2 text-2xl" /> },
+  { label: '전시장', english: 'Showroom', link: '/showroom-detail', icon: <MdStorefront className="mr-2 text-2xl" /> },
+  { label: '갤러리', english: 'Gallery', link: '/cases', icon: <MdPhotoLibrary className="mr-2 text-2xl" /> },
+  { label: '블로그', english: 'Blog', link: '/blog', icon: <MdArticle className="mr-2 text-2xl" /> },
+  { label: '공지사항', english: 'Notices', link: '/notices', icon: <MdAnnouncement className="mr-2 text-2xl" /> },
+  { label: '견적의뢰', english: 'Contact us', link: '/estimate', icon: <MdRequestQuote className="mr-2 text-2xl" /> },
+  { label: '이용후기', english: 'Reviews', link: '/reviews', icon: <MdRateReview className="mr-2 text-2xl" /> },
+  { label: '오시는길', english: 'Location', link: '/location', icon: <MdLocationOn className="mr-2 text-2xl" /> },
 ];
 
 const SideToolbar = () => {
@@ -46,16 +46,16 @@ const SideToolbar = () => {
       {isOpen && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-30 z-40"
-          onClick={togglePanel} // 오버레이 클릭 시 패널 닫기
+          onClick={togglePanel}
         />
       )}
 
-      {/* 실제 사이드 패널 */}
+      {/* 사이드 패널 */}
       <div 
         className={`fixed top-0 right-0 h-full w-72 bg-white z-50 shadow-lg transform transition-transform duration-300
         ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
-        {/* 패널 헤더 (닫기 버튼) */}
+        {/* 패널 헤더 */}
         <div className="flex items-center justify-between p-4 border-b">
           <h2 className="text-xl font-semibold text-gray-700">Blue Housing</h2>
           <button onClick={togglePanel} className="text-gray-600 hover:text-gray-800">
@@ -66,15 +66,19 @@ const SideToolbar = () => {
         {/* 패널 내 메뉴 리스트 */}
         <nav className="p-6 space-y-4">
           {menuItems.map((item, index) => (
-            <Link
-              key={index}
-              to={item.link}
-              className="flex items-center text-gray-700 hover:text-blue-500 transition-colors text-xl py-2"
-              onClick={() => setIsOpen(false)}
-            >
-              {item.icon}
-              <span className="font-medium">{item.label}</span>
-            </Link>
+            <div key={index} className="group relative block">
+              <Link
+                to={item.link}
+                className="flex items-center text-gray-700 hover:text-blue-500 transition-colors text-xl py-2"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.icon}
+                <span className="font-medium">{item.label}</span>
+              </Link>
+              <span className="absolute left-full top-1/2 -translate-y-1/2 -ml-20 px-2 py-1 bg-black text-white text-sm rounded opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+                {item.english}
+              </span>
+            </div>
           ))}
         </nav>
       </div>

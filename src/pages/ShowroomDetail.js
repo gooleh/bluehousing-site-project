@@ -1,3 +1,4 @@
+// src/pages/ShowroomDetail.js
 import React, { useState, useCallback, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { DiamondIcon } from 'lucide-react';
@@ -117,7 +118,7 @@ const ShowroomDetail = () => {
         />
       </Helmet>
 
-      {/* 배너 이미지 */}
+      {/* 배너 이미지 섹션 */}
       <div className="relative h-72 md:h-96">
         <img src={banner1} alt="Showroom Banner" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 flex flex-col items-center justify-center text-center">
@@ -125,11 +126,18 @@ const ShowroomDetail = () => {
             블루하우징 전시장
           </h1>
           <p className="text-white max-w-2xl px-4 text-sm md:text-base">
-            30년 경력 마이스터의 노하우로 완성된 다양한 스타일의 시공 사례를 한눈에 만나보세요.
+            30년 경력 마이스터의 노하우로 완성된 욕실 시공 사례를 한눈에 만나보세요.
+          </p>
+          <p className="text-white max-w-2xl px-4 text-[0.75rem] md:text-sm mt-4">
+            BlueHousing Showroom<br />
+            An interior design company led by a master with 30 years of experience,<br />
+            ensuring expert construction and guaranteed after-service.<br />
+            Visit our showroom to explore a variety of interior styles and the latest trends firsthand.
           </p>
         </div>
       </div>
 
+      {/* 각 섹션 렌더링 */}
       {showroomData.map((section, idx) => (
         <ShowroomSection
           key={idx}
@@ -165,14 +173,14 @@ const ShowroomSection = ({ title, images, description, onImageClick }) => (
   
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         {images.map((img, index) => (
-          <div
-            key={index}
-            className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer group"
+          <div 
+            key={index} 
+            className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group"
             onClick={() => onImageClick(images, index)}
           >
-            <img
-              src={img}
-              alt={`${title} ${index + 1}`}
+            <img 
+              src={img} 
+              alt={`${title} ${index + 1}`} 
               className="object-cover w-full h-[280px] md:h-[380px] transition-transform duration-500 group-hover:scale-105 group-hover:brightness-90"
               loading="lazy"
             />

@@ -1,3 +1,4 @@
+// src/pages/GallerySection.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdArrowForwardIos } from 'react-icons/md';  // 대체 아이콘 임포트
@@ -11,12 +12,12 @@ import gallery5 from '../assets/images/Gallery/gallery5.jpeg';
 import gallery6 from '../assets/images/Gallery/gallery6.jpeg';
 
 const galleryImages = [
-  { src: gallery1, alt: '시공 사례 1' },
-  { src: gallery2, alt: '시공 사례 2' },
-  { src: gallery3, alt: '시공 사례 3' },
-  { src: gallery4, alt: '시공 사례 4' },
-  { src: gallery5, alt: '시공 사례 5' },
-  { src: gallery6, alt: '시공 사례 6' },
+  { src: gallery1, alt: '갤러리 이미지 1' },
+  { src: gallery2, alt: '갤러리 이미지 2' },
+  { src: gallery3, alt: '갤러리 이미지 3' },
+  { src: gallery4, alt: '갤러리 이미지 4' },
+  { src: gallery5, alt: '갤러리 이미지 5' },
+  { src: gallery6, alt: '갤러리 이미지 6' },
 ];
 
 const GallerySection = () => (
@@ -27,7 +28,10 @@ const GallerySection = () => (
           className="text-3xl md:text-2xl font-semibold text-left"
           style={{ color: '#B08D57' }}  // 고급스러운 브라운 계열 색상
         >
-          시공 사례
+          갤러리 <br className="md:hidden" />
+          <span className="text-base md:text-lg font-medium" style={{ color: '#B08D57' }}>
+            (Showroom)
+          </span>
         </h2>
         <Link 
           to="/gallery"
@@ -38,16 +42,18 @@ const GallerySection = () => (
         </Link>
       </div>
       <hr className="mb-8 border-t-2" style={{ borderColor: '#B08D57' }} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {galleryImages.map((image, index) => (
-          <div key={index} className="group overflow-hidden rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
-            <img 
-              src={image.src} 
-              alt={image.alt} 
-              className="w-full h-60 object-cover transform group-hover:scale-105 transition-transform duration-300" 
-              loading="lazy"
-            />
-          </div>
+          <Link key={index} to="/gallery" className="group block">
+            <div className="overflow-hidden rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+              <img 
+                src={image.src} 
+                alt={image.alt} 
+                className="w-full h-60 object-cover transform group-hover:scale-105 transition-transform duration-300" 
+                loading="lazy"
+              />
+            </div>
+          </Link>
         ))}
       </div>
     </div>
