@@ -25,28 +25,30 @@ const Header = () => {
   }, [isArticles, isNotice]);
 
   // 특정 경로에서 로고 숨기기
-  const hideLogoPaths = ['/showroom-detail','/reviews'];
+  const hideLogoPaths = ['/showroom-detail', '/reviews'];
   const shouldHideLogo = hideLogoPaths.includes(location.pathname);
 
   // showroom-detail 및 estimate 페이지 여부 체크
   const isShowroomDetail = location.pathname === '/showroom-detail';
   const isEstimate = location.pathname === '/estimate';
 
+  // gallery, blog, reviews 페이지에서 네비게이션 텍스트를 흰색으로 적용
+  const isGallery = location.pathname.startsWith('/gallery');
+  const isBlog = location.pathname.startsWith('/blog');
+  const isReviews = location.pathname.startsWith('/reviews');
+
+  const isWhiteNav = isEstimate || isGallery || isBlog || isReviews;
+
   const headerClass = effectiveScrolled
     ? 'bg-gray-800 shadow-lg py-2'
     : 'bg-transparent py-5';
 
-  // 메뉴 텍스트 색상: 
-  // - showroom-detail 페이지 → 연한 회색
-  // - estimate 페이지 → 항상 흰색
-  // - 그 외 → 스크롤 상태에 따라 다름
+  // 메뉴 텍스트 색상 설정
   const menuTextClass = isShowroomDetail
     ? 'text-gray-300 hover:text-blue-300'
-    : isEstimate
+    : isWhiteNav || effectiveScrolled
       ? 'text-white hover:text-blue-300'
-      : effectiveScrolled
-        ? 'text-white hover:text-blue-300'
-        : 'text-gray-800 hover:text-blue-500';
+      : 'text-gray-800 hover:text-blue-500';
 
   const navPaths = [
     '/',            

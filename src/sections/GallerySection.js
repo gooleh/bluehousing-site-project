@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import { MdArrowForwardIos } from 'react-icons/md';  // 대체 아이콘 임포트
 
 // 이미지 임포트 (추후 이미지 추가 시 여기만 관리)
-import gallery1 from '../assets/images/Gallery/gallery1.jpeg';
-import gallery2 from '../assets/images/Gallery/gallery2.jpeg';
-import gallery3 from '../assets/images/Gallery/gallery3.jpeg';
-import gallery4 from '../assets/images/Gallery/gallery4.jpeg';
-import gallery5 from '../assets/images/Gallery/gallery5.jpeg';
-import gallery6 from '../assets/images/Gallery/gallery6.jpeg';
+import gallery1 from '../assets/images/Gallery/1.jpeg';
+import gallery2 from '../assets/images/Gallery/2.jpeg';
+import gallery3 from '../assets/images/Gallery/3.jpeg';
+import gallery4 from '../assets/images/Gallery/4.jpeg';
+import gallery5 from '../assets/images/Gallery/5.jpeg';
+import gallery6 from '../assets/images/Gallery/6.jpeg';
 
 const galleryImages = [
   { src: gallery1, alt: '갤러리 이미지 1' },
