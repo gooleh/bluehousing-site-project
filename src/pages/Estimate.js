@@ -1,7 +1,7 @@
 // src/pages/Estimate.js
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
-import bannerEstimate from '../assets/images/banner/banner1.png';
+import bannerEstimate from '../assets/images/slide1.webp';
 
 const Estimate = () => {
   const [formData, setFormData] = useState({

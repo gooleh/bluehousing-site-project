@@ -2,7 +2,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import Modal from '../components/Modal';
 import ImageSlider from '../components/ImageSlider';
-import bannerGallery from '../assets/images/banner/banner2.png'; // 배너 이미지 경로 (실제 경로로 수정)
+import bannerGallery from '../assets/images/slide2.webp'; // 배너 이미지 경로 (실제 경로로 수정)
 
 // -------------------- 이미지 Import --------------------
 // Group A: 1.jpeg, 2.jpeg

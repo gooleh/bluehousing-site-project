@@ -1,7 +1,7 @@
 // src/pages/Reviews.js
 import React from 'react';
 import { RiStarFill } from 'react-icons/ri';
-import bannerReviews from '../assets/images/banner/banner1.png'; // 배너 이미지 경로 (실제 경로로 수정)
+import bannerReviews from '../assets/images/slide1.webp'; // 배너 이미지 경로 (실제 경로로 수정)
 
 const reviews = [
   {

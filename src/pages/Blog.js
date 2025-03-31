@@ -1,7 +1,7 @@
 // src/pages/Blog.js
 import React from 'react';
 import blogPosts from '../data/blogPosts';
-import bannerImage from '../assets/images/blog/banner.png'; // 배너 이미지 경로
+import bannerImage from '../assets/images/slide3.webp'; // 배너 이미지 경로
 
 const Blog = () => {
   return (

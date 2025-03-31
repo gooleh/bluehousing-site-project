@@ -32,7 +32,7 @@ import {
 } from 'react-icons/ri';
 
 // 사용하는 배너 이미지
-import banner1 from '../assets/images/banner/banner1.png';
+import banner1 from '../assets/images/slide1.webp';
 
 const About = () => {
   return (

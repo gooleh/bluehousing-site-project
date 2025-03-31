@@ -10,7 +10,7 @@ import {
 } from 'react-icons/ri';
 
 // 배너 이미지 (예시: servicesBanner.jpg) – 원하는 이미지로 교체
-import servicesBanner from '../assets/images/banner/banner3.png';
+import servicesBanner from '../assets/images/slide3.webp';
 
 // 서비스용 이미지들
 import service1 from '../assets/images/services/service1.jpg';

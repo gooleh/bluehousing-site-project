@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RiPhoneFill, RiArrowRightUpLine } from 'react-icons/ri';
-import estimateBg from '../assets/images/slide3.png'; // 배너 이미지 경로
+import estimateBg from '../assets/images/slide3.webp'; // 배너 이미지 경로
 
 const EstimateRequest = () => {
   const [showModal, setShowModal] = useState(false);
