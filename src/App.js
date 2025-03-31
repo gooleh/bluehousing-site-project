@@ -25,7 +25,7 @@ import Reviews from './pages/Reviews';
 function App() {
   return (
     <HelmetProvider>
-      <Router basename="/bluehousing-site-project">
+      <Router basename="">
         <ScrollToTop />
         <Header />
         <SideToolbar />
