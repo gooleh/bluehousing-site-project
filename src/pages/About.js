@@ -102,7 +102,7 @@ const About = () => {
               {/* 자본금 InfoRow 삭제 */}
               <InfoRow
                 label="매출액"
-                value="13억 (2024년 기준))"
+                value="13억 (2024년 기준)"
                 icon={<RiMoneyDollarCircleLine className="w-5 h-5 text-gray-700" />}
               />
               <InfoRow

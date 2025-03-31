@@ -3,7 +3,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
-import SideToolbar from './components/SideToolbar'; // 새로 추가
+import SideToolbar from './components/SideToolbar';
+import ScrollToTop from './components/ScrollToTop';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -18,13 +19,14 @@ import ChosunArticle from './pages/articles/ChosunArticle';
 import Blog from './pages/Blog';
 import Notice from './pages/Notice';
 import Estimate from './pages/Estimate';
-import Location from './pages/Location'; // 오시는길 페이지
-import Reviews from './pages/Reviews';   // 이용후기 페이지 추가
+import Location from './pages/Location';
+import Reviews from './pages/Reviews';
 
 function App() {
   return (
     <HelmetProvider>
       <Router basename="/bluehousing-site-project">
+        <ScrollToTop />
         <Header />
         <SideToolbar />
         
@@ -44,7 +46,7 @@ function App() {
             <Route path="/notices" element={<Notice />} />
             <Route path="/estimate" element={<Estimate />} />
             <Route path="/location" element={<Location />} />
-            <Route path="/reviews" element={<Reviews />} /> {/* 이용후기 페이지 */}
+            <Route path="/reviews" element={<Reviews />} />
           </Routes>
         </main>
 
