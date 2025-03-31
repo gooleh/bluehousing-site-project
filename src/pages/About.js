@@ -170,7 +170,7 @@ const About = () => {
               description="욕실용품 연구개발 및 조립식욕실 시공으로 편의성과 높은 완성도를 갖춘 욕실 공간을 제공합니다."
             />
             <BusinessArea
-              title="실내장식 (공사금액 1500만원 미만)"
+              title="실내장식"
               icon={<RiBuilding4Line className="w-6 h-6 text-gray-800" />}
               description="다양한 주거공간과 상업공간의 인테리어를 합리적인 비용과 섬세한 디자인 완성도로 제안합니다."
             />

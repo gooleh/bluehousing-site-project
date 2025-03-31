@@ -4,10 +4,10 @@ import ImageSlider from '../components/ImageSlider';
 import SectionWrapper from '../components/SectionWrapper';
 
 // 슬라이드 이미지 임포트
-import slide1 from '../assets/images/slide1.png';
-import slide2 from '../assets/images/slide2.png';
-import slide3 from '../assets/images/slide3.png';
-import slide4 from '../assets/images/slide4.png';
+import slide1 from '../assets/images/slide1.webp';
+import slide2 from '../assets/images/slide2.webp';
+import slide3 from '../assets/images/slide3.webp';
+import slide4 from '../assets/images/slide4.webp';
 
 // Sections - Lazy 로딩 적용
 const ShowroomIntro = lazy(() => import('../sections/ShowroomIntro'));
