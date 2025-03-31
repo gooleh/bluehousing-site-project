@@ -37,7 +37,14 @@ const Home = () => {
     <div className="bg-white">
       {/* 이미지 슬라이더 */}
       <div className="relative pt-20">
-        <ImageSlider images={slideImages} interval={4000} />
+        {/* 
+          ImageSlider 컴포넌트 내부 혹은 wrapper에 
+          h-[600px] 같은 높이 지정 & object-cover 적용 가능
+          아래는 예시 (ImageSlider가 직접적으로 클래스 받도록 설정 가능하다면):
+        */}
+        <div className="md:h-auto h-[600px] overflow-hidden">
+          <ImageSlider images={slideImages} interval={4000} />
+        </div>
 
         {/* 데스크탑용 슬라이더 텍스트 */}
         <div className="hidden md:flex absolute top-0 left-0 w-full h-full flex-col justify-center items-center text-center z-20 pointer-events-none">
@@ -53,50 +60,41 @@ const Home = () => {
           </p>
         </div>
 
-        {/* 모바일용 슬라이더 오버레이: 텍스트 및 4개의 버튼 */}
-        <div className="flex md:hidden absolute top-0 left-0 w-full h-full flex-col justify-end items-center z-20 pointer-events-none">
-          {/* 모바일용 텍스트 */}
-          <div className="mb-20 text-center pointer-events-auto">
-            <h1 className="text-3xl font-bold text-gray-800 drop-shadow-md">
-              BlueHousing
-            </h1>
-            <p className="mt-2 text-sm text-gray-700 max-w-xs px-2 leading-relaxed">
-              30년 경력 마이스터가 시공하는 종합 인테리어 전문기업
-            </p>
-          </div>
-          {/* 버튼 그룹 */}
-          <div className="mb-8 flex space-x-4 pointer-events-auto">
+        {/* 모바일용 슬라이더 오버레이 */}
+        <div className="md:hidden absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-20 pointer-events-none">
+          
+          {/* 반투명 배경 (슬라이드 이미지 위 전면) */}
+          <div className="absolute inset-0 bg-black/40"></div>
+
+          {/* 버튼 그룹 (아이콘만 사용) */}
+          <div className="relative flex space-x-4 pointer-events-auto mt-4">
             {/* 전화 버튼 */}
             <button
-              className="bg-blue-500 flex items-center space-x-1 text-white px-3 py-2 rounded shadow"
+              className="bg-blue-500 text-white rounded-full p-4 shadow flex items-center justify-center"
               onClick={() => window.location.href = 'tel:023939759'}
             >
-              <FiPhone size={18} />
-              <span>전화</span>
+              <FiPhone size={24} />
             </button>
             {/* 오시는길 버튼 */}
             <button
-              className="bg-blue-500 flex items-center space-x-1 text-white px-3 py-2 rounded shadow"
+              className="bg-blue-500 text-white rounded-full p-4 shadow flex items-center justify-center"
               onClick={() => window.location.href = '/location'}
             >
-              <FiMapPin size={18} />
-              <span>오시는길</span>
+              <FiMapPin size={24} />
             </button>
             {/* 견적문의 버튼 */}
             <button
-              className="bg-blue-500 flex items-center space-x-1 text-white px-3 py-2 rounded shadow"
+              className="bg-blue-500 text-white rounded-full p-4 shadow flex items-center justify-center"
               onClick={() => window.location.href = '/estimate'}
             >
-              <FiEdit size={18} />
-              <span>견적문의</span>
+              <FiEdit size={24} />
             </button>
             {/* 링크 공유 버튼 */}
             <button
-              className="bg-blue-500 flex items-center space-x-1 text-white px-3 py-2 rounded shadow"
+              className="bg-blue-500 text-white rounded-full p-4 shadow flex items-center justify-center"
               onClick={handleShare}
             >
-              <FiShare2 size={18} />
-              <span>링크 공유</span>
+              <FiShare2 size={24} />
             </button>
           </div>
         </div>
