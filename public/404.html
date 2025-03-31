@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <title>Redirecting...</title>
-    <script type="text/javascript">
-      // 요청된 경로 정보를 읽어옵니다.
-      var redirectTo = window.location.pathname + window.location.search;
-      // index.html로 리다이렉트하며 경로 정보를 쿼리 파라미터로 전달합니다.
-      window.location.replace("/index.html?redirect=" + encodeURIComponent(redirectTo));
+    <script>
+      // 현재 URL에서 basename을 제거한 뒤, 해당 경로를 추출
+      var path = window.location.pathname.replace('/bluehousing-site-project', '');
+      // 만약 path가 루트가 아니라면 hash 형태로 변환 (ex: /about -> #/about)
+      if(path !== '' && path !== '/') {
+        window.location.replace('/bluehousing-site-project/#' + path);
+      } else {
+        window.location.replace('/bluehousing-site-project/');
+      }
     </script>
   </head>
   <body>
-    <p>Redirecting to the app...</p>
+    <p>페이지를 찾을 수 없습니다. 리디렉션 중입니다...</p>
   </body>
 </html>
