@@ -9,7 +9,7 @@ import {
   RiBook3Line,      // 산업 / 기업구분 등 일반 정보
   RiCalendarLine,   // 설립일
   RiTeamLine,       // 사원수
-  RiFundsBoxLine,   // 자본금
+  // RiFundsBoxLine,   // 자본금 - 삭제됨
   RiMoneyDollarCircleLine, // 매출액
   RiShieldUserLine, // 4대보험
   RiGlobalLine,     // 홈페이지
@@ -89,7 +89,7 @@ const About = () => {
               />
               <InfoRow
                 label="설립일"
-                value="2018.04.30"
+                value="2012년 (2018년 4월 법인전환)"
                 icon={<RiCalendarLine className="w-5 h-5 text-gray-700" />}
               />
               <InfoRow
@@ -99,14 +99,10 @@ const About = () => {
               />
             </div>
             <div className="space-y-4">
-              <InfoRow
-                label="자본금"
-                value="4,000만원 (2023.12.31)"
-                icon={<RiFundsBoxLine className="w-5 h-5 text-gray-700" />}
-              />
+              {/* 자본금 InfoRow 삭제 */}
               <InfoRow
                 label="매출액"
-                value="13억 6천만원 (2023.12.31)"
+                value="13억 (2024년 기준))"
                 icon={<RiMoneyDollarCircleLine className="w-5 h-5 text-gray-700" />}
               />
               <InfoRow
@@ -116,7 +112,7 @@ const About = () => {
               />
               <InfoRow
                 label="홈페이지"
-                value="https://bluehousing.modoo.at/"
+                value="www.bluehousing.co.kr"
                 isLink
                 icon={<RiGlobalLine className="w-5 h-5 text-gray-700" />}
               />
@@ -138,7 +134,7 @@ const About = () => {
             회사 소개 & 비전
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            블루하우징은 욕실용품, 실내장식(공사금액 1500만원 미만), 조립식욕실,
+            블루하우징은 욕실용품, 실내장식, 조립식욕실,
             무역(수출입), 건축자재 연구개발 등 다양한 사업을 전개하고 있는
             인테리어 전문기업이다. 설립 이후 꾸준한 성장과 함께 고객만족을
             최우선으로 하는 시공 서비스를 제공하고 있다.
@@ -148,6 +144,15 @@ const About = () => {
             여러 기업과 협력 관계를 확장하며, 혁신적인 건축 자재 개발과
             고객 맞춤형 공간 솔루션을 제안하고 있다.
           </p>
+        </div>
+      </section>
+
+      {/* 회사 사무실 이미지 자리 */}
+      <section className="py-12">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
+            <span className="text-gray-600">회사 사무실 이미지 자리 (추후 이미지로 대체 예정)</span>
+          </div>
         </div>
       </section>
 
