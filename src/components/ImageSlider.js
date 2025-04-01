@@ -25,7 +25,7 @@ const ImageSlider = ({ images, interval = 3000 }) => {
           <img 
             src={imgSrc} 
             alt={`slide-${index}`} 
-            className="max-h-full max-w-full object-contain" 
+            className="w-full h-full object-cover" 
           />
         </div>
       ))}
