@@ -8,7 +8,6 @@ const Modal = ({ isOpen, imgList, currentIndex, onClose, onPrev, onNext, setCurr
       className="fixed inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center z-50 p-4"
       onClick={onClose}
     >
-
       {/* 닫기 버튼 */}
       <div className="w-full flex justify-end mb-4">
         <button
@@ -19,32 +18,27 @@ const Modal = ({ isOpen, imgList, currentIndex, onClose, onPrev, onNext, setCurr
         </button>
       </div>
 
-      {/* 메인 이미지 + 화살표 버튼 */}
-      <div className="flex items-center justify-center gap-4 mb-6" onClick={(e) => e.stopPropagation()}>
-
-        {/* 이전 버튼 */}
-        <button
-          onClick={(e) => { e.stopPropagation(); onPrev(); }}
-          className="text-white text-3xl md:text-5xl hover:text-gray-300"
-        >
-          &#10094;
-        </button>
-
-        {/* 반응형 이미지 */}
+      {/* 메인 이미지 및 화살표 버튼 */}
+      <div className="relative mb-6" onClick={(e) => e.stopPropagation()}>
         <img 
           src={imgList[currentIndex]} 
           alt={`Showroom ${currentIndex + 1}`} 
           className="w-[90vw] h-[90vw] md:w-[700px] md:h-[700px] object-contain rounded-2xl"
         />
-
+        {/* 이전 버튼 */}
+        <button
+          onClick={(e) => { e.stopPropagation(); onPrev(); }}
+          className="absolute left-2 md:left-[-40px] top-1/2 transform -translate-y-1/2 text-white text-2xl md:text-5xl hover:text-gray-300 px-2"
+        >
+          &#10094;
+        </button>
         {/* 다음 버튼 */}
         <button
           onClick={(e) => { e.stopPropagation(); onNext(); }}
-          className="text-white text-3xl md:text-5xl hover:text-gray-300"
+          className="absolute right-2 md:right-[-40px] top-1/2 transform -translate-y-1/2 text-white text-2xl md:text-5xl hover:text-gray-300 px-2"
         >
           &#10095;
         </button>
-
       </div>
 
       {/* 썸네일 */}
@@ -64,7 +58,6 @@ const Modal = ({ isOpen, imgList, currentIndex, onClose, onPrev, onNext, setCurr
           />
         ))}
       </div>
-
     </div>
   );
 };
