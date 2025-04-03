@@ -25,22 +25,22 @@ const Modal = ({ isOpen, imgList, currentIndex, onClose, onPrev, onNext, setCurr
         {/* 이전 버튼 */}
         <button
           onClick={(e) => { e.stopPropagation(); onPrev(); }}
-          className="text-white text-5xl hover:text-gray-300"
+          className="text-white text-3xl md:text-5xl hover:text-gray-300"
         >
           &#10094;
         </button>
 
-        {/* 강제로 크기 고정된 이미지 */}
+        {/* 반응형 이미지 */}
         <img 
           src={imgList[currentIndex]} 
           alt={`Showroom ${currentIndex + 1}`} 
-          className="w-[700px] h-[700px] object-contain rounded-2xl"
+          className="w-[90vw] h-[90vw] md:w-[700px] md:h-[700px] object-contain rounded-2xl"
         />
 
         {/* 다음 버튼 */}
         <button
           onClick={(e) => { e.stopPropagation(); onNext(); }}
-          className="text-white text-5xl hover:text-gray-300"
+          className="text-white text-3xl md:text-5xl hover:text-gray-300"
         >
           &#10095;
         </button>
@@ -58,9 +58,9 @@ const Modal = ({ isOpen, imgList, currentIndex, onClose, onPrev, onNext, setCurr
             src={img}
             alt={`Thumbnail ${idx + 1}`}
             onClick={() => setCurrentIndex(idx)}
-            className={`h-20 w-28 sm:h-16 sm:w-24 object-cover rounded-md cursor-pointer border-2 ${
+            className={`object-cover cursor-pointer rounded-md border-2 ${
               idx === currentIndex ? 'border-blue-500' : 'border-transparent'
-            }`}
+            } h-16 w-24 sm:h-20 sm:w-28`}
           />
         ))}
       </div>

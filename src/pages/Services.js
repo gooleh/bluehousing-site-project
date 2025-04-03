@@ -13,9 +13,9 @@ import {
 import servicesBanner from '../assets/images/slide3.webp';
 
 // 서비스용 이미지들
-import service1 from '../assets/images/services/service1.jpg';
-import service2 from '../assets/images/services/service2.jpg';
-import service3 from '../assets/images/services/service3.jpg';
+import service1 from '../assets/images/services/service1.webp';
+import service2 from '../assets/images/services/service2.webp';
+import service3 from '../assets/images/services/service3.webp';
 
 const Services = () => {
   return (

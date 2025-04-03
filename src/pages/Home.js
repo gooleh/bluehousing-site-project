@@ -37,26 +37,23 @@ const Home = () => {
       {/* 슬라이드와 오버레이 컨테이너 */}
       <div className="relative pt-20">
         <div className="relative">
-          {/* ImageSlider는 내부에서 object-cover로 이미지가 컨테이너를 꽉 채우도록 처리 */}
           <ImageSlider images={slideImages} interval={4000} />
-          {/* Overlay: 슬라이드와 무관하게 항상 표시됨 */}
           <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-30">
             {/* 데스크탑 오버레이 텍스트 */}
             <div className="hidden md:flex flex-col justify-center items-center h-full text-center">
               <h1 className="text-5xl font-bold text-gray-800 drop-shadow-md">
                 BlueHousing
               </h1>
-              <p className="mt-4 text-lg text-gray-700 max-w-xl px-4 leading-relaxed">
+              <p className="mt-4 text-lg text-gray-700 px-4 leading-relaxed">
                 30년 경력 마이스터가 시공하는 종합 인테리어 전문기업
-                <br />
-                <span className="whitespace-nowrap">
-                  A comprehensive interior design company led by a master with 30 years of experience.
-                </span>
+              </p>
+              {/* 데스크탑에서는 영어 텍스트를 한 줄로 고정 */}
+              <p className="mt-2 text-lg text-gray-700 px-4 whitespace-nowrap">
+                A comprehensive interior design company led by a master with 30 years of experience.
               </p>
             </div>
             {/* 모바일 오버레이: 텍스트와 버튼 */}
             <div className="md:hidden h-full flex flex-col justify-between">
-              {/* 중앙 텍스트 */}
               <div className="flex flex-col justify-center items-center h-full">
                 <div className="pointer-events-auto text-center px-4">
                   <h1 className="text-3xl font-bold text-white drop-shadow-md">
@@ -64,37 +61,33 @@ const Home = () => {
                   </h1>
                   <p className="mt-2 text-white leading-relaxed">
                     30년 경력 마이스터가 시공하는 종합 인테리어 전문기업
-                    <br />
-                    <span className="text-xs">
-                      A comprehensive interior design company led by a master with 30 years of experience.
-                    </span>
+                  </p>
+                  {/* 모바일에서는 영어 텍스트가 자동 줄바꿈되도록 whitespace-nowrap 제거 */}
+                  <p className="mt-1 text-white text-xs">
+                    A comprehensive interior design company led by a master with 30 years of experience.
                   </p>
                 </div>
               </div>
-              {/* 하단 버튼 그룹 (이미지 하단에 오버레이) */}
+              {/* 하단 버튼 그룹 */}
               <div className="flex justify-center space-x-4 mb-4 pointer-events-auto">
-                {/* 전화 버튼 */}
                 <button
                   className="bg-black/50 text-white rounded-full p-3 shadow flex items-center justify-center"
                   onClick={() => window.location.href = 'tel:023939759'}
                 >
                   <FiPhone size={24} />
                 </button>
-                {/* 오시는길 버튼 */}
                 <button
                   className="bg-black/50 text-white rounded-full p-3 shadow flex items-center justify-center"
                   onClick={() => window.location.href = '/location'}
                 >
                   <FiMapPin size={24} />
                 </button>
-                {/* 견적문의 버튼 */}
                 <button
                   className="bg-black/50 text-white rounded-full p-3 shadow flex items-center justify-center"
                   onClick={() => window.location.href = '/estimate'}
                 >
                   <FiEdit size={24} />
                 </button>
-                {/* 링크 공유 버튼 */}
                 <button
                   className="bg-black/50 text-white rounded-full p-3 shadow flex items-center justify-center"
                   onClick={handleShare}

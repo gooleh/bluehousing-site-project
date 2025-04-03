@@ -41,7 +41,7 @@ const ShowroomIntro = () => {
         {/* 한글 설명 */}
         <p className="text-gray-700 leading-relaxed">
           블루하우징은 30년 경력의 마이스터가 시공하는 종합 인테리어 전문 기업으로, 책임 시공 및 A/S를 보장합니다.
-          전시장에서는 다양한 인테리어 스타일과 최신 트렌드를 직접 확인하실 수 있습니다.
+          <br />전시장에서는 다양한 인테리어 스타일과 최신 트렌드를 직접 확인하실 수 있습니다.
         </p>
         {/* 영문 설명 */}
         <p className="text-gray-600 leading-relaxed mt-4 text-sm md:text-base">
