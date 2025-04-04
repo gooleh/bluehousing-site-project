@@ -23,10 +23,9 @@ import {
 
 // 사용하는 배너 이미지
 import banner1 from '../assets/images/slide1.webp';
-// 추가된 실제 회사 사무실 이미지들
+// 회사 사무실 이미지 (ab3, ab4 제거함)
 import ab1 from '../assets/images/ab1.webp';
 import ab2 from '../assets/images/ab2.webp';
-import ab3 from '../assets/images/ab3.webp'; // ab4는 제거
 
 const About = () => {
   return (
@@ -141,38 +140,22 @@ const About = () => {
       </section>
 
       {/* 회사 사무실 이미지 자리 - ab1, ab2 섹션 */}
-      {/* 1) 원본 비율 그대로 보이면서 세로 길이 증가 (object-contain, h-[700px]) */}
-      <section className="py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* ab1 */}
-            <div className="w-full h-[700px] bg-gray-100 flex items-center justify-center overflow-hidden">
-              <img 
-                src={ab1} 
-                alt="회사 사무실 이미지 1" 
-                className="object-contain w-full h-full"
-              />
-            </div>
-            {/* ab2 */}
-            <div className="w-full h-[700px] bg-gray-100 flex items-center justify-center overflow-hidden">
-              <img 
-                src={ab2} 
-                alt="회사 사무실 이미지 2" 
-                className="object-contain w-full h-full"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-12">
   <div className="max-w-6xl mx-auto px-6">
-    {/* 기존 grid 대신 flex를 사용해 가운데 정렬 */}
-    <div className="flex justify-center">
-      <div className="w-full h-[700px] bg-gray-100 flex items-center justify-center overflow-hidden">
-        <img 
-          src={ab3} 
-          alt="회사 사무실 이미지 3" 
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* ab1 */}
+      <div className="w-full h-[700px] bg-gray-100 overflow-hidden">
+        <img
+          src={ab1}
+          alt="회사 사무실 이미지 1"
+          className="object-cover w-full h-full"
+        />
+      </div>
+      {/* ab2 */}
+      <div className="w-full h-[700px] bg-gray-100 overflow-hidden">
+        <img
+          src={ab2}
+          alt="회사 사무실 이미지 2"
           className="object-cover w-full h-full"
         />
       </div>
