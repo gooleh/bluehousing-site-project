@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
-const ImageSlider = ({ images, interval = 3000 }) => {
+const ImageSlider = ({ images, interval = 3000, onSlideChange }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentIndex((prevIndex) => {
+        const newIndex = prevIndex === images.length - 1 ? 0 : prevIndex + 1;
+        if (onSlideChange) onSlideChange(newIndex);
+        return newIndex;
+      });
     }, interval);
 
     return () => clearInterval(timer);
-  }, [images, interval]);
+  }, [images, interval, onSlideChange]);
 
   return (
     <div className="relative w-full h-[50vh] md:h-[70vh] overflow-hidden bg-white">

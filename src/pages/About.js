@@ -3,36 +3,30 @@ import { Helmet } from 'react-helmet-async';
 
 // react-icons 라이브러리에서 아이콘 가져오기
 import {
-  // 회사 개요
   RiBuilding3Line,  // 회사 관련
   RiUser3Line,      // 대표자
   RiBook3Line,      // 산업 / 기업구분 등 일반 정보
   RiCalendarLine,   // 설립일
   RiTeamLine,       // 사원수
-  // RiFundsBoxLine,   // 자본금 - 삭제됨
   RiMoneyDollarCircleLine, // 매출액
   RiShieldUserLine, // 4대보험
   RiGlobalLine,     // 홈페이지
   RiMapPin2Line,    // 주소
-  
-  // 회사 소개 & 비전
-  RiLightbulbLine,
-  
-  // 주요 사업영역
-  RiBuilding4Line,
+  RiLightbulbLine,  // 회사 소개 & 비전
+  RiBuilding4Line,  // 주요 사업영역
   RiToolsLine,
   RiExchangeLine,
-  
-  // 복리후생
-  RiHandHeartLine,
-  
-  // 찾아오시는 길
-  RiMapPin2Fill,
+  RiHandHeartLine,  // 복리후생
+  RiMapPin2Fill,    // 찾아오시는 길
   RiPhoneLine
 } from 'react-icons/ri';
 
 // 사용하는 배너 이미지
 import banner1 from '../assets/images/slide1.webp';
+// 추가된 실제 회사 사무실 이미지들
+import ab1 from '../assets/images/ab1.webp';
+import ab2 from '../assets/images/ab2.webp';
+import ab3 from '../assets/images/ab3.webp'; // ab4는 제거
 
 const About = () => {
   return (
@@ -99,7 +93,6 @@ const About = () => {
               />
             </div>
             <div className="space-y-4">
-              {/* 자본금 InfoRow 삭제 */}
               <InfoRow
                 label="매출액"
                 value="13억 (2024년 기준)"
@@ -147,14 +140,45 @@ const About = () => {
         </div>
       </section>
 
-      {/* 회사 사무실 이미지 자리 */}
+      {/* 회사 사무실 이미지 자리 - ab1, ab2 섹션 */}
+      {/* 1) 원본 비율 그대로 보이면서 세로 길이 증가 (object-contain, h-[700px]) */}
       <section className="py-12">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
-            <span className="text-gray-600">회사 사무실 이미지 자리 (추후 이미지로 대체 예정)</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* ab1 */}
+            <div className="w-full h-[700px] bg-gray-100 flex items-center justify-center overflow-hidden">
+              <img 
+                src={ab1} 
+                alt="회사 사무실 이미지 1" 
+                className="object-contain w-full h-full"
+              />
+            </div>
+            {/* ab2 */}
+            <div className="w-full h-[700px] bg-gray-100 flex items-center justify-center overflow-hidden">
+              <img 
+                src={ab2} 
+                alt="회사 사무실 이미지 2" 
+                className="object-contain w-full h-full"
+              />
+            </div>
           </div>
         </div>
       </section>
+
+      <section className="py-12">
+  <div className="max-w-6xl mx-auto px-6">
+    {/* 기존 grid 대신 flex를 사용해 가운데 정렬 */}
+    <div className="flex justify-center">
+      <div className="w-full h-[700px] bg-gray-100 flex items-center justify-center overflow-hidden">
+        <img 
+          src={ab3} 
+          alt="회사 사무실 이미지 3" 
+          className="object-cover w-full h-full"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* 주요 사업영역 */}
       <section className="py-12 border-b">
@@ -228,7 +252,6 @@ const About = () => {
                 <span className="font-medium text-gray-800">대표번호</span>
               </div>
               <p className="text-gray-700">02-393-9759</p>
-              {/* 필요 시 실제 연락처로 교체 */}
             </div>
           </div>
         </div>
