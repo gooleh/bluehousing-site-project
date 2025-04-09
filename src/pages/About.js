@@ -8,7 +8,6 @@ import {
   RiBook3Line,      // 산업 / 기업구분 등 일반 정보
   RiCalendarLine,   // 설립일
   RiTeamLine,       // 사원수
-  RiMoneyDollarCircleLine, // 매출액
   RiShieldUserLine, // 4대보험
   RiGlobalLine,     // 홈페이지
   RiMapPin2Line,    // 주소
@@ -64,6 +63,7 @@ const About = () => {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* 왼쪽 컬럼 */}
             <div className="space-y-4">
               <InfoRow
                 label="대표자"
@@ -85,17 +85,13 @@ const About = () => {
                 value="2012년 (2018년 4월 법인전환)"
                 icon={<RiCalendarLine className="w-5 h-5 text-gray-700" />}
               />
+            </div>
+            {/* 오른쪽 컬럼 */}
+            <div className="space-y-4">
               <InfoRow
                 label="사원수"
                 value="7명"
                 icon={<RiTeamLine className="w-5 h-5 text-gray-700" />}
-              />
-            </div>
-            <div className="space-y-4">
-              <InfoRow
-                label="매출액"
-                value="13억 (2024년 기준)"
-                icon={<RiMoneyDollarCircleLine className="w-5 h-5 text-gray-700" />}
               />
               <InfoRow
                 label="4대보험"
@@ -141,27 +137,27 @@ const About = () => {
 
       {/* 회사 사무실 이미지 자리 - ab1, ab2 섹션 */}
       <section className="py-12">
-  <div className="max-w-6xl mx-auto px-6">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {/* ab1 */}
-      <div className="w-full h-[700px] bg-gray-100 overflow-hidden">
-        <img
-          src={ab1}
-          alt="회사 사무실 이미지 1"
-          className="object-cover w-full h-full"
-        />
-      </div>
-      {/* ab2 */}
-      <div className="w-full h-[700px] bg-gray-100 overflow-hidden">
-        <img
-          src={ab2}
-          alt="회사 사무실 이미지 2"
-          className="object-cover w-full h-full"
-        />
-      </div>
-    </div>
-  </div>
-</section>
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* ab1 */}
+            <div className="w-full h-[700px] bg-gray-100 overflow-hidden">
+              <img
+                src={ab1}
+                alt="회사 사무실 이미지 1"
+                className="object-cover w-full h-full"
+              />
+            </div>
+            {/* ab2 */}
+            <div className="w-full h-[700px] bg-gray-100 overflow-hidden">
+              <img
+                src={ab2}
+                alt="회사 사무실 이미지 2"
+                className="object-cover w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 주요 사업영역 */}
       <section className="py-12 border-b">
