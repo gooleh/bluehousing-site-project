@@ -1,3 +1,4 @@
+// src/components/Modal.js
 import React from 'react';
 
 const Modal = ({ isOpen, imgList, currentIndex, onClose, onPrev, onNext, setCurrentIndex }) => {

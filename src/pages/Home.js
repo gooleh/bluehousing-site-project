@@ -1,3 +1,4 @@
+// src/pages/Home.js
 import React, { Suspense, lazy, useState } from 'react';
 import ImageSlider from '../components/ImageSlider';
 import SectionWrapper from '../components/SectionWrapper';

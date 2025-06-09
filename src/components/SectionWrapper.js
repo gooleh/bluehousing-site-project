@@ -1,3 +1,5 @@
+// src/components/SectionWrapper.js
+
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';

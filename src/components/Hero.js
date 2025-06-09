@@ -1,3 +1,4 @@
+// src/components/Hero.js
 import React from 'react';
 import heroBg from '../assets/images/hero-bg.jpg';
 

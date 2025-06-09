@@ -1,3 +1,4 @@
+// src/components/ImageSlider.js
 import React, { useState, useEffect } from 'react';
 
 const ImageSlider = ({ images, interval = 3000, onSlideChange }) => {
