@@ -1,34 +1,49 @@
 # 블루하우징 공식 웹사이트
 
-**주식회사 블루하우징** 의 공식 홈페이지 소스코드입니다.  
-30년 경력 마이스터가 책임 시공하는 종합 인테리어 전문기업.
+30년 경력 마이스터가 책임 시공하는 종합 인테리어 전문기업 **블루하우징**의 공식 홈페이지입니다.
 
 🌐 **[bluehousing.co.kr](https://bluehousing.co.kr)**
 
 ---
 
+## 소개
+
+블루하우징은 욕실·주택 리모델링, 실내장식, 건축 컨설팅까지 전 과정을 책임 시공하고 A/S를 보장하는 인테리어 전문기업입니다. 30년 경력의 마이스터가 직접 현장을 진두지휘하며, 4개 주요 언론에 보도된 검증된 기술력을 갖추고 있습니다.
+
+- **위치**: 서울 서대문구 충정로9길 15 라인빌딩 1층 (서대문역 1번 출구 도보 3분)
+- **연락처**: 02-393-9759 / 010-2264-9759
+- **네이버 블로그**: [blog.naver.com/bluehousing1](https://blog.naver.com/bluehousing1)
+- **네이버 톡톡**: [talk.naver.com/ct/wchj2m](https://talk.naver.com/ct/wchj2m)
+
+## 주요 페이지
+
+| 페이지 | 설명 |
+|--------|------|
+| 홈 | 시공 실적, 갤러리, 후기, 언론 보도 등 핵심 정보 한눈에 |
+| 기업소개 | 블루하우징의 철학과 마이스터 소개 |
+| 서비스 | 욕실·주택 리모델링, 실내장식, 건축 컨설팅 서비스 안내 |
+| 전시장 | 서대문 쇼룸 소개 |
+| 갤러리 | 실제 시공 사례 사진 모음 |
+| 블로그 | 네이버 블로그 시공 사례 최신순 |
+| 견적문의 | 무료 견적 신청 폼 (EmailJS 연동) |
+| 오시는길 | 카카오맵 길찾기 |
+
 ## 기술 스택
 
 - **React 19** + Create React App
-- **Tailwind CSS** (커스텀 디자인 토큰)
+- **Tailwind CSS** (커스텀 브랜드 토큰)
 - **React Router v7**
 - **GitHub Pages** 정적 배포
+- 네이버 블로그 RSS 자동 동기화 (빌드 시)
+- EmailJS (견적 문의 폼)
+- 카카오맵 SDK
 
-## 주요 명령어
+## 개발 및 배포
 
 ```bash
-npm start          # 개발 서버 실행 (localhost:3000)
-npm run fetch-blog # 네이버 블로그 RSS 수동 동기화
-npm run build      # 프로덕션 빌드 (빌드 전 RSS 자동 수집)
+npm start          # 개발 서버 (localhost:3000)
 npm run deploy     # 빌드 + GitHub Pages 배포
+npm run fetch-blog # 네이버 블로그 RSS 수동 동기화
 ```
 
-## 배포
-
-`npm run deploy` 한 번으로 빌드와 배포가 동시에 진행됩니다.
-
-1. 네이버 블로그 RSS 수집 → `src/data/blogPosts.json` 갱신
-2. CRA 프로덕션 빌드
-3. `gh-pages` 브랜치에 자동 푸시
-
-> **참고**: 카카오 지도는 `bluehousing.co.kr` 도메인에 SDK 키가 묶여 있어 localhost에서는 빈 화면으로 표시됩니다.
+> 카카오 지도는 `bluehousing.co.kr` 도메인에 SDK 키가 묶여 있어 localhost에서는 표시되지 않습니다.
