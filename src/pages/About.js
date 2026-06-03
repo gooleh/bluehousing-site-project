@@ -1,6 +1,7 @@
 // src/pages/About.js
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import PageHero from '../components/PageHero';
 
 // react-icons 라이브러리에서 아이콘 가져오기
 import {
@@ -39,21 +40,12 @@ const About = () => {
       </Helmet>
 
       {/* 기업정보 배너 섹션 */}
-      <div className="relative h-72 md:h-96">
-        <img
-          src={banner1}
-          alt="Company Banner"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 flex flex-col items-center justify-center text-center">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-wider text-white mb-3 drop-shadow-md">
-            블루하우징 기업정보
-          </h1>
-          <p className="text-white max-w-2xl px-4 text-sm md:text-base drop-shadow-sm">
-            욕실용품·실내장식·무역 등 다채로운 사업영역을 보유한 인테리어 전문기업
-          </p>
-        </div>
-      </div>
+      <PageHero
+        image={banner1}
+        english="About Us"
+        title="블루하우징 기업정보"
+        subtitle="욕실용품·실내장식·무역 등 다채로운 사업영역을 보유한 인테리어 전문기업"
+      />
 
       {/* 회사 개요 */}
       <section className="py-12 border-b">

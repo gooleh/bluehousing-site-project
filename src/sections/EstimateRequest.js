@@ -1,19 +1,16 @@
-// src/components/EstimateRequest.js
+// src/sections/EstimateRequest.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RiPhoneFill, RiArrowRightUpLine } from 'react-icons/ri';
-import estimateBg from '../assets/images/slide3.webp'; // 배너 이미지 경로
+import estimateBg from '../assets/images/slide3.webp';
+import company from '../data/company';
 
 const EstimateRequest = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    setShowModal(true);
-  };
-
   const handleCall = () => {
-    window.location.href = 'tel:02-393-9759';
+    window.location.href = `tel:${company.phone.raw}`;
   };
 
   const handleNavigate = () => {
@@ -22,60 +19,61 @@ const EstimateRequest = () => {
 
   return (
     <>
-      {/* 배너 섹션: 클릭 시 모달 열기 */}
-      <div onClick={handleClick} className="block cursor-pointer">
-        <section 
-          className="py-32 px-8 w-full text-center bg-cover bg-center relative"
-          style={{ backgroundImage: `url(${estimateBg})` }}
-        >
-          {/* 어두운 오버레이 */}
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      {/* CTA 배너 */}
+      <section
+        onClick={() => setShowModal(true)}
+        className="relative cursor-pointer bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: `url(${estimateBg})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-950/85 to-brand-800/70" />
 
-          {/* 배너 내용 */}
-          <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-semibold mb-2 text-white">
-              견적 의뢰
-            </h2>
-            <p className="text-white text-base mb-6">
-              Contact us
-            </p>
-            <p className="text-white mb-6 text-lg">
-              전화번호: 02-393-9759
-            </p>
+        <div className="relative z-10 container-content py-24 md:py-32 text-center">
+          <span className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] text-accent-300">
+            Contact Us
+          </span>
+          <h2 className="mt-3 text-3xl md:text-5xl font-bold text-white tracking-tightish">
+            지금 무료로 견적을 받아보세요
+          </h2>
+          <p className="mt-4 text-white/85 text-base md:text-lg">
+            30년 경력 마이스터가 직접 상담해 드립니다.
+          </p>
+          <div className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 text-lg font-bold text-white shadow-card-hover transition-transform hover:scale-105">
+            <RiPhoneFill className="text-2xl" /> {company.phone.display}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
-      {/* 모달 창 */}
+      {/* 모달 */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
-          {/* 모달 오버레이 */}
-          <div 
-            className="absolute inset-0 bg-black opacity-50" 
+        <div className="fixed inset-0 z-[70] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-ink/60 backdrop-blur-sm"
             onClick={() => setShowModal(false)}
-          ></div>
-
-          {/* 모달 콘텐츠 - 투명한 글라스모르피즘 스타일 */}
-          <div className="relative z-10 max-w-md mx-auto p-8 rounded-lg border border-white/30 bg-white/20 backdrop-blur-lg shadow-lg">
-            <h3 className="text-xl font-semibold mb-6 text-white text-center">
-              원하시는 작업을 선택해주세요
+          />
+          <div className="relative z-10 w-full max-w-md rounded-2xl bg-white p-8 shadow-card-hover">
+            <h3 className="text-xl font-bold mb-6 text-ink text-center">
+              원하시는 방법을 선택해 주세요
             </h3>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <div className="flex flex-col gap-3">
               <button
                 onClick={handleCall}
-                className="flex items-center gap-2 px-4 py-2 border border-white text-white rounded hover:bg-white hover:text-black transition duration-200"
+                className="flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-5 py-3.5 text-white font-semibold transition-colors hover:bg-brand-700"
               >
-                <RiPhoneFill className="text-2xl" />
-                전화 연결
+                <RiPhoneFill className="text-xl" /> 전화 상담 연결
               </button>
               <button
                 onClick={handleNavigate}
-                className="flex items-center gap-2 px-4 py-2 border border-white text-white rounded hover:bg-white hover:text-black transition duration-200"
+                className="flex items-center justify-center gap-2 rounded-xl border-2 border-brand-600 px-5 py-3.5 text-brand-700 font-semibold transition-colors hover:bg-brand-50"
               >
-                <RiArrowRightUpLine className="text-2xl" />
-                견적문의 페이지 이동
+                <RiArrowRightUpLine className="text-xl" /> 견적문의 페이지로 이동
               </button>
             </div>
+            <button
+              onClick={() => setShowModal(false)}
+              className="mt-5 w-full text-center text-sm text-ink-muted hover:text-ink"
+            >
+              닫기
+            </button>
           </div>
         </div>
       )}

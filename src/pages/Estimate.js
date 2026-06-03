@@ -1,7 +1,14 @@
 // src/pages/Estimate.js
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import emailjs from 'emailjs-com';
+import PageHero from '../components/PageHero';
 import bannerEstimate from '../assets/images/slide1.webp';
+
+const inputClass = (hasError) =>
+  `w-full rounded-xl border px-4 py-3 text-ink placeholder:text-ink-muted/60 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500 ${
+    hasError ? 'border-red-400 bg-red-50/40' : 'border-ink/15'
+  }`;
 
 const Estimate = () => {
   const [formData, setFormData] = useState({
@@ -73,7 +80,6 @@ const Estimate = () => {
       return;
     }
 
-    console.log('견적 요청 데이터:', formData);
     setFeedback({ loading: true, message: '요청 전송 중...', type: '' });
 
     emailjs
@@ -84,8 +90,7 @@ const Estimate = () => {
         'NaJirbPrmWdlbKo3H'      // EmailJS 사용자(public) 키
       )
       .then(
-        (result) => {
-          console.log('이메일 전송 성공:', result.text);
+        () => {
           setFeedback({
             loading: false,
             message: '견적 요청이 성공적으로 전송되었습니다! 빠른 시일 내에 연락드리겠습니다.',
@@ -108,100 +113,99 @@ const Estimate = () => {
 
   return (
     <main className="bg-gray-50 min-h-screen">
-      <div className="relative w-full h-64 md:h-80">
-        <img
-          src={bannerEstimate}
-          alt="Estimate Banner"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center text-white px-4">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-2 drop-shadow">
-            견적 의뢰 / Request for Estimate
-          </h2>
-        </div>
-      </div>
+      <Helmet>
+        <title>견적문의 | 블루하우징</title>
+        <meta name="description" content="블루하우징 무료 견적 문의. 시공 위치, 희망 일정, 예산 등을 남겨주시면 30년 경력 마이스터가 빠르게 상담해 드립니다." />
+      </Helmet>
 
-      <div className="max-w-3xl mx-auto -mt-12 px-4 pb-16 relative z-10">
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <p className="text-gray-700 mb-2 text-center">
+      <PageHero
+        image={bannerEstimate}
+        english="Request for Estimate"
+        title="견적 의뢰"
+        subtitle="간단한 정보만 남겨주시면 빠른 시일 내에 연락드리겠습니다."
+      />
+
+      <div className="max-w-3xl mx-auto -mt-16 px-4 pb-20 relative z-10">
+        <div className="bg-white rounded-2xl shadow-card p-7 md:p-10">
+          <p className="text-ink-soft mb-2 text-center font-medium">
             아래 양식에 맞춰 정보를 입력해 주시면 빠른 시일 내에 연락드리겠습니다.
           </p>
-          <p className="text-gray-500 mb-8 text-center text-sm">
+          <p className="text-ink-muted mb-8 text-center text-sm">
             When you complete the form below, we will contact you with a quick draft.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
-                성함 <span className="text-sm text-gray-500">(Name)</span>
+              <label htmlFor="name" className="block text-ink font-semibold mb-2">
+                성함 <span className="text-sm text-ink-muted font-normal">(Name)</span>
               </label>
               <input
                 type="text"
                 id="name"
                 name="name"
-                className={`w-full border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className={inputClass(errors.name)}
                 placeholder="예) 홍길동 / e.g. Hong Gil-dong"
                 value={formData.name}
                 onChange={handleChange}
                 required
               />
-              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+              {errors.name && <p className="text-red-500 text-sm mt-1.5">{errors.name}</p>}
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
-                연락처 <span className="text-sm text-gray-500">(Mobile)</span>
+              <label htmlFor="phone" className="block text-ink font-semibold mb-2">
+                연락처 <span className="text-sm text-ink-muted font-normal">(Mobile)</span>
               </label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
-                className={`w-full border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className={inputClass(errors.phone)}
                 placeholder="예) 010-1234-5678 / e.g. 010-1234-5678"
                 value={formData.phone}
                 onChange={handleChange}
                 required
               />
-              {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+              {errors.phone && <p className="text-red-500 text-sm mt-1.5">{errors.phone}</p>}
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-                이메일 <span className="text-sm text-gray-500">(Email address)</span>
+              <label htmlFor="email" className="block text-ink font-semibold mb-2">
+                이메일 <span className="text-sm text-ink-muted font-normal">(Email address)</span>
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                className={`w-full border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className={inputClass(errors.email)}
                 placeholder="예) example@domain.com"
                 value={formData.email}
                 onChange={handleChange}
                 required
               />
-              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+              {errors.email && <p className="text-red-500 text-sm mt-1.5">{errors.email}</p>}
             </div>
 
             <div>
-              <label htmlFor="details" className="block text-gray-700 font-medium mb-2">
-                문의/요청 사항 <span className="text-sm text-gray-500">(Inquiries or Questions)</span>
+              <label htmlFor="details" className="block text-ink font-semibold mb-2">
+                문의/요청 사항 <span className="text-sm text-ink-muted font-normal">(Inquiries or Questions)</span>
               </label>
               <textarea
                 id="details"
                 name="details"
                 rows="5"
-                className={`w-full border ${errors.details ? 'border-red-500' : 'border-gray-300'} rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className={inputClass(errors.details)}
                 placeholder="시공 위치, 희망 일정, 예산 등 자세한 내용을 알려주세요."
                 value={formData.details}
                 onChange={handleChange}
               />
-              {errors.details && <p className="text-red-500 text-sm mt-1">{errors.details}</p>}
+              {errors.details && <p className="text-red-500 text-sm mt-1.5">{errors.details}</p>}
             </div>
 
             <button
               type="submit"
               disabled={feedback.loading}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition-all duration-200 flex items-center justify-center"
+              className="w-full bg-brand-600 hover:bg-brand-700 active:bg-brand-800 disabled:opacity-60 text-white font-semibold py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center shadow-soft"
             >
               {feedback.loading && (
                 <svg className="animate-spin h-5 w-5 mr-3 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

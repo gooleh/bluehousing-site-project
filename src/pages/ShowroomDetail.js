@@ -1,10 +1,10 @@
 // src/pages/ShowroomDetail.js
 import React, { useState, useCallback, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { DiamondIcon } from 'lucide-react';
 import Modal from '../components/Modal';
-
-// 배너 이미지 임포트
+import PageHero from '../components/PageHero';
+import SectionHeading from '../components/SectionHeading';
+import { FiZoomIn } from 'react-icons/fi';
 import banner1 from '../assets/images/slide4.webp';
 
 // 이미지 임포트 (Showroom 폴더)
@@ -118,24 +118,13 @@ const ShowroomDetail = () => {
         />
       </Helmet>
 
-      {/* 배너 이미지 섹션 */}
-      <div className="relative h-72 md:h-96">
-        <img src={banner1} alt="Showroom Banner" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 flex flex-col items-center justify-center text-center">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-wider text-white mb-4">
-            블루하우징 전시장
-          </h1>
-          <p className="text-white max-w-2xl px-4 text-sm md:text-base">
-            30년 경력 마이스터의 노하우로 완성된 욕실 시공 사례를 한눈에 만나보세요.
-          </p>
-          <p className="text-white max-w-2xl px-4 text-[0.75rem] md:text-sm mt-4">
-            BlueHousing Showroom<br />
-            An interior design company led by a master with 30 years of experience,<br />
-            ensuring expert construction and guaranteed after-service.<br />
-            Visit our showroom to explore a variety of interior styles and the latest trends firsthand.
-          </p>
-        </div>
-      </div>
+      <PageHero
+        image={banner1}
+        english="Showroom"
+        title="블루하우징 전시장"
+        subtitle="30년 경력 마이스터의 노하우로 완성된 욕실 시공 사례를 한눈에 만나보세요."
+        height="lg"
+      />
 
       {/* 각 섹션 렌더링 */}
       {showroomData.map((section, idx) => (
@@ -164,38 +153,44 @@ const ShowroomDetail = () => {
 };
 
 const ShowroomSection = ({ title, images, description, onImageClick }) => (
-  <section className="py-20 bg-white border-t">
-    <div className="max-w-7xl mx-auto px-6">
-      <h2 className="flex items-center text-lg md:text-xl font-semibold text-gray-900 mb-8">
-        <DiamondIcon className="w-6 h-6 text-gray-900 mr-3" />
-        {title}
-      </h2>
-  
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+  <section className="py-14 md:py-20 border-t border-ink/5 bg-white even:bg-gradient-to-b even:from-slate-50/80 even:to-white">
+    <div className="container-content">
+      <SectionHeading title={title} english="Showroom Style" />
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-12">
         {images.map((img, index) => (
-          <div 
-            key={index} 
-            className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group"
+          <button
+            key={index}
+            type="button"
             onClick={() => onImageClick(images, index)}
+            className="gallery-card group relative aspect-[4/5] overflow-hidden rounded-2xl bg-ink/5 text-left shadow-soft ring-1 ring-ink/5"
           >
-            <img 
-              src={img} 
-              alt={`${title} ${index + 1}`} 
-              className="object-cover w-full h-[280px] md:h-[380px] transition-transform duration-500 group-hover:scale-105 group-hover:brightness-90"
+            <img
+              src={img}
+              alt={`${title} ${index + 1}`}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.06]"
               loading="lazy"
             />
-          </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity" />
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-ink shadow-card">
+                <FiZoomIn className="text-lg" />
+              </span>
+            </div>
+          </button>
         ))}
       </div>
-  
-      <div className="max-w-3xl mx-auto text-left border-t pt-8">
-        <h3 className="text-lg font-semibold mb-4 text-gray-900 tracking-wide">
+
+      <div className="max-w-2xl rounded-2xl bg-white/80 p-6 md:p-8 ring-1 ring-ink/5 shadow-soft">
+        <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-600 mb-4">
           욕실 시공 구성
         </h3>
-        <ul className="text-gray-700 leading-relaxed space-y-2">
+        <ul className="text-ink-soft leading-relaxed space-y-2.5">
           {description.map((desc, idx) => (
-            <li key={idx} className="flex items-start">
-              <span className="mr-2 font-bold text-gray-900">{idx + 1}.</span> 
+            <li key={idx} className="flex items-start gap-3">
+              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-50 text-xs font-bold text-brand-700">
+                {idx + 1}
+              </span>
               <span>{desc}</span>
             </li>
           ))}

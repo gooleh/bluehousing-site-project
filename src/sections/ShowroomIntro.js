@@ -3,8 +3,9 @@ import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { FiArrowRight } from 'react-icons/fi';
+import AlternatingText from '../components/AlternatingText';
 
-// 전시장 이미지 3개만 import
 import showroom1 from '../assets/images/Showroom/showroom1.jpeg';
 import showroom2 from '../assets/images/Showroom/showroom2.jpeg';
 import showroom3 from '../assets/images/Showroom/showroom3.jpeg';
@@ -15,60 +16,72 @@ const showroomImages = [
   { src: showroom3, alt: '블루하우징 전시장 3' },
 ];
 
-const showroomDetailLink = "/showroom-detail";
+const showroomDetailLink = '/showroom-detail';
 
 const ShowroomIntro = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  });
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section ref={ref} className="py-16 px-4 bg-white text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      >
-        {/* 한국어 제목 */}
-        <h2 className="text-3xl md:text-4xl font-semibold mb-2">
-          블루하우징 전시장
-        </h2>
-        {/* 영어 제목 */}
-        <h3 className="text-xl md:text-2xl font-medium text-gray-600 mb-6">
-          BlueHousing Showroom
-        </h3>
-        {/* 한글 설명 */}
-        <p className="text-gray-700 leading-relaxed">
-          블루하우징은 30년 경력의 마이스터가 시공하는 종합 인테리어 전문 기업으로, 책임 시공 및 A/S를 보장합니다.
-          <br />전시장에서는 다양한 인테리어 스타일과 최신 트렌드를 직접 확인하실 수 있습니다.
-        </p>
-        {/* 영문 설명 */}
-        <p className="text-gray-600 leading-relaxed mt-4 text-sm md:text-base">
-          An interior design company led by a master with 30 years of experience, ensuring expert construction and guaranteed after-service.
-          <br />
-          Visit our showroom to explore a variety of interior styles and the latest trends firsthand.
-        </p>
+    <section ref={ref} className="py-16 md:py-24 bg-white">
+      <div className="container-content">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-3xl mx-auto"
+        >
+          <span className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] text-accent-600">
+            BlueHousing Showroom
+          </span>
+          <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tightish text-ink">
+            블루하우징 전시장
+          </h2>
+          <AlternatingText
+            className="mt-5"
+            itemClassName="text-ink-soft leading-relaxed"
+            interval={10000}
+            items={[
+              '30년 경력의 마이스터가 책임 시공하는 종합 인테리어 전문 기업으로, 철저한 책임 시공과 A/S를 보장합니다. 전시장에서 다양한 인테리어 스타일과 최신 트렌드를 직접 확인하실 수 있습니다.',
+              'An interior design company led by a master with 30 years of experience, ensuring expert construction and guaranteed after-service. Visit our showroom to explore a variety of interior styles and the latest trends firsthand.',
+            ]}
+          />
+        </motion.div>
 
-        {/* 이미지 그리드 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           {showroomImages.map((img, index) => (
-            <div
+            <motion.div
               key={index}
-              className="relative group overflow-hidden rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 40 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 * index, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative overflow-hidden rounded-2xl shadow-card"
             >
               <Link to={showroomDetailLink} className="block">
                 <img
                   src={img.src}
                   alt={img.alt}
-                  className="object-cover w-full h-[300px] md:h-[400px] transition-transform duration-300 group-hover:scale-105 group-hover:brightness-90"
+                  className="object-cover w-full h-72 md:h-80 transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                  <span className="inline-flex items-center gap-1.5 text-white font-medium">
+                    전시장 둘러보기 <FiArrowRight />
+                  </span>
+                </div>
               </Link>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </motion.div>
+
+        <div className="text-center mt-10">
+          <Link
+            to={showroomDetailLink}
+            className="inline-flex items-center gap-2 rounded-full border-2 border-brand-600 px-7 py-3 text-base font-semibold text-brand-700 transition-all hover:bg-brand-600 hover:text-white"
+          >
+            전시장 전체보기 <FiArrowRight />
+          </Link>
+        </div>
+      </div>
     </section>
   );
 };

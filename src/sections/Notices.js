@@ -1,51 +1,41 @@
-// src/pages/Notices.js
+// src/sections/Notices.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MdArrowForwardIos } from 'react-icons/md';
+import SectionHeading from '../components/SectionHeading';
 import noticeImg from '../assets/images/notice1.jpeg';
 
-const noticeText = "[ 욕실공사 ] 기본 시공 순서 철거 - 설비 - 방수 - 전기공사 - 타일 - 천장 - 욕실도기 - 악세서리 - 조명- 마무리 및 준공 청소 | 타일 덧방 시공 : 3일 철거 1일, 타일 1일, 욕실기구셋팅 1일 | 부분 철거 시공 : 4일 철거 1일, 방수 1일, 타일 1일, 욕실기구 셋팅 1일 | 전체 철거 시공 : 4~5일 철거 1일, 방수 1~2일, 타일 1일, 욕실 기구 셋팅 1일 (※ 단, 욕실규격 및 시공일정에 따라 시공기간이 상의할 수 있음)";
+const noticeText =
+  "[ 욕실공사 ] 기본 시공 순서 철거 - 설비 - 방수 - 전기공사 - 타일 - 천장 - 욕실도기 - 악세서리 - 조명 - 마무리 및 준공 청소 | 타일 덧방 시공 : 3일 (철거 1일, 타일 1일, 욕실기구 셋팅 1일) | 부분 철거 시공 : 4일 (철거 1일, 방수 1일, 타일 1일, 욕실기구 셋팅 1일) | 전체 철거 시공 : 4~5일 (철거 1일, 방수 1~2일, 타일 1일, 욕실 기구 셋팅 1일) ※ 단, 욕실 규격 및 시공 일정에 따라 시공 기간이 상이할 수 있습니다.";
 
 const Notices = () => (
-  <section className="py-12 px-4 bg-white max-w-6xl mx-auto">
-    <div className="flex justify-between items-center mb-4">
-      <h2 
-        className="text-2xl md:text-3xl font-semibold text-left"
-        style={{ color: 'gray' }}
-      >
-        공지사항 <br className="md:hidden" />
-        <span className="text-base font-medium" style={{ color: 'gray' }}>
-          (Notices)
-        </span>
-      </h2>
-      <Link 
-        to="/notices"
-        className="flex items-center text-sm px-3 py-1 rounded transition"
-        style={{ color: 'gray' }}
-      >
-        더보기 <MdArrowForwardIos className="ml-1" />
+  <section className="py-16 md:py-20 bg-white">
+    <div className="container-content">
+      <SectionHeading title="공지사항" english="Notices" moreLink="/notices" />
+
+      <Link to="/notices" className="group block">
+        <div className="flex flex-col md:flex-row overflow-hidden rounded-2xl shadow-card transition-shadow duration-300 hover:shadow-card-hover bg-white">
+          <div className="md:w-1/2 overflow-hidden">
+            <img
+              src={noticeImg}
+              alt="욕실 시공 공지"
+              className="w-full h-64 md:h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style={{ minHeight: '300px' }}
+            />
+          </div>
+          <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+            <span className="inline-flex w-fit items-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700 mb-4">
+              시공 안내
+            </span>
+            <p className="text-ink-soft leading-relaxed line-clamp-6 md:line-clamp-none">
+              {noticeText}
+            </p>
+            <span className="mt-5 inline-flex items-center text-sm font-medium text-accent-600">
+              공지사항 전체보기 →
+            </span>
+          </div>
+        </div>
       </Link>
     </div>
-    <hr className="mb-8 border-t-2" style={{ borderColor: 'lightgray' }} />
-    <Link to="/notices" className="block">
-      <div className="flex flex-col md:flex-row border rounded hover:shadow transition">
-        {/* 왼쪽 절반: 이미지 */}
-        <div className="md:w-1/2">
-          <img 
-            src={noticeImg} 
-            alt="공지 이미지" 
-            className="w-full h-full object-cover"
-            style={{ minHeight: '300px' }}
-          />
-        </div>
-        {/* 오른쪽 절반: 텍스트 */}
-        <div className="md:w-1/2 p-6 flex items-center">
-          <p className="text-gray-800 text-lg text-left">
-            {noticeText}
-          </p>
-        </div>
-      </div>
-    </Link>
   </section>
 );
 

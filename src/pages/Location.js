@@ -1,43 +1,72 @@
 // src/pages/Location.js
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import KakaoMap from '../components/KakaoMap';
 import DirectionsButton from '../components/DirectionsButton';
-import { RiMapPinLine, RiSubwayLine } from 'react-icons/ri';
+import { RiMapPinLine, RiSubwayLine, RiPhoneLine } from 'react-icons/ri';
+import PageHero from '../components/PageHero';
+import company from '../data/company';
+import banner from '../assets/images/slide4.webp';
 
 const Location = () => {
   return (
-    <div className="max-w-7xl mx-auto px-6 py-16">
-      <h1 className="text-3xl font-bold mb-8 text-gray-900">오시는 길</h1>
-      
-      {/* 지도 */}
-      <KakaoMap />
+    <div className="bg-gray-50 min-h-screen">
+      <Helmet>
+        <title>오시는 길 | 블루하우징</title>
+        <meta name="description" content="블루하우징 본사 위치 안내. 서울 서대문구 충정로9길 15 라인빌딩 1층, 5호선 서대문역 1번 출구 도보 3분." />
+      </Helmet>
 
-      {/* 안내 카드 */}
-      <div className="bg-white p-6 mt-8 rounded-lg shadow space-y-4 text-gray-700">
-        {/* 주소 정보 */}
-        <div className="flex items-center space-x-2">
-          <RiMapPinLine className="text-xl text-blue-600" />
-          <h2 className="text-lg font-semibold text-gray-900">주소</h2>
-        </div>
-        <p className="ml-7">
-          서울 서대문구 충정로9길 15 라인빌딩 1층<br />
-          (서대문역 1번 출구에서 약 234m)<br />
-          <br />
-          지번 주소<br />
-          서울시 서대문구 충정로2가180-5 라인빌딩 1층
-        </p>
+      <PageHero
+        image={banner}
+        english="Location"
+        title="오시는 길"
+        subtitle="서대문역 1번 출구에서 도보 3분, 편하게 방문하세요."
+      />
 
-        {/* 교통편 예시 */}
-        <div className="flex items-center space-x-2 mt-4">
-          <RiSubwayLine className="text-xl text-blue-600" />
-          <h2 className="text-lg font-semibold text-gray-900">대중교통</h2>
+      <div className="container-content py-14 md:py-16">
+        {/* 지도 */}
+        <div className="overflow-hidden rounded-2xl shadow-card">
+          <KakaoMap />
         </div>
-        <p className="ml-7">
-          5호선 서대문역 1번 출구 도보 3분 / 버스 인창중고 정류장 하차 후 도보 1분
-        </p>
+
+        {/* 안내 카드 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          <div className="bg-white p-7 rounded-2xl shadow-card">
+            <div className="flex items-center gap-2 mb-3">
+              <RiMapPinLine className="text-2xl text-brand-600" />
+              <h2 className="text-lg font-bold text-ink">주소</h2>
+            </div>
+            <p className="text-ink-soft leading-relaxed">
+              {company.roadAddress}<br />
+              <span className="text-ink-muted text-sm">{company.addressDetail}</span>
+            </p>
+            <p className="mt-3 text-ink-soft leading-relaxed">
+              <span className="font-semibold text-ink">지번 주소</span><br />
+              {company.jibunAddress}
+            </p>
+          </div>
+
+          <div className="bg-white p-7 rounded-2xl shadow-card">
+            <div className="flex items-center gap-2 mb-3">
+              <RiSubwayLine className="text-2xl text-brand-600" />
+              <h2 className="text-lg font-bold text-ink">대중교통</h2>
+            </div>
+            <p className="text-ink-soft leading-relaxed">
+              {company.transit}
+            </p>
+
+            <div className="flex items-center gap-2 mt-5 mb-3">
+              <RiPhoneLine className="text-2xl text-brand-600" />
+              <h2 className="text-lg font-bold text-ink">대표번호</h2>
+            </div>
+            <a href={`tel:${company.phone.raw}`} className="text-brand-700 font-semibold hover:underline">
+              {company.phone.display}
+            </a>
+          </div>
+        </div>
 
         {/* 길찾기 버튼 */}
-        <div className="mt-4">
+        <div className="mt-8 flex justify-center">
           <DirectionsButton />
         </div>
       </div>

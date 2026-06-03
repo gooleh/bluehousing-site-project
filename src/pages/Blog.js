@@ -1,47 +1,47 @@
 // src/pages/Blog.js
 import React from 'react';
-import blogPosts from '../data/blogPosts';
-import bannerImage from '../assets/images/slide3.webp'; // 배너 이미지 경로
+import { Helmet } from 'react-helmet-async';
+import PageHero from '../components/PageHero';
+import BlogPostCard from '../components/BlogPostCard';
+import blogPosts, { blogMeta } from '../data/blogPosts';
+import bannerImage from '../assets/images/slide3.webp';
 
 const Blog = () => {
   return (
-    <div className="bg-gray-50">
-      {/* 상단 배너 */}
-      <div className="relative">
-        <img src={bannerImage} alt="블로그 배너" className="w-full h-96 object-cover" />
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <h1 className="text-4xl font-bold text-white">블루하우징 블로그</h1>
-        </div>
-      </div>
+    <div className="bg-gray-50 min-h-screen">
+      <Helmet>
+        <title>블로그 | 블루하우징</title>
+        <meta
+          name="description"
+          content="블루하우징 네이버 블로그 소식. 욕실·주택 리모델링 시공 사례와 인테리어 정보를 최신순으로 확인하세요."
+        />
+      </Helmet>
 
-      {/* 블로그 포스트 목록 */}
-      <div className="max-w-6xl mx-auto py-12 px-6">
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-          {blogPosts.map(post => (
-            <a 
-              key={post.id}
-              href={post.link} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="group block"
-            >
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-[22rem]">
-                {/* 이미지 영역 */}
-                <div className="relative h-48 flex-shrink-0">
-                  <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
-                  <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 italic text-white">
-                    자세히 보기 →
-                  </div>
-                </div>
-                {/* 텍스트 영역 */}
-                <div className="p-3 flex-grow">
-                  <h3 className="text-xl font-semibold mb-2 text-gray-800">{post.title}</h3>
-                  <p className="text-gray-600 text-sm overflow-hidden line-clamp-3">
-                    {post.description}
-                  </p>
-                </div>
-              </div>
-            </a>
+      <PageHero
+        image={bannerImage}
+        english="Blog"
+        title="블루하우징 블로그"
+        subtitle="네이버 블로그 글을 최신순으로 모았습니다. 카드를 눌러 요약을 보고, 전체 글은 네이버에서 이어서 읽을 수 있습니다."
+      />
+
+      <div className="container-content py-12 md:py-16">
+        <div className="mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+          <p className="text-sm text-ink-muted">
+            총 <span className="font-semibold text-ink">{blogMeta.count}</span>개 글 · 최신순
+          </p>
+          <a
+            href={blogMeta.blogUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-semibold text-brand-700 hover:text-brand-800"
+          >
+            네이버 블로그 바로가기 →
+          </a>
+        </div>
+
+        <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {blogPosts.map((post) => (
+            <BlogPostCard key={post.id} post={post} />
           ))}
         </div>
       </div>
