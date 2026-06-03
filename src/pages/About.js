@@ -93,7 +93,8 @@ const About = () => {
               />
               <InfoRow
                 label="홈페이지"
-                value="www.bluehousing.co.kr"
+                value="bluehousing.co.kr"
+                href="https://bluehousing.co.kr"
                 isLink
                 icon={<RiGlobalLine className="w-5 h-5 text-gray-700" />}
               />
@@ -245,7 +246,7 @@ export default About;
  * - icon: react-icons 등에서 가져온 아이콘 요소
  * - isLink: 항목이 링크 여부 (기본값 false)
  */
-const InfoRow = ({ label, value, icon, isLink = false }) => {
+const InfoRow = ({ label, value, icon, isLink = false, href }) => {
   return (
     <div className="flex items-center space-x-4 mb-3">
       {icon && (
@@ -256,7 +257,7 @@ const InfoRow = ({ label, value, icon, isLink = false }) => {
       <span className="font-semibold text-gray-900 w-28">{label}</span>
       {isLink ? (
         <a
-          href={value}
+          href={href || value}
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-600 hover:underline break-words"
