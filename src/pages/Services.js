@@ -1,168 +1,196 @@
 // src/pages/Services.js
-
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import {
-  RiMessage2Line,
-  RiRulerLine,
-  RiPencilRuler2Line,
-  RiFileTextLine,
-  RiBuilding3Line,
-  RiThumbUpLine,
-  RiShieldCheckLine
-} from 'react-icons/ri';
+  ShowerHead, Home, PaintBucket,
+  MessageCircle, Ruler, Lightbulb,
+  FileText, HardHat, ThumbsUp, ShieldCheck,
+} from 'lucide-react';
+import { FiArrowRight } from 'react-icons/fi';
 import PageHero from '../components/PageHero';
-
-// 배너 이미지 (예시: servicesBanner.jpg) – 원하는 이미지로 교체
 import servicesBanner from '../assets/images/slide3.webp';
-
-// 서비스용 이미지들
 import service1 from '../assets/images/services/service1.webp';
 import service2 from '../assets/images/services/service2.webp';
 import service3 from '../assets/images/services/service3.webp';
 
-const Services = () => {
-  return (
-    <div className="bg-white">
-      <Helmet>
-        <title>서비스 | 블루하우징</title>
-        <meta name="description" content="주택 설계, 인테리어 디자인, 건축 컨설팅까지. 블루하우징의 체계적인 시공 프로세스와 안심 보증을 확인하세요." />
-      </Helmet>
+const SERVICES = [
+  {
+    icon: Home,
+    imgSrc: service1,
+    title: '주택·아파트 리모델링',
+    tag: 'Home Remodeling',
+    description:
+      '주방, 거실, 침실을 아우르는 전체 또는 부분 리모델링. 공간의 구조와 생활 패턴을 반영한 맞춤 설계로 집의 가치와 생활 만족도를 동시에 높여드립니다.',
+    points: ['전체·부분 리모델링', '구조 맞춤 설계', '마감재 선정 컨설팅'],
+  },
+  {
+    icon: ShowerHead,
+    imgSrc: service2,
+    title: '욕실 리모델링',
+    tag: 'Bathroom Remodeling',
+    description:
+      '노후된 욕실을 고급스럽고 기능적인 공간으로 탈바꿈합니다. UBR 전면 재시공부터 부분 교체까지, 방수·마감 노하우와 최신 트렌드를 담아 책임 시공합니다.',
+    points: ['UBR 전면 재시공', '방수·타일 전문 시공', '수전·위생도기 교체'],
+  },
+  {
+    icon: PaintBucket,
+    imgSrc: service3,
+    title: '실내장식 & 건축 컨설팅',
+    tag: 'Interior & Consulting',
+    description:
+      '벽지·바닥·조명 등 실내장식부터 상업 공간 인테리어, 건축 자재 선정 컨설팅까지. 30년 마이스터의 안목으로 공간에 가장 잘 맞는 솔루션을 제안합니다.',
+    points: ['벽지·바닥·조명 시공', '상업 공간 인테리어', '건축 자재 컨설팅'],
+  },
+];
 
-      {/* 상단 배너 섹션 */}
-      <PageHero
-        image={servicesBanner}
-        english="Our Services"
-        title="서비스"
-        subtitle="당신의 공간을 새롭게, 블루하우징만의 스타일로 완성해드립니다."
-      />
+const PROCESS = [
+  { step: '01', icon: MessageCircle, title: '상담 / 문의',    desc: '요구사항과 예산 범위를 파악하며 초기 상담을 진행합니다.' },
+  { step: '02', icon: Ruler,         title: '현장 실측',     desc: '공간 구조와 치수를 정확히 파악해 최적화된 설계 데이터를 확보합니다.' },
+  { step: '03', icon: Lightbulb,     title: '디자인 제안',   desc: '트렌드를 반영한 디자인 시안, 자재, 색상을 종합적으로 제안합니다.' },
+  { step: '04', icon: FileText,      title: '계약 / 일정',   desc: '최종 견적·디자인 확정 후 공사 일정 및 계약을 체결합니다.' },
+  { step: '05', icon: HardHat,       title: '시공 및 관리',  desc: '전문 시공팀이 체계적인 공정·안전·품질 관리를 실시합니다.' },
+  { step: '06', icon: ThumbsUp,      title: '완료 / A/S',   desc: '시공 완결점검 후 고객에게 인도하며, 문제 발생 시 즉시 지원합니다.' },
+];
 
-      {/* 서비스 목록 섹션 */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          <ServiceCard
-            imgSrc={service1}
-            title="주택 설계"
-            description="고객의 라이프스타일과 요구를 반영한 맞춤형 설계를 통해, 이상적인 주거 환경을 창조합니다."
-          />
-          <ServiceCard
-            imgSrc={service2}
-            title="인테리어 디자인"
-            description="기능성과 심미성을 겸비한 인테리어 솔루션을 제공하여, 공간의 가치를 극대화합니다."
-          />
-          <ServiceCard
-            imgSrc={service3}
-            title="건축 컨설팅"
-            description="전문 컨설턴트와의 1:1 상담을 통해, 고객에게 최적의 건축 및 리모델링 솔루션을 제시합니다."
-          />
+const GUARANTEES = [
+  { icon: ShieldCheck, title: '보증 기간 내 무상 수리', desc: '시공 완료 후 하자 발생 시 보증 기간 내 무료로 수리해 드립니다.' },
+  { icon: HardHat,     title: '안전 기준 엄수',         desc: '모든 시공 과정에서 안전 기준을 엄격히 준수합니다.' },
+  { icon: ThumbsUp,    title: '즉시 A/S 출동',          desc: '문제가 생기면 전화 한 통으로 빠르게 달려갑니다.' },
+];
+
+const Services = () => (
+  <div className="bg-white">
+    <Helmet>
+      <title>서비스 | 블루하우징</title>
+      <meta name="description" content="욕실·주택 리모델링, 실내장식, 건축 컨설팅까지. 블루하우징의 체계적인 시공 프로세스와 책임 A/S를 확인하세요." />
+    </Helmet>
+
+    <PageHero
+      image={servicesBanner}
+      english="Our Services"
+      title="서비스"
+      subtitle="당신의 공간을 새롭게, 블루하우징만의 손길로 완성해드립니다."
+    />
+
+    {/* ===== 서비스 카드 ===== */}
+    <section className="py-16 md:py-24 bg-white">
+      <div className="container-content space-y-8 md:space-y-6">
+        {SERVICES.map((s, i) => {
+          const Icon = s.icon;
+          const isEven = i % 2 === 0;
+          return (
+            <div
+              key={s.title}
+              className={`group grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-300 ${
+                isEven ? '' : 'lg:[direction:rtl]'
+              }`}
+            >
+              {/* 이미지 */}
+              <div className="relative overflow-hidden h-64 lg:h-auto min-h-[280px] lg:[direction:ltr]">
+                <img
+                  src={s.imgSrc}
+                  alt={s.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
+                <span className="absolute bottom-4 left-4 rounded-full bg-white/15 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/30">
+                  {s.tag}
+                </span>
+              </div>
+
+              {/* 텍스트 */}
+              <div className="flex flex-col justify-center p-8 md:p-12 bg-white lg:[direction:ltr]">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-600 mb-6 shadow-soft group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-7 h-7 text-white" strokeWidth={1.5} />
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold text-ink mb-4 tracking-tightish">{s.title}</h2>
+                <p className="text-ink-muted leading-relaxed mb-6">{s.description}</p>
+                <ul className="space-y-2">
+                  {s.points.map((p) => (
+                    <li key={p} className="flex items-center gap-2.5 text-sm text-ink-soft">
+                      <span className="h-1.5 w-1.5 rounded-full bg-accent-500 flex-shrink-0" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    {/* ===== 시공 프로세스 ===== */}
+    <section className="py-16 md:py-24 bg-brand-950">
+      <div className="container-content">
+        <div className="text-center mb-14">
+          <span className="text-xs font-semibold uppercase tracking-widest text-accent-400">Process</span>
+          <h2 className="mt-3 text-2xl md:text-3xl font-bold text-white">시공 프로세스</h2>
+          <p className="mt-3 text-white/60 text-sm">상담부터 A/S까지 6단계로 완성됩니다</p>
         </div>
 
-        {/* 시공 프로세스 섹션 */}
-        <section className="mb-20">
-          <div className="text-center mb-10">
-            <span className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] text-accent-600">Process</span>
-            <h2 className="mt-2 text-3xl font-bold text-ink">시공 프로세스</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
-            <ProcessStep
-              stepNumber="01"
-              title="상담 / 문의"
-              icon={<RiMessage2Line className="w-10 h-10 transition-transform duration-300 group-hover:scale-110" />}
-              description="고객 문의 접수 후, 요구사항과 예산 범위를 파악하며 초기 상담을 진행합니다."
-            />
-            <ProcessStep
-              stepNumber="02"
-              title="현장 실측"
-              icon={<RiRulerLine className="w-10 h-10 transition-transform duration-300 group-hover:scale-110" />}
-              description="실제 공간 구조와 치수를 정확히 파악해, 최적화된 설계 데이터를 확보합니다."
-            />
-            <ProcessStep
-              stepNumber="03"
-              title="디자인 제안"
-              icon={<RiPencilRuler2Line className="w-10 h-10 transition-transform duration-300 group-hover:scale-110" />}
-              description="요구사항과 트렌드를 반영한 디자인 시안, 자재, 색상 등을 종합적으로 제안합니다."
-            />
-            <ProcessStep
-              stepNumber="04"
-              title="계약 / 일정 조율"
-              icon={<RiFileTextLine className="w-10 h-10 transition-transform duration-300 group-hover:scale-110" />}
-              description="최종 견적과 디자인을 확정 후, 공사 일정 및 계약 세부사항을 체결합니다."
-            />
-            <ProcessStep
-              stepNumber="05"
-              title="시공 및 관리"
-              icon={<RiBuilding3Line className="w-10 h-10 transition-transform duration-300 group-hover:scale-110" />}
-              description="전문 시공팀이 투입되어 체계적인 공정 관리와 함께 안전·품질 관리를 실시합니다."
-            />
-            <ProcessStep
-              stepNumber="06"
-              title="완료 / 사후관리"
-              icon={<RiThumbUpLine className="w-10 h-10 transition-transform duration-300 group-hover:scale-110" />}
-              description="시공 완결점검 후 고객에게 인도하며, 추후 문제가 발생하면 즉시 지원하는 사후관리 체계를 운영합니다."
-            />
-          </div>
-        </section>
+        <div className="relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {/* 연결선 (데스크톱) */}
+          <div className="absolute top-10 left-[calc(100%/12)] right-[calc(100%/12)] h-px bg-white/10 hidden lg:block" />
 
-        {/* 기타 안내 섹션 (추가 보증, 혜택 등) */}
-        <div className="bg-gradient-to-br from-brand-50 to-accent-50 p-8 rounded-2xl border border-brand-100">
-          <h2 className="text-2xl font-bold mb-4 flex items-center gap-2 text-ink">
-            <RiShieldCheckLine className="w-7 h-7 text-brand-600" />
-            안심 보증 및 추가 혜택
-          </h2>
-          <p className="text-ink-soft leading-relaxed">
-            모든 시공과정에서 안전 기준을 엄격히 준수하며, 시공 완료 후에도 보증 기간 내 무상 수리를 제공해 드립니다.
-            보다 쾌적하고 만족스러운 시공 경험을 누리실 수 있도록 끊임없이 노력하겠습니다.
-          </p>
+          {PROCESS.map(({ step, icon: Icon, title, desc }) => (
+            <div key={step} className="relative flex flex-col items-center text-center">
+              {/* 스텝 서클 */}
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="flex h-20 w-20 flex-col items-center justify-center rounded-full bg-white/5 border border-white/15 mb-4 group hover:bg-brand-700 hover:border-brand-500 transition-all duration-300">
+                  <span className="text-[10px] font-bold text-accent-400 mb-0.5">{step}</span>
+                  <Icon className="w-7 h-7 text-white/80" strokeWidth={1.5} />
+                </div>
+              </div>
+              <h3 className="text-sm font-bold text-white mb-2">{title}</h3>
+              <p className="text-xs text-white/50 leading-relaxed">{desc}</p>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  );
-};
+    </section>
+
+    {/* ===== 안심 보증 ===== */}
+    <section className="py-16 md:py-20 bg-gray-50">
+      <div className="container-content">
+        <div className="text-center mb-12">
+          <span className="text-xs font-semibold uppercase tracking-widest text-accent-600">Guarantee</span>
+          <h2 className="mt-3 text-2xl md:text-3xl font-bold text-ink">안심 보증</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {GUARANTEES.map(({ icon: Icon, title, desc }) => (
+            <div key={title} className="bg-white rounded-2xl p-8 shadow-card text-center hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-50 mx-auto mb-5">
+                <Icon className="w-8 h-8 text-brand-600" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-bold text-ink mb-2">{title}</h3>
+              <p className="text-sm text-ink-muted leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ===== CTA ===== */}
+    <section className="bg-brand-900 py-16 md:py-20">
+      <div className="container-content text-center">
+        <p className="text-accent-300 text-sm font-semibold uppercase tracking-widest mb-3">Free Estimate</p>
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          어떤 공간을 바꾸고 싶으신가요?
+        </h2>
+        <p className="text-white/70 mb-8 max-w-md mx-auto">
+          30년 경력 마이스터에게 무료로 상담·견적을 받아보세요.
+        </p>
+        <Link
+          to="/estimate"
+          className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-3.5 text-base font-semibold text-white shadow-card-hover transition-all hover:bg-accent-600 hover:scale-[1.03]"
+        >
+          무료 견적 받기 <FiArrowRight />
+        </Link>
+      </div>
+    </section>
+  </div>
+);
 
 export default Services;
-
-/* ---------------------------
-   재사용 컴포넌트들
----------------------------- */
-
-/**
- * ServiceCard
- * - 이미지 상단 크게( w-full h-80 ) 배치
- * - 텍스트 중심
- */
-const ServiceCard = ({ imgSrc, title, description }) => {
-  return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1">
-      <div className="w-full h-72 overflow-hidden">
-        <img
-          src={imgSrc}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      </div>
-      <div className="p-6 text-center">
-        <h2 className="text-xl font-bold mb-2 text-ink">{title}</h2>
-        <p className="text-sm leading-relaxed text-ink-muted">{description}</p>
-      </div>
-    </div>
-  );
-};
-
-/**
- * ProcessStep
- * - group 클래스를 추가해 호버 시 아이콘 확대
- */
-const ProcessStep = ({ stepNumber, title, icon, description }) => {
-  return (
-    <div className="group flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-soft border border-ink/5 transition-all duration-300 hover:shadow-card hover:-translate-y-1">
-      <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-50 text-sm font-bold text-brand-700">
-        {stepNumber}
-      </div>
-      <div className="mb-3 text-brand-600">{icon}</div>
-      <h3 className="text-base font-semibold mb-1 text-ink">
-        {title}
-      </h3>
-      <p className="text-ink-muted text-sm leading-relaxed">{description}</p>
-    </div>
-  );
-};

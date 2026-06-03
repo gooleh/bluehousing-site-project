@@ -21,7 +21,7 @@ const Blog = () => {
         image={bannerImage}
         english="Blog"
         title="블루하우징 블로그"
-        subtitle="네이버 블로그 글을 최신순으로 모았습니다. 카드를 눌러 요약을 보고, 전체 글은 네이버에서 이어서 읽을 수 있습니다."
+        subtitle="블루하우징의 시공 현장과 인테리어 이야기를 담았습니다. 카드를 클릭하면 네이버 블로그에서 전체 내용을 보실 수 있습니다."
       />
 
       <div className="container-content py-12 md:py-16">

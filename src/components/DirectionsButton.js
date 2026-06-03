@@ -6,7 +6,7 @@ import company from '../data/company';
 const DirectionsButton = () => {
   const handleClick = () => {
     const { name, lat, lng } = company.map;
-    const kakaoLink = `https://map.kakao.com/link/to/${encodeURIComponent(name)},${lng},${lat}`;
+    const kakaoLink = `https://map.kakao.com/link/to/${encodeURIComponent(name)},${lat},${lng}`;
     window.open(kakaoLink, '_blank', 'noopener,noreferrer');
   };
 

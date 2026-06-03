@@ -1,296 +1,231 @@
 // src/pages/About.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { Wrench, ShieldCheck, BadgeDollarSign, Sparkles, Check, Newspaper, Trophy } from 'lucide-react';
+import { RiUser3Line, RiCalendarLine, RiMapPin2Line, RiGlobalLine, RiPhoneLine } from 'react-icons/ri';
+import { FiArrowRight } from 'react-icons/fi';
 import PageHero from '../components/PageHero';
-
-// react-icons 라이브러리에서 아이콘 가져오기
-import {
-  RiBuilding3Line,  // 회사 관련
-  RiUser3Line,      // 대표자
-  RiBook3Line,      // 산업 / 기업구분 등 일반 정보
-  RiCalendarLine,   // 설립일
-  RiTeamLine,       // 사원수
-  RiShieldUserLine, // 4대보험
-  RiGlobalLine,     // 홈페이지
-  RiMapPin2Line,    // 주소
-  RiLightbulbLine,  // 회사 소개 & 비전
-  RiBuilding4Line,  // 주요 사업영역
-  RiToolsLine,
-  RiExchangeLine,
-  RiHandHeartLine,  // 복리후생
-  RiMapPin2Fill,    // 찾아오시는 길
-  RiPhoneLine
-} from 'react-icons/ri';
-
-// 사용하는 배너 이미지
+import company from '../data/company';
 import banner1 from '../assets/images/slide1.webp';
-// 회사 사무실 이미지 (ab3, ab4 제거함)
 import ab1 from '../assets/images/ab1.webp';
 import ab2 from '../assets/images/ab2.webp';
 
-const About = () => {
-  return (
-    <div className="bg-white">
-      <Helmet>
-        <title>블루하우징 기업정보 | 인테리어 전문기업</title>
-        <meta
-          name="description"
-          content="블루하우징 기업정보 페이지 - 인테리어 및 건축자재 연구개발 등 다양한 사업을 전개하는 중소기업. 실제 기업 상세정보를 확인해보세요."
-        />
-      </Helmet>
+const CREDENTIALS = [
+  '하청 없는 대표 직접 시공 — 처음부터 끝까지 마이스터가 책임',
+  'MBC · 조선일보 · 랜드하우스 · 업계 전문지 4곳 언론 보도',
+  '시공 완료 후 무상 A/S 즉시 지원',
+  '2,000건 이상의 욕실·주택 리모델링 실적',
+];
 
-      {/* 기업정보 배너 섹션 */}
-      <PageHero
-        image={banner1}
-        english="About Us"
-        title="블루하우징 기업정보"
-        subtitle="욕실용품·실내장식·무역 등 다채로운 사업영역을 보유한 인테리어 전문기업"
-      />
+const STATS = [
+  { num: '30년+', label: '시공 경력' },
+  { num: '2,000+', label: '시공 사례' },
+  { num: '100%', label: '책임 A/S' },
+  { num: '4개사', label: '언론 보도' },
+];
 
-      {/* 회사 개요 */}
-      <section className="py-12 border-b">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-            <RiBuilding3Line className="w-6 h-6 mr-2 text-gray-800" />
-            회사 개요
-          </h2>
+const VALUES = [
+  {
+    icon: Wrench,
+    color: 'bg-brand-700',
+    title: '대표 직접 시공',
+    desc: '하청 없이 30년 경력의 대표 마이스터가 설계부터 마감까지 직접 현장을 책임집니다.',
+  },
+  {
+    icon: ShieldCheck,
+    color: 'bg-brand-600',
+    title: '책임 A/S 보장',
+    desc: '시공이 끝난 후에도 문제가 생기면 즉시 달려갑니다. 끝까지 책임지는 것이 블루하우징의 원칙입니다.',
+  },
+  {
+    icon: BadgeDollarSign,
+    color: 'bg-accent-600',
+    title: '투명한 견적',
+    desc: '숨겨진 추가 비용 없이 처음 제시한 견적 그대로 시공합니다. 합리적이고 정직한 가격을 약속드립니다.',
+  },
+  {
+    icon: Sparkles,
+    color: 'bg-accent-500',
+    title: '고객 맞춤 설계',
+    desc: '획일적인 시공이 아닌, 고객의 생활 방식과 취향을 반영한 공간을 함께 만들어갑니다.',
+  },
+];
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* 왼쪽 컬럼 */}
-            <div className="space-y-4">
-              <InfoRow
-                label="대표자"
-                value="이존경"
-                icon={<RiUser3Line className="w-5 h-5 text-gray-700" />}
-              />
-              <InfoRow
-                label="산업"
-                value="생활용품·소비재·기타"
-                icon={<RiBook3Line className="w-5 h-5 text-gray-700" />}
-              />
-              <InfoRow
-                label="기업구분"
-                value="중소기업"
-                icon={<RiBook3Line className="w-5 h-5 text-gray-700" />}
-              />
-              <InfoRow
-                label="설립일"
-                value="2012년 (2018년 4월 법인전환)"
-                icon={<RiCalendarLine className="w-5 h-5 text-gray-700" />}
-              />
-            </div>
-            {/* 오른쪽 컬럼 */}
-            <div className="space-y-4">
-              <InfoRow
-                label="사원수"
-                value="7명"
-                icon={<RiTeamLine className="w-5 h-5 text-gray-700" />}
-              />
-              <InfoRow
-                label="4대보험"
-                value="국민연금, 건강보험, 고용보험, 산재보험"
-                icon={<RiShieldUserLine className="w-5 h-5 text-gray-700" />}
-              />
-              <InfoRow
-                label="홈페이지"
-                value="bluehousing.co.kr"
-                href="https://bluehousing.co.kr"
-                isLink
-                icon={<RiGlobalLine className="w-5 h-5 text-gray-700" />}
-              />
-              <InfoRow
-                label="주소"
-                value="서울 서대문구 충정로9길 15 (충정로2가) 라인빌딩 1층 (건물 주차장 옆 계단 2층)"
-                icon={<RiMapPin2Line className="w-5 h-5 text-gray-700" />}
-              />
-            </div>
+const INFO = [
+  { icon: RiUser3Line, label: '대표자', value: company.owner },
+  { icon: RiCalendarLine, label: '설립', value: '2012년 (2018년 법인전환)' },
+  { icon: RiPhoneLine, label: '대표번호', value: company.phone.display, href: `tel:${company.phone.raw}` },
+  { icon: RiMapPin2Line, label: '주소', value: company.roadAddress },
+  { icon: RiGlobalLine, label: '홈페이지', value: 'bluehousing.co.kr', href: 'https://bluehousing.co.kr' },
+];
+
+const About = () => (
+  <div className="bg-white">
+    <Helmet>
+      <title>기업소개 | 블루하우징</title>
+      <meta name="description" content="30년 경력 마이스터가 직접 시공하는 블루하우징. 하청 없는 책임 시공, 투명한 견적, 완벽한 A/S로 고객의 공간을 완성합니다." />
+    </Helmet>
+
+    <PageHero
+      image={banner1}
+      english="About Us"
+      title="기업소개"
+      subtitle="30년 경력 마이스터가 직접 책임지는 종합 인테리어 전문기업"
+    />
+
+    {/* ===== 마이스터 소개 ===== */}
+    <section className="py-20 md:py-28 bg-white">
+      <div className="container-content">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+          {/* 왼쪽: 텍스트 */}
+          <div>
+            <span className="inline-flex items-center gap-2 text-accent-600 text-xs font-bold uppercase tracking-widest">
+              <Trophy className="w-4 h-4" /> Master Craftsman
+            </span>
+            <h2 className="mt-4 text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tightish">
+              30년의 현장 경험,<br />직접 책임지는 시공
+            </h2>
+            <p className="mt-6 text-ink-soft text-lg leading-relaxed">
+              블루하우징 대표 <strong className="text-ink">이존경</strong>은 욕실·인테리어 분야에서
+              30년 이상 현장을 진두지휘해온 마이스터입니다. 대형 업체의 하청 구조 없이,
+              대표가 직접 설계부터 마감까지 현장을 관리합니다.
+            </p>
+            <ul className="mt-8 space-y-3">
+              {CREDENTIALS.map((c) => (
+                <li key={c} className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-brand-600">
+                    <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                  </span>
+                  <span className="text-ink-soft text-[15px] leading-relaxed">{c}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
 
-      {/* 회사 소개 / 비전 */}
-      <section className="py-12 border-b bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
-            <RiLightbulbLine className="w-6 h-6 mr-2 text-gray-800" />
-            회사 소개 & 비전
-          </h2>
-          <p className="text-gray-700 leading-relaxed">
-            블루하우징은 욕실용품, 실내장식, 조립식욕실,
-            무역(수출입), 건축자재 연구개발 등 다양한 사업을 전개하고 있는
-            인테리어 전문기업이다. 설립 이후 꾸준한 성장과 함께 고객만족을
-            최우선으로 하는 시공 서비스를 제공하고 있다.
-          </p>
-          <p className="mt-4 text-gray-700 leading-relaxed">
-            한발 앞선 시장 분석과 엄격한 품질관리 시스템을 토대로 국내외
-            여러 기업과 협력 관계를 확장하며, 혁신적인 건축 자재 개발과
-            고객 맞춤형 공간 솔루션을 제안하고 있다.
-          </p>
-        </div>
-      </section>
-
-      {/* 회사 사무실 이미지 자리 - ab1, ab2 섹션 */}
-      <section className="py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* ab1 */}
-            <div className="w-full h-[700px] bg-gray-100 overflow-hidden">
-              <img
-                src={ab1}
-                alt="회사 사무실 이미지 1"
-                className="object-cover w-full h-full"
-              />
-            </div>
-            {/* ab2 */}
-            <div className="w-full h-[700px] bg-gray-100 overflow-hidden">
-              <img
-                src={ab2}
-                alt="회사 사무실 이미지 2"
-                className="object-cover w-full h-full"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 주요 사업영역 */}
-      <section className="py-12 border-b">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-            <RiToolsLine className="w-6 h-6 mr-2 text-gray-800" />
-            주요 사업영역
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <BusinessArea
-              title="욕실용품 / 조립식욕실"
-              icon={<RiBuilding4Line className="w-6 h-6 text-gray-800" />}
-              description="욕실용품 연구개발 및 조립식욕실 시공으로 편의성과 높은 완성도를 갖춘 욕실 공간을 제공합니다."
-            />
-            <BusinessArea
-              title="실내장식"
-              icon={<RiBuilding4Line className="w-6 h-6 text-gray-800" />}
-              description="다양한 주거공간과 상업공간의 인테리어를 합리적인 비용과 섬세한 디자인 완성도로 제안합니다."
-            />
-            <BusinessArea
-              title="무역(수출입)"
-              icon={<RiExchangeLine className="w-6 h-6 text-gray-800" />}
-              description="욕실 자재와 건축 자재의 해외 수출입을 통해 글로벌 비즈니스 영역을 지속 확장하고 있습니다."
-            />
-            <BusinessArea
-              title="건축자재 연구개발"
-              icon={<RiToolsLine className="w-6 h-6 text-gray-800" />}
-              description="친환경성과 내구성을 갖춘 건축자재를 연구·개발하여 건설 현장에 보급하고 있습니다."
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* 복리후생 */}
-      <section className="py-12 border-b bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
-            <RiHandHeartLine className="w-6 h-6 mr-2 text-gray-800" />
-            복리후생
-          </h2>
-          <ul className="list-disc list-inside text-gray-700 space-y-2 mt-2">
-            <li>4대 보험 및 퇴직연금 가입</li>
-            <li>직무교육 및 어학수강료 지원을 통한 자기계발 장려</li>
-            <li>명절, 경조사비 지원 및 사내 대출 프로그램 운영</li>
-            <li>업무 효율 증진을 위한 휴게공간, 카페테리아 운영</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* 찾아오시는 길 */}
-      <section className="py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-            <RiMapPin2Fill className="w-6 h-6 mr-2 text-gray-800" />
-            찾아오시는 길
-          </h2>
-          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-12">
-            <div className="flex-1 space-y-2">
-              <div className="flex items-center space-x-2">
-                <RiMapPin2Fill className="w-5 h-5 text-gray-800" />
-                <span className="font-medium text-gray-800">본사 위치</span>
+          {/* 오른쪽: 스탯 카드 2×2 */}
+          <div className="grid grid-cols-2 gap-4">
+            {STATS.map((s) => (
+              <div
+                key={s.label}
+                className="rounded-2xl bg-brand-50 border border-brand-100 p-7 text-center"
+              >
+                <div className="text-4xl md:text-5xl font-bold text-brand-700 tracking-tightish">
+                  {s.num}
+                </div>
+                <div className="mt-2 text-sm text-ink-muted font-medium">{s.label}</div>
               </div>
-              <p className="text-gray-700">
-                서울 서대문구 충정로9길 15 (충정로2가) 라인빌딩 1층
-                (건물 주차장 옆 계단 2층)
-              </p>
-            </div>
-            <div className="flex-1 space-y-2">
-              <div className="flex items-center space-x-2">
-                <RiPhoneLine className="w-5 h-5 text-gray-800" />
-                <span className="font-medium text-gray-800">대표번호</span>
-              </div>
-              <p className="text-gray-700">02-393-9759</p>
-            </div>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+
+    {/* ===== 언론 보도 배지 ===== */}
+    <div className="border-y border-ink/8 bg-gray-50 py-6">
+      <div className="container-content flex flex-wrap items-center justify-center gap-3 md:gap-5">
+        <span className="text-xs font-semibold uppercase tracking-widest text-ink-muted mr-2 hidden sm:block">
+          언론 보도
+        </span>
+        {['MBC 뉴스', '조선일보', '랜드하우스', '업계 전문지'].map((media) => (
+          <span
+            key={media}
+            className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white px-4 py-1.5 text-sm font-semibold text-ink-soft shadow-soft"
+          >
+            <Newspaper className="w-3.5 h-3.5 text-accent-500" />
+            {media}
+          </span>
+        ))}
+      </div>
     </div>
-  );
-};
+
+    {/* ===== 시공 현장 이미지 ===== */}
+    <section className="py-16 md:py-20 bg-white">
+      <div className="container-content grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <div className="overflow-hidden rounded-2xl aspect-[4/3] bg-ink/5">
+          <img src={ab1} alt="블루하우징 쇼룸" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+        </div>
+        <div className="overflow-hidden rounded-2xl aspect-[4/3] bg-ink/5">
+          <img src={ab2} alt="블루하우징 시공 현장" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+        </div>
+      </div>
+    </section>
+
+    {/* ===== 블루하우징이 다른 이유 ===== */}
+    <section className="py-16 md:py-24 bg-brand-950">
+      <div className="container-content">
+        <div className="text-center mb-14">
+          <span className="text-xs font-semibold uppercase tracking-widest text-accent-400">Our Values</span>
+          <h2 className="mt-3 text-2xl md:text-3xl font-bold text-white">블루하우징이 다른 이유</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {VALUES.map(({ icon: Icon, color, title, desc }) => (
+            <div
+              key={title}
+              className="group rounded-2xl bg-white/5 border border-white/10 p-7 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className={`flex h-14 w-14 items-center justify-center rounded-2xl ${color} mb-6 shadow-card group-hover:scale-110 transition-transform duration-300`}>
+                <Icon className="w-7 h-7 text-white" strokeWidth={1.5} />
+              </div>
+              <h3 className="text-base font-bold text-white mb-2">{title}</h3>
+              <p className="text-sm text-white/60 leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ===== 회사 정보 ===== */}
+    <section className="py-16 md:py-20 bg-white">
+      <div className="container-content">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-xl font-bold text-ink mb-8 text-center">회사 정보</h2>
+          <div className="rounded-2xl border border-ink/8 overflow-hidden divide-y divide-ink/8">
+            {INFO.map(({ icon: Icon, label, value, href }) => (
+              <div key={label} className="flex items-center gap-4 px-6 py-4 hover:bg-gray-50 transition-colors">
+                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-brand-50">
+                  <Icon className="w-4 h-4 text-brand-600" />
+                </div>
+                <span className="w-20 text-sm font-semibold text-ink-muted flex-shrink-0">{label}</span>
+                {href ? (
+                  <a
+                    href={href}
+                    target={href.startsWith('http') ? '_blank' : undefined}
+                    rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="text-sm text-brand-700 hover:underline break-all"
+                  >
+                    {value}
+                  </a>
+                ) : (
+                  <span className="text-sm text-ink-soft break-all">{value}</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ===== CTA ===== */}
+    <section className="bg-brand-900 py-16 md:py-20">
+      <div className="container-content text-center">
+        <p className="text-accent-300 text-sm font-semibold uppercase tracking-widest mb-3">Free Estimate</p>
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          30년 경력 마이스터에게 직접 상담받으세요
+        </h2>
+        <p className="text-white/70 mb-8 max-w-md mx-auto">
+          현장 방문 견적부터 시공까지, 처음부터 끝까지 함께합니다.
+        </p>
+        <Link
+          to="/estimate"
+          className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-3.5 text-base font-semibold text-white shadow-card-hover transition-all hover:bg-accent-600 hover:scale-[1.03]"
+        >
+          무료 견적 받기 <FiArrowRight />
+        </Link>
+      </div>
+    </section>
+  </div>
+);
 
 export default About;
-
-/* ---------------------------
-   재사용 컴포넌트들
----------------------------- */
-
-/**
- * InfoRow 컴포넌트
- * - label: 항목명
- * - value: 항목 값
- * - icon: react-icons 등에서 가져온 아이콘 요소
- * - isLink: 항목이 링크 여부 (기본값 false)
- */
-const InfoRow = ({ label, value, icon, isLink = false, href }) => {
-  return (
-    <div className="flex items-center space-x-4 mb-3">
-      {icon && (
-        <span className="hover:scale-110 transition-transform ease-out duration-200">
-          {icon}
-        </span>
-      )}
-      <span className="font-semibold text-gray-900 w-28">{label}</span>
-      {isLink ? (
-        <a
-          href={href || value}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline break-words"
-        >
-          {value}
-        </a>
-      ) : (
-        <span className="text-gray-700 break-words">{value}</span>
-      )}
-    </div>
-  );
-};
-
-/**
- * BusinessArea 컴포넌트
- * - title: 사업 영역 제목
- * - icon: react-icons 등에서 가져온 아이콘 요소
- * - description: 사업 영역 설명
- */
-const BusinessArea = ({ title, icon, description }) => {
-  return (
-    <div className="bg-white rounded-lg p-6 shadow hover:shadow-lg transition-shadow duration-300">
-      <div className="flex items-center mb-2 space-x-2">
-        {icon && (
-          <span className="hover:scale-110 transition-transform ease-out duration-200">
-            {icon}
-          </span>
-        )}
-        <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
-      </div>
-      <p className="text-gray-700 leading-relaxed">
-        {description}
-      </p>
-    </div>
-  );
-};

@@ -87,7 +87,7 @@ module.exports = {
         },
         'kenburns': {
           '0%': { transform: 'scale(1)' },
-          '100%': { transform: 'scale(1.08)' },
+          '100%': { transform: 'scale(1.03)' },
         },
         'shimmer': {
           '100%': { transform: 'translateX(100%)' },

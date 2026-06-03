@@ -1,14 +1,13 @@
 // src/pages/Gallery.js
 import React, { useState, useCallback, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { FiZoomIn } from 'react-icons/fi';
+import { FiZoomIn, FiArrowRight } from 'react-icons/fi';
 import Modal from '../components/Modal';
-import ImageSlider from '../components/ImageSlider';
 import PageHero from '../components/PageHero';
+// ImageSlider 제거됨 — 슬라이더 섹션 없음
 import SectionHeading from '../components/SectionHeading';
-import BeforeAfterCompare from '../components/BeforeAfterCompare';
 import { galleryImg } from '../data/galleryImages';
-import { beforeAfterProjects } from '../data/galleryBeforeAfter';
 import bannerGallery from '../assets/images/slide2.webp';
 
 const makeGroup = (title, names) => ({
@@ -72,32 +71,6 @@ const Gallery = () => {
   const gridColsClass = (columns) =>
     columns === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
 
-  const renderBeforeAfterSection = (project, sectionIndex) => (
-    <section
-      key={project.id}
-      className={`py-14 md:py-20 ${
-        sectionIndex % 2 === 0 ? 'bg-white' : 'bg-gradient-to-b from-slate-50/80 to-white'
-      }`}
-    >
-      <div className="container-content">
-        <SectionHeading title={project.title} english="Before & After" />
-        <p className="-mt-4 mb-8 text-sm text-ink-muted text-center md:text-left">
-          슬라이더를 좌우로 드래그해 시공 전·후를 비교해 보세요.
-        </p>
-        <div className="grid gap-8 md:gap-10 grid-cols-1 lg:grid-cols-2">
-          {project.pairs.map((pair) => (
-            <BeforeAfterCompare
-              key={`${project.id}-${pair.label}`}
-              before={pair.before}
-              after={pair.after}
-              label={pair.label}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-
   const renderGridSection = (group, columns, sectionIndex) => (
     <section
       key={group.title}
@@ -137,40 +110,14 @@ const Gallery = () => {
     </section>
   );
 
-  const renderSliderSection = (group, sectionIndex) => (
-    <section
-      key={group.title}
-      className={`py-14 md:py-20 ${
-        sectionIndex % 2 === 0 ? 'bg-white' : 'bg-gradient-to-b from-slate-50/80 to-white'
-      }`}
-    >
-      <div className="container-content">
-        <SectionHeading title={group.title} english="Portfolio" />
-        <div className="overflow-hidden rounded-2xl shadow-card ring-1 ring-ink/5">
-          <ImageSlider
-            images={group.images.map((item) => item.src)}
-            imageAlts={group.images.map((item) => item.caption)}
-            interval={4500}
-            heightClass="h-[300px] md:h-[480px]"
-            overlayGradient
-          />
-        </div>
-      </div>
-    </section>
-  );
-
-  // 시공 전/후 프로젝트는 beforeAfterProjects, 나머지는 일반 갤러리
   const sections = [
-    { type: 'grid', group: groupA, layout: 2 },
-    { type: 'grid', group: groupB, layout: 3 },
-    { type: 'slider', group: groupC },
-    { type: 'beforeAfter', project: beforeAfterProjects[0] },
-    { type: 'grid', group: groupE, layout: 3 },
-    { type: 'beforeAfter', project: beforeAfterProjects[1] },
-    { type: 'beforeAfter', project: beforeAfterProjects[2] },
-    { type: 'grid', group: groupH1, layout: 3 },
-    { type: 'grid', group: groupH2, layout: 2 },
-    { type: 'grid', group: groupI, layout: 3 },
+    { group: groupA, layout: 2 },
+    { group: groupB, layout: 3 },
+    { group: groupC, layout: 3 },
+    { group: groupE, layout: 3 },
+    { group: groupH1, layout: 3 },
+    { group: groupH2, layout: 2 },
+    { group: groupI, layout: 3 },
   ];
 
   return (
@@ -191,15 +138,9 @@ const Gallery = () => {
         height="lg"
       />
 
-      {sections.map((section, index) => {
-        if (section.type === 'beforeAfter') {
-          return renderBeforeAfterSection(section.project, index);
-        }
-        if (section.type === 'slider') {
-          return renderSliderSection(section.group, index);
-        }
-        return renderGridSection(section.group, section.layout, index);
-      })}
+      {sections.map((section, index) =>
+        renderGridSection(section.group, section.layout, index)
+      )}
 
       {modalOpen && (
         <Modal
@@ -213,6 +154,25 @@ const Gallery = () => {
           setCurrentIndex={setCurrentIndex}
         />
       )}
+
+      {/* CTA */}
+      <section className="bg-brand-900 py-16 md:py-20">
+        <div className="container-content text-center">
+          <p className="text-accent-300 text-sm font-semibold uppercase tracking-widest mb-3">Free Estimate</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            이런 공간, 우리 집에도 만들고 싶다면?
+          </h2>
+          <p className="text-white/70 mb-8 max-w-md mx-auto">
+            30년 경력 마이스터에게 무료로 상담·견적을 받아보세요.
+          </p>
+          <Link
+            to="/estimate"
+            className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-3.5 text-base font-semibold text-white shadow-card-hover transition-all hover:bg-accent-600 hover:scale-[1.03]"
+          >
+            무료 견적 받기 <FiArrowRight />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

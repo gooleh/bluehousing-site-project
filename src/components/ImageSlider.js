@@ -45,9 +45,7 @@ const ImageSlider = ({
           <img
             src={imgSrc}
             alt={imageAlts?.[index] ?? `블루하우징 인테리어 시공 사례 ${index + 1}`}
-            className={`w-full h-full object-cover ${
-              index === currentIndex ? 'animate-kenburns' : ''
-            }`}
+            className={`w-full h-full object-cover ${index === currentIndex ? 'animate-kenburns' : ''}`}
           />
         </div>
       ))}

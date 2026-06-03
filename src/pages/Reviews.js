@@ -1,7 +1,9 @@
 // src/pages/Reviews.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { RiStarFill, RiDoubleQuotesL } from 'react-icons/ri';
+import { FiArrowRight } from 'react-icons/fi';
 import PageHero from '../components/PageHero';
 import reviews, { maskName } from '../data/reviews';
 import bannerReviews from '../assets/images/slide1.webp';
@@ -35,16 +37,40 @@ const Reviews = () => {
                 ))}
               </div>
               <p className="text-ink-soft text-[15px] leading-relaxed flex-grow">
-                “{review.text}”
+                "{review.text}"
               </p>
-              <div className="mt-5 pt-4 border-t border-ink/10">
-                <span className="font-bold text-ink">{maskName(review.name)}</span>
-                {review.location && (
-                  <span className="block text-xs text-ink-muted mt-0.5">{review.location}</span>
+              <div className="mt-5 pt-4 border-t border-ink/10 flex items-end justify-between gap-2">
+                <div>
+                  <span className="font-bold text-ink">{maskName(review.name)}</span>
+                  {review.location && (
+                    <span className="block text-xs text-ink-muted mt-0.5">{review.location}</span>
+                  )}
+                </div>
+                {review.date && (
+                  <span className="text-xs text-ink-muted shrink-0">{review.date}</span>
                 )}
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-brand-900 py-16 md:py-20">
+        <div className="container-content text-center">
+          <p className="text-accent-300 text-sm font-semibold uppercase tracking-widest mb-3">Free Estimate</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            나도 이렇게 바꾸고 싶다면?
+          </h2>
+          <p className="text-white/70 mb-8 max-w-md mx-auto">
+            30년 경력 마이스터에게 무료로 견적을 받아보세요.
+          </p>
+          <Link
+            to="/estimate"
+            className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-3.5 text-base font-semibold text-white shadow-card-hover transition-all hover:bg-accent-600 hover:scale-[1.03]"
+          >
+            무료 견적 받기 <FiArrowRight />
+          </Link>
         </div>
       </section>
     </div>

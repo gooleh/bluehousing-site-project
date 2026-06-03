@@ -77,8 +77,8 @@ const Header = () => {
               src={logo}
               alt="Blue Housing"
               className={`w-auto transition-all duration-300 ${
-                solid ? 'h-12 md:h-14' : 'h-16 md:h-20'
-              } ${solid ? '' : 'drop-shadow-md'}`}
+                solid ? 'h-16 md:h-20' : 'h-16 md:h-20 brightness-0 invert drop-shadow-sm'
+              }`}
             />
           </Link>
 
@@ -88,7 +88,7 @@ const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`group relative px-3.5 py-2 text-[15px] font-medium transition-colors ${linkColor} ${
+                className={`group relative px-3.5 py-2 text-[17px] font-medium transition-colors ${linkColor} ${
                   isActive(item.path) ? (solid ? 'text-brand-700' : 'text-white') : ''
                 }`}
               >
@@ -150,7 +150,7 @@ const Header = () => {
           }`}
         >
           <div className="flex items-center justify-between px-5 py-4 border-b border-ink/10">
-            <img src={logo} alt="Blue Housing" className="h-10 w-auto" />
+            <img src={logo} alt="Blue Housing" className="h-14 w-auto" />
             <button
               onClick={() => setMobileOpen(false)}
               className="rounded-lg p-2 text-ink hover:bg-ink/5"
