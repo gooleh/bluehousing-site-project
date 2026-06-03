@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# 블루하우징 공식 웹사이트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**주식회사 블루하우징** 의 공식 홈페이지 소스코드입니다.  
+30년 경력 마이스터가 책임 시공하는 종합 인테리어 전문기업.
 
-## Available Scripts
+🌐 **[bluehousing.co.kr](https://bluehousing.co.kr)**
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 기술 스택
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React 19** + Create React App
+- **Tailwind CSS** (커스텀 디자인 토큰)
+- **React Router v7**
+- **GitHub Pages** 정적 배포
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 주요 명령어
 
-### `npm test`
+```bash
+npm start          # 개발 서버 실행 (localhost:3000)
+npm run fetch-blog # 네이버 블로그 RSS 수동 동기화
+npm run build      # 프로덕션 빌드 (빌드 전 RSS 자동 수집)
+npm run deploy     # 빌드 + GitHub Pages 배포
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 배포
 
-### `npm run build`
+`npm run deploy` 한 번으로 빌드와 배포가 동시에 진행됩니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. 네이버 블로그 RSS 수집 → `src/data/blogPosts.json` 갱신
+2. CRA 프로덕션 빌드
+3. `gh-pages` 브랜치에 자동 푸시
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> **참고**: 카카오 지도는 `bluehousing.co.kr` 도메인에 SDK 키가 묶여 있어 localhost에서는 빈 화면으로 표시됩니다.
