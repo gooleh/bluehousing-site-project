@@ -67,7 +67,7 @@ const Header = () => {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${headerBg} ${
-          solid ? 'py-2.5' : 'py-4'
+          solid ? 'py-0' : 'py-0'
         }`}
       >
         <div className="container-content flex items-center justify-between gap-4">

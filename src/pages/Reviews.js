@@ -24,7 +24,11 @@ const Reviews = () => {
       />
 
       <section className="py-14 md:py-20">
-        <div className="container-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="container-content">
+          <p className="text-xs text-ink-muted text-right mb-6">
+            ※ 실제 고객 후기를 바탕으로 재구성한 내용입니다.
+          </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews.map((review, index) => (
             <div
               key={index}
@@ -52,6 +56,7 @@ const Reviews = () => {
               </div>
             </div>
           ))}
+        </div>
         </div>
       </section>
 
