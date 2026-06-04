@@ -94,6 +94,8 @@ npm test           # CRA test runner (watch mode)
 | Suspense 로딩 UI 스피너로 교체 | `src/pages/Home.js` | 2026-06-04 |
 | 서비스워커 clone 버그 수정 + CACHE_VERSION v2 | `public/service-worker.js` | 2026-06-04 |
 | 카카오 SDK 동적 로드로 전환 (parser-blocking 경고 제거) | `src/components/KakaoMap.js`, `public/index.html` | 2026-06-04 |
+| 파비콘 + OG 이미지 로고 교체 | `public/favicon.png`, `public/og-image.png` | 2026-06-05 |
+| 전사 다크모드 적용 (클래스 기반) | `tailwind.config.js`, `src/context/ThemeContext.js`, 전 컴포넌트 | 2026-06-05 |
 
 ### 현재 콘텐츠 현황
 
@@ -128,6 +130,10 @@ npm test           # CRA test runner (watch mode)
 - [ ] 네이버 서치어드바이저 사이트맵 제출
 - [ ] 네이버 스마트플레이스 등록 (지역 검색 노출)
 
+### 다크모드 관련
+- **다크모드**: `src/context/ThemeContext.js` — `localStorage` + `prefers-color-scheme` 기반. `tailwind.config.js`의 `darkMode: 'class'`. 헤더 토글 버튼(☀/🌙)으로 전환.
+- **서비스워커 배포 시**: `CACHE_VERSION` 올릴 것 (`public/service-worker.js`).
+
 ### 디자인
-- [ ] 다크모드 대응 (현재 미지원)
-- [ ] OG 이미지 별도 제작 (`public/og-image.jpg`) — 현재 logo512.png 사용 중
+- [x] 다크모드 대응 — 2026-06-05 완료
+- [x] OG 이미지 — `public/og-image.png` (블루하우징 로고). 더 나은 소셜 카드 이미지 원할 경우 1200×630 교체 가능.
