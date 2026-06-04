@@ -15,12 +15,12 @@ const CREDENTIALS = [
   '하청 없는 대표 직접 시공 — 처음부터 끝까지 마이스터가 책임',
   'MBC · 조선일보 · 랜드하우스 · 업계 전문지 4곳 언론 보도',
   '시공 완료 후 무상 A/S 즉시 지원',
-  '2,000건 이상의 욕실·주택 리모델링 실적',
+  '10,000건 이상의 욕실·주택 리모델링 실적',
 ];
 
 const STATS = [
   { num: '30년+', label: '시공 경력' },
-  { num: '2,000+', label: '시공 사례' },
+  { num: '10,000+', label: '시공 사례' },
   { num: '100%', label: '책임 A/S' },
   { num: '4개사', label: '언론 보도' },
 ];
@@ -91,6 +91,10 @@ const About = () => (
               블루하우징 대표 <strong className="text-ink">이존경</strong>은 욕실·인테리어 분야에서
               30년 이상 현장을 진두지휘해온 마이스터입니다. 대형 업체의 하청 구조 없이,
               대표가 직접 설계부터 마감까지 현장을 관리합니다.
+            </p>
+            <p className="mt-4 text-ink-soft text-lg leading-relaxed">
+              LG화학 욕실팀과 한샘 신규 사업팀장으로 욕실사업을 총괄한 전문가로서,
+              업계 최고 수준의 자재 지식과 사업 운영 노하우를 갖추고 있습니다.
             </p>
             <ul className="mt-8 space-y-3">
               {CREDENTIALS.map((c) => (

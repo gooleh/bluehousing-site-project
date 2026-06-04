@@ -102,7 +102,7 @@ const Home = () => {
         <div className="container-content grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
           {[
             { num: '30년+', label: '시공 경력' },
-            { num: '2,000+', label: '시공 사례' },
+            { num: '10,000+', label: '시공 사례' },
             { num: '100%', label: '책임 시공 · A/S' },
             { num: '4대', label: '언론 보도' },
           ].map((stat) => (
