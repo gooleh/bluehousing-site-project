@@ -64,7 +64,7 @@ npm test           # CRA test runner (watch mode)
 
 **Estimate form** (`src/pages/Estimate.js`): Submits via EmailJS (`emailjs-com`). Service ID, template ID, and public key are hardcoded in the file.
 
-**Known limitation**: The Kakao Maps SDK key is locked to the `bluehousing.co.kr` domain, so the map (`components/KakaoMap.js`) renders blank on localhost — this is expected, not a bug.
+**Kakao Maps** (`components/KakaoMap.js`): SDK를 `index.html` 전역 로드에서 제거하고, `/location` 페이지 진입 시 `autoload=false` 방식으로 동적 로드. 다른 모든 페이지에서 SDK 불필요하게 로드되던 문제 해결. SDK 키가 `bluehousing.co.kr` 도메인 고정 → localhost에서 지도 빈 화면은 정상.
 
 **Dead code** (deleted in June 2026, recoverable from git if needed): `components/SideToolbar.js`, `sections/CompanyInfo.js`, `sections/CustomerReviews.js`, `sections/InquiryForm.js`, `sections/LocationInfo.js`.
 
@@ -92,6 +92,8 @@ npm test           # CRA test runner (watch mode)
 | 커스텀 404 페이지 | `src/pages/NotFound.js` | 2026-06-04 |
 | PWA (서비스워커 + manifest 정비) | `public/service-worker.js`, `public/manifest.json` | 2026-06-04 |
 | Suspense 로딩 UI 스피너로 교체 | `src/pages/Home.js` | 2026-06-04 |
+| 서비스워커 clone 버그 수정 + CACHE_VERSION v2 | `public/service-worker.js` | 2026-06-04 |
+| 카카오 SDK 동적 로드로 전환 (parser-blocking 경고 제거) | `src/components/KakaoMap.js`, `public/index.html` | 2026-06-04 |
 
 ### 현재 콘텐츠 현황
 
@@ -105,7 +107,7 @@ npm test           # CRA test runner (watch mode)
 
 - **OG 프리렌더링**: `scripts/generate-og-pages.js`가 빌드 시 9개 라우트의 정적 HTML을 생성. 카카오톡 등 SNS 공유 시 페이지별 OG 태그가 올바르게 표시됨.
 - **SPA 라우팅**: `build/404.html` = `build/index.html` 복사본. GitHub Pages가 없는 경로 접근 시 404.html을 서빙하고 React Router가 라우팅 처리.
-- **서비스워커**: `/service-worker.js` — 정적 자산 Cache-First, HTML Network-First 전략. 캐시 버전 업데이트 시 `service-worker.js`의 `CACHE_VERSION` 값을 변경.
+- **서비스워커**: `public/service-worker.js` — 정적 자산 Cache-First, HTML Network-First 전략. 현재 `CACHE_VERSION = 'v2'`. 코드 변경 후 배포 시 버전 숫자를 올려야 기존 캐시가 갱신됨. 브라우저가 구버전 SW를 실행 중이면 탭 닫고 재오픈하면 자동 교체.
 - **로컬 개발 시 카카오 지도**: SDK 키가 `bluehousing.co.kr` 도메인 고정 → localhost에서 지도 빈 화면 정상.
 
 ---
