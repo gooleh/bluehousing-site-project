@@ -35,7 +35,7 @@ const slideAlts = [
 
 const Home = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       <Helmet>
         <title>블루하우징 | 30년 경력 마이스터의 종합 인테리어 전문기업</title>
         <meta name="description" content="블루하우징은 30년 경력 마이스터가 책임 시공하는 종합 인테리어 전문기업입니다. 욕실·주택 리모델링, 실내장식, 건축 컨설팅까지 책임 시공과 A/S를 보장합니다." />
@@ -45,7 +45,7 @@ const Home = () => {
         <meta property="og:title" content="블루하우징 | 30년 경력 마이스터의 종합 인테리어 전문기업" />
         <meta property="og:description" content="욕실·주택 리모델링부터 실내장식, 건축 컨설팅까지. 30년 경력 마이스터가 책임 시공하고 A/S를 보장합니다." />
         <meta property="og:url" content="https://bluehousing.co.kr/" />
-        <meta property="og:image" content="https://bluehousing.co.kr/logo512.png" />
+        <meta property="og:image" content="https://bluehousing.co.kr/og-image.png" />
         <meta property="og:locale" content="ko_KR" />
       </Helmet>
 
@@ -124,7 +124,7 @@ const Home = () => {
 
       <Suspense fallback={
         <div className="flex justify-center items-center py-28">
-          <div className="w-10 h-10 rounded-full border-[3px] border-brand-100 border-t-brand-600 animate-spin" />
+          <div className="w-10 h-10 rounded-full border-[3px] border-brand-100 dark:border-gray-700 border-t-brand-600 dark:border-t-brand-400 animate-spin" />
         </div>
       }>
         <SectionWrapper><WhyUs /></SectionWrapper>

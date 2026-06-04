@@ -109,7 +109,7 @@ const ShowroomDetail = () => {
   }, [modalOpen, prevImage, nextImage, closeModal]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       <Helmet>
         <title>블루하우징 전시장 상세페이지 | 30년 경력 인테리어 전문기업</title>
         <meta

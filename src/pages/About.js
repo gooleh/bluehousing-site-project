@@ -61,7 +61,7 @@ const INFO = [
 ];
 
 const About = () => (
-  <div className="bg-white">
+  <div className="bg-white dark:bg-gray-900">
     <Helmet>
       <title>기업소개 | 블루하우징</title>
       <meta name="description" content="30년 경력 마이스터가 직접 시공하는 블루하우징. 하청 없는 책임 시공, 투명한 견적, 완벽한 A/S로 고객의 공간을 완성합니다." />
@@ -71,7 +71,7 @@ const About = () => (
       <meta property="og:title" content="기업소개 | 블루하우징" />
       <meta property="og:description" content="30년 경력 마이스터가 직접 시공하는 블루하우징. 하청 없는 책임 시공, 투명한 견적, 완벽한 A/S로 고객의 공간을 완성합니다." />
       <meta property="og:url" content="https://bluehousing.co.kr/about" />
-      <meta property="og:image" content="https://bluehousing.co.kr/logo512.png" />
+      <meta property="og:image" content="https://bluehousing.co.kr/og-image.png" />
       <meta property="og:locale" content="ko_KR" />
     </Helmet>
 
@@ -83,7 +83,7 @@ const About = () => (
     />
 
     {/* ===== 마이스터 소개 ===== */}
-    <section className="py-20 md:py-28 bg-white">
+    <section className="py-20 md:py-28 bg-white dark:bg-gray-900">
       <div className="container-content">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -92,15 +92,15 @@ const About = () => (
             <span className="inline-flex items-center gap-2 text-accent-600 text-xs font-bold uppercase tracking-widest">
               <Trophy className="w-4 h-4" /> Master Craftsman
             </span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tightish">
+            <h2 className="mt-4 text-4xl md:text-5xl font-bold text-ink dark:text-gray-100 leading-tight tracking-tightish">
               30년의 현장 경험,<br />직접 책임지는 시공
             </h2>
-            <p className="mt-6 text-ink-soft text-lg leading-relaxed">
-              블루하우징 대표 <strong className="text-ink">이존경</strong>은 욕실·인테리어 분야에서
+            <p className="mt-6 text-ink-soft dark:text-gray-300 text-lg leading-relaxed">
+              블루하우징 대표 <strong className="text-ink dark:text-gray-100">이존경</strong>은 욕실·인테리어 분야에서
               30년 이상 현장을 진두지휘해온 마이스터입니다. 대형 업체의 하청 구조 없이,
               대표가 직접 설계부터 마감까지 현장을 관리합니다.
             </p>
-            <p className="mt-4 text-ink-soft text-lg leading-relaxed">
+            <p className="mt-4 text-ink-soft dark:text-gray-300 text-lg leading-relaxed">
               LG화학 욕실팀과 한샘 신규 사업팀장으로 욕실사업을 총괄한 전문가로서,
               업계 최고 수준의 자재 지식과 사업 운영 노하우를 갖추고 있습니다.
             </p>
@@ -110,7 +110,7 @@ const About = () => (
                   <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-brand-600">
                     <Check className="w-3 h-3 text-white" strokeWidth={3} />
                   </span>
-                  <span className="text-ink-soft text-[15px] leading-relaxed">{c}</span>
+                  <span className="text-ink-soft dark:text-gray-300 text-[15px] leading-relaxed">{c}</span>
                 </li>
               ))}
             </ul>
@@ -121,12 +121,12 @@ const About = () => (
             {STATS.map((s) => (
               <div
                 key={s.label}
-                className="rounded-2xl bg-brand-50 border border-brand-100 p-7 text-center"
+                className="rounded-2xl bg-brand-50 dark:bg-brand-900/20 border border-brand-100 dark:border-brand-800 p-7 text-center"
               >
-                <div className="text-4xl md:text-5xl font-bold text-brand-700 tracking-tightish">
+                <div className="text-4xl md:text-5xl font-bold text-brand-700 dark:text-brand-300 tracking-tightish">
                   {s.num}
                 </div>
-                <div className="mt-2 text-sm text-ink-muted font-medium">{s.label}</div>
+                <div className="mt-2 text-sm text-ink-muted dark:text-gray-400 font-medium">{s.label}</div>
               </div>
             ))}
           </div>
@@ -135,15 +135,15 @@ const About = () => (
     </section>
 
     {/* ===== 언론 보도 배지 ===== */}
-    <div className="border-y border-ink/8 bg-gray-50 py-6">
+    <div className="border-y border-ink/8 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 py-6">
       <div className="container-content flex flex-wrap items-center justify-center gap-3 md:gap-5">
-        <span className="text-xs font-semibold uppercase tracking-widest text-ink-muted mr-2 hidden sm:block">
+        <span className="text-xs font-semibold uppercase tracking-widest text-ink-muted dark:text-gray-400 mr-2 hidden sm:block">
           언론 보도
         </span>
         {['MBC 뉴스', '조선일보', '랜드하우스', '업계 전문지'].map((media) => (
           <span
             key={media}
-            className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white px-4 py-1.5 text-sm font-semibold text-ink-soft shadow-soft"
+            className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-1.5 text-sm font-semibold text-ink-soft dark:text-gray-300 shadow-soft"
           >
             <Newspaper className="w-3.5 h-3.5 text-accent-500" />
             {media}
@@ -153,7 +153,7 @@ const About = () => (
     </div>
 
     {/* ===== 시공 현장 이미지 ===== */}
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-16 md:py-20 bg-white dark:bg-gray-900">
       <div className="container-content grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         <div className="overflow-hidden rounded-2xl aspect-[4/3] bg-ink/5">
           <img src={ab1} alt="블루하우징 쇼룸 전시장 내부" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
@@ -189,17 +189,17 @@ const About = () => (
     </section>
 
     {/* ===== 회사 정보 ===== */}
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-16 md:py-20 bg-white dark:bg-gray-900">
       <div className="container-content">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-xl font-bold text-ink mb-8 text-center">회사 정보</h2>
-          <div className="rounded-2xl border border-ink/8 overflow-hidden divide-y divide-ink/8">
+          <h2 className="text-xl font-bold text-ink dark:text-gray-100 mb-8 text-center">회사 정보</h2>
+          <div className="rounded-2xl border border-ink/8 dark:border-gray-700 overflow-hidden divide-y divide-ink/8 dark:divide-gray-700">
             {INFO.map(({ icon: Icon, label, value, href }) => (
-              <div key={label} className="flex items-center gap-4 px-6 py-4 hover:bg-gray-50 transition-colors">
-                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-brand-50">
+              <div key={label} className="flex items-center gap-4 px-6 py-4 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-brand-50 dark:bg-brand-900/30">
                   <Icon className="w-4 h-4 text-brand-600" />
                 </div>
-                <span className="w-20 text-sm font-semibold text-ink-muted flex-shrink-0">{label}</span>
+                <span className="w-20 text-sm font-semibold text-ink-muted dark:text-gray-400 flex-shrink-0">{label}</span>
                 {href ? (
                   <a
                     href={href}
@@ -210,7 +210,7 @@ const About = () => (
                     {value}
                   </a>
                 ) : (
-                  <span className="text-sm text-ink-soft break-all">{value}</span>
+                  <span className="text-sm text-ink-soft dark:text-gray-300 break-all">{value}</span>
                 )}
               </div>
             ))}

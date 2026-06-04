@@ -76,7 +76,7 @@ const QuickContact = () => {
         <button
           onClick={scrollToTop}
           aria-label="맨 위로"
-          className={`flex h-12 w-12 items-center justify-center rounded-full bg-white text-ink-soft ring-1 ring-ink/10 shadow-card transition-all hover:bg-ink hover:text-white ${
+          className={`flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-gray-800 text-ink-soft dark:text-gray-300 ring-1 ring-ink/10 dark:ring-gray-600 shadow-card transition-all hover:bg-ink hover:text-white ${
             showTop ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
@@ -85,11 +85,11 @@ const QuickContact = () => {
       </div>
 
       {/* ===== 모바일: 하단 고정 액션바 ===== */}
-      <div className="md:hidden fixed inset-x-0 bottom-0 z-40 grid grid-cols-4 bg-white/95 backdrop-blur-md border-t border-ink/10 shadow-[0_-4px_20px_-8px_rgba(16,28,51,0.25)]">
+      <div className="md:hidden fixed inset-x-0 bottom-0 z-40 grid grid-cols-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-ink/10 dark:border-gray-700 shadow-[0_-4px_20px_-8px_rgba(16,28,51,0.25)]">
         <a
           href={`tel:${company.phone.raw}`}
           onClick={() => trackCall('mobile_bar')}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-ink-soft active:bg-ink/5"
+          className="flex flex-col items-center justify-center gap-1 py-2.5 text-ink-soft dark:text-gray-300 active:bg-ink/5 dark:active:bg-white/5"
         >
           <FiPhone className="text-xl text-brand-600" />
           <span className="text-xs font-medium">전화 상담</span>
@@ -97,7 +97,7 @@ const QuickContact = () => {
         <Link
           to="/estimate"
           onClick={() => trackEstimateClick('mobile_bar')}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-ink-soft active:bg-ink/5 border-x border-ink/10"
+          className="flex flex-col items-center justify-center gap-1 py-2.5 text-ink-soft dark:text-gray-300 active:bg-ink/5 dark:active:bg-white/5 border-x border-ink/10 dark:border-gray-700"
         >
           <FiEdit3 className="text-xl text-accent-500" />
           <span className="text-xs font-medium">견적 문의</span>
@@ -106,7 +106,7 @@ const QuickContact = () => {
           href={company.sns.talkTalk}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-ink-soft active:bg-ink/5 border-r border-ink/10"
+          className="flex flex-col items-center justify-center gap-1 py-2.5 text-ink-soft dark:text-gray-300 active:bg-ink/5 dark:active:bg-white/5 border-r border-ink/10 dark:border-gray-700"
         >
           <FiMessageSquare className="text-xl text-[#03c75a]" />
           <span className="text-xs font-medium">톡톡 상담</span>
@@ -115,7 +115,7 @@ const QuickContact = () => {
           href={company.sns.naverBlog}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-ink-soft active:bg-ink/5"
+          className="flex flex-col items-center justify-center gap-1 py-2.5 text-ink-soft dark:text-gray-300 active:bg-ink/5 dark:active:bg-white/5"
         >
           <SiNaver className="text-lg text-[#03c75a]" />
           <span className="text-xs font-medium">블로그</span>

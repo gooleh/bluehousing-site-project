@@ -16,7 +16,7 @@ const mediaArticles = [
 ];
 
 const MediaCoverage = () => (
-  <section className="py-16 md:py-20 bg-gray-50">
+  <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-800">
     <div className="container-content">
       <SectionHeading title="언론 속의 블루하우징" english="In the News" />
 

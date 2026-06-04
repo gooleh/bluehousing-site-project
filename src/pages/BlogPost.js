@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi';
 import blogPosts, { blogMeta } from '../data/blogPosts';
 
-const FALLBACK_IMAGE = `${process.env.PUBLIC_URL}/logo512.png`;
+const FALLBACK_IMAGE = `${process.env.PUBLIC_URL}/logo.png`;
 
 const formatDate = (pubDate) => {
   if (!pubDate) return '';
@@ -31,7 +31,7 @@ const BlogPost = () => {
   }
 
   return (
-    <article className="bg-gray-50 min-h-screen">
+    <article className="bg-gray-50 dark:bg-gray-900 min-h-screen">
       <Helmet>
         <title>{post.title} | 블루하우징 블로그</title>
         <meta name="description" content={post.description.slice(0, 160)} />
@@ -70,11 +70,11 @@ const BlogPost = () => {
 
       <div className="container-content py-10 md:py-14">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-card ring-1 ring-ink/5 p-6 md:p-10">
-            <p className="text-ink-soft text-base md:text-lg leading-relaxed whitespace-pre-line">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-card ring-1 ring-ink/5 dark:ring-gray-700 p-6 md:p-10">
+            <p className="text-ink-soft dark:text-gray-300 text-base md:text-lg leading-relaxed whitespace-pre-line">
               {post.description}
             </p>
-            <p className="mt-6 text-sm text-ink-muted border-t border-ink/10 pt-6">
+            <p className="mt-6 text-sm text-ink-muted dark:text-gray-400 border-t border-ink/10 dark:border-gray-700 pt-6">
               네이버 블로그 RSS에서 가져온 요약입니다. 사진·본문 전체는 네이버 블로그에서 확인하실 수
               있습니다.
             </p>

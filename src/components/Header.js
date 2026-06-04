@@ -1,10 +1,11 @@
 // src/components/Header.js
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FiPhone, FiMenu, FiX } from 'react-icons/fi';
+import { FiPhone, FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
 import logo from '../assets/images/logo.png';
 import company from '../data/company';
 import { trackCall } from '../utils/analytics';
+import { useTheme } from '../context/ThemeContext';
 
 const NAV_ITEMS = [
   { path: '/', label: '홈', en: 'Home' },
@@ -27,6 +28,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { dark, toggle } = useTheme();
 
   // 홈에서만 히어로 위 투명 헤더를 사용하고, 그 외 페이지는 항상 솔리드.
   const isHome = location.pathname === '/';
@@ -57,19 +59,17 @@ const Header = () => {
     path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
 
   const headerBg = solid
-    ? 'bg-white/90 backdrop-blur-md shadow-header'
+    ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-header'
     : 'bg-gradient-to-b from-black/35 to-transparent';
 
   const linkColor = solid
-    ? 'text-ink-soft hover:text-brand-600'
+    ? 'text-ink-soft hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-400'
     : 'text-white/90 hover:text-white';
 
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${headerBg} ${
-          solid ? 'py-0' : 'py-0'
-        }`}
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${headerBg}`}
       >
         <div className="container-content flex items-center justify-between gap-4">
           {/* 로고 */}
@@ -78,7 +78,9 @@ const Header = () => {
               src={logo}
               alt="Blue Housing"
               className={`w-auto transition-all duration-300 ${
-                solid ? 'h-16 md:h-20' : 'h-16 md:h-20 brightness-0 invert drop-shadow-sm'
+                solid
+                  ? 'h-16 md:h-20 dark:brightness-0 dark:invert dark:drop-shadow-sm'
+                  : 'h-16 md:h-20 brightness-0 invert drop-shadow-sm'
               }`}
             />
           </Link>
@@ -90,7 +92,11 @@ const Header = () => {
                 key={item.path}
                 to={item.path}
                 className={`group relative px-3.5 py-2 text-[17px] font-medium transition-colors ${linkColor} ${
-                  isActive(item.path) ? (solid ? 'text-brand-700' : 'text-white') : ''
+                  isActive(item.path)
+                    ? solid
+                      ? 'text-brand-700 dark:text-brand-300'
+                      : 'text-white'
+                    : ''
                 }`}
               >
                 {item.label}
@@ -122,11 +128,26 @@ const Header = () => {
               {company.phone.display}
             </a>
 
+            {/* 다크모드 토글 */}
+            <button
+              onClick={toggle}
+              aria-label={dark ? '라이트 모드로 전환' : '다크 모드로 전환'}
+              className={`inline-flex items-center justify-center rounded-lg p-2 transition-colors ${
+                solid
+                  ? 'text-ink hover:bg-ink/5 dark:text-gray-300 dark:hover:bg-white/10'
+                  : 'text-white hover:bg-white/15'
+              }`}
+            >
+              {dark ? <FiSun className="text-xl" /> : <FiMoon className="text-xl" />}
+            </button>
+
             {/* 모바일 메뉴 토글 */}
             <button
               onClick={() => setMobileOpen(true)}
               className={`lg:hidden inline-flex items-center justify-center rounded-lg p-2 transition-colors ${
-                solid ? 'text-ink hover:bg-ink/5' : 'text-white hover:bg-white/15'
+                solid
+                  ? 'text-ink hover:bg-ink/5 dark:text-gray-300 dark:hover:bg-white/10'
+                  : 'text-white hover:bg-white/15'
               }`}
               aria-label="메뉴 열기"
             >
@@ -147,15 +168,19 @@ const Header = () => {
           onClick={() => setMobileOpen(false)}
         />
         <div
-          className={`absolute top-0 right-0 h-full w-[80%] max-w-xs bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-out-expo ${
+          className={`absolute top-0 right-0 h-full w-[80%] max-w-xs bg-white dark:bg-gray-900 shadow-2xl flex flex-col transition-transform duration-300 ease-out-expo ${
             mobileOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <div className="flex items-center justify-between px-5 py-4 border-b border-ink/10">
-            <img src={logo} alt="Blue Housing" className="h-14 w-auto" />
+          <div className="flex items-center justify-between px-5 py-4 border-b border-ink/10 dark:border-gray-700">
+            <img
+              src={logo}
+              alt="Blue Housing"
+              className="h-14 w-auto dark:brightness-0 dark:invert"
+            />
             <button
               onClick={() => setMobileOpen(false)}
-              className="rounded-lg p-2 text-ink hover:bg-ink/5"
+              className="rounded-lg p-2 text-ink hover:bg-ink/5 dark:text-gray-300 dark:hover:bg-white/10"
               aria-label="메뉴 닫기"
             >
               <FiX className="text-2xl" />
@@ -169,18 +194,18 @@ const Header = () => {
                 to={item.path}
                 className={`flex items-baseline justify-between px-6 py-3.5 transition-colors ${
                   isActive(item.path)
-                    ? 'text-brand-700 bg-brand-50 font-semibold'
-                    : 'text-ink-soft hover:bg-ink/5'
+                    ? 'text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-900/30 font-semibold'
+                    : 'text-ink-soft dark:text-gray-300 hover:bg-ink/5 dark:hover:bg-white/5'
                 }`}
               >
                 <span className="text-lg">{item.label}</span>
-                <span className="text-xs uppercase tracking-wider text-ink-muted">
+                <span className="text-xs uppercase tracking-wider text-ink-muted dark:text-gray-500">
                   {item.en}
                 </span>
               </Link>
             ))}
 
-            <div className="mx-6 my-2 border-t border-ink/10" />
+            <div className="mx-6 my-2 border-t border-ink/10 dark:border-gray-700" />
 
             {SECONDARY_ITEMS.map((item) => (
               <Link
@@ -188,19 +213,19 @@ const Header = () => {
                 to={item.path}
                 className={`flex items-baseline justify-between px-6 py-2.5 transition-colors ${
                   isActive(item.path)
-                    ? 'text-brand-700 font-semibold'
-                    : 'text-ink-muted hover:bg-ink/5'
+                    ? 'text-brand-700 dark:text-brand-300 font-semibold'
+                    : 'text-ink-muted dark:text-gray-400 hover:bg-ink/5 dark:hover:bg-white/5'
                 }`}
               >
                 <span>{item.label}</span>
-                <span className="text-xs uppercase tracking-wider text-ink-muted/70">
+                <span className="text-xs uppercase tracking-wider text-ink-muted/70 dark:text-gray-600">
                   {item.en}
                 </span>
               </Link>
             ))}
           </nav>
 
-          <div className="p-5 border-t border-ink/10">
+          <div className="p-5 border-t border-ink/10 dark:border-gray-700">
             <a
               href={`tel:${company.phone.raw}`}
               onClick={() => trackCall('mobile_drawer')}

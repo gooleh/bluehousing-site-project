@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
 import QuickContact from './components/QuickContact';
@@ -32,6 +33,7 @@ const Analytics = () => {
 
 function App() {
   return (
+    <ThemeProvider>
     <HelmetProvider>
       <Router basename="">
         <Analytics />
@@ -66,6 +68,7 @@ function App() {
         <div className="md:hidden h-14" aria-hidden="true" />
       </Router>
     </HelmetProvider>
+    </ThemeProvider>
   );
 }
 

@@ -75,7 +75,7 @@ const Gallery = () => {
     <section
       key={group.title}
       className={`py-14 md:py-20 ${
-        sectionIndex % 2 === 0 ? 'bg-white' : 'bg-gradient-to-b from-slate-50/80 to-white'
+        sectionIndex % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gradient-to-b from-slate-50/80 to-white dark:from-gray-800 dark:to-gray-900'
       }`}
     >
       <div className="container-content">
@@ -121,7 +121,7 @@ const Gallery = () => {
   ];
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white dark:bg-gray-900 min-h-screen">
       <Helmet>
         <title>갤러리 | 블루하우징 시공 사례</title>
         <meta name="description" content="블루하우징의 욕실·주택 리모델링 및 인테리어 시공 사례 갤러리. 시공 전후 비교와 다양한 실제 시공 사진을 확인하세요." />
@@ -131,7 +131,7 @@ const Gallery = () => {
         <meta property="og:title" content="갤러리 | 블루하우징 시공 사례" />
         <meta property="og:description" content="블루하우징의 욕실·주택 리모델링 및 인테리어 시공 사례 갤러리. 시공 전후 비교와 다양한 실제 시공 사진을 확인하세요." />
         <meta property="og:url" content="https://bluehousing.co.kr/gallery" />
-        <meta property="og:image" content="https://bluehousing.co.kr/logo512.png" />
+        <meta property="og:image" content="https://bluehousing.co.kr/og-image.png" />
         <meta property="og:locale" content="ko_KR" />
       </Helmet>
 

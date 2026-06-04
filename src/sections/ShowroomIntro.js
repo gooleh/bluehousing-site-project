@@ -22,7 +22,7 @@ const ShowroomIntro = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-white">
+    <section ref={ref} className="py-16 md:py-24 bg-white dark:bg-gray-900">
       <div className="container-content">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -30,15 +30,15 @@ const ShowroomIntro = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto"
         >
-          <span className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] text-accent-600">
+          <span className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] text-accent-600 dark:text-accent-400">
             BlueHousing Showroom
           </span>
-          <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tightish text-ink">
+          <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tightish text-ink dark:text-gray-100">
             블루하우징 전시장
           </h2>
           <AlternatingText
             className="mt-5"
-            itemClassName="text-ink-soft leading-relaxed"
+            itemClassName="text-ink-soft dark:text-gray-300 leading-relaxed"
             interval={10000}
             items={[
               '30년 경력의 마이스터가 책임 시공하는 종합 인테리어 전문 기업으로, 철저한 책임 시공과 A/S를 보장합니다. 전시장에서 다양한 인테리어 스타일과 최신 트렌드를 직접 확인하실 수 있습니다.',
@@ -76,7 +76,7 @@ const ShowroomIntro = () => {
         <div className="text-center mt-10">
           <Link
             to={showroomDetailLink}
-            className="inline-flex items-center gap-2 rounded-full border-2 border-brand-600 px-7 py-3 text-base font-semibold text-brand-700 transition-all hover:bg-brand-600 hover:text-white"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-brand-600 px-7 py-3 text-base font-semibold text-brand-700 dark:text-brand-300 dark:border-brand-500 transition-all hover:bg-brand-600 hover:text-white dark:hover:bg-brand-700"
           >
             전시장 전체보기 <FiArrowRight />
           </Link>

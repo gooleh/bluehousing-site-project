@@ -8,7 +8,7 @@ import bannerImage from '../assets/images/slide3.webp';
 
 const Blog = () => {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
       <Helmet>
         <title>블로그 | 블루하우징</title>
         <meta
@@ -26,14 +26,14 @@ const Blog = () => {
 
       <div className="container-content py-12 md:py-16">
         <div className="mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-          <p className="text-sm text-ink-muted">
-            총 <span className="font-semibold text-ink">{blogMeta.count}</span>개 글 · 최신순
+          <p className="text-sm text-ink-muted dark:text-gray-400">
+            총 <span className="font-semibold text-ink dark:text-gray-100">{blogMeta.count}</span>개 글 · 최신순
           </p>
           <a
             href={blogMeta.blogUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold text-brand-700 hover:text-brand-800"
+            className="text-sm font-semibold text-brand-700 dark:text-brand-400 hover:text-brand-800 dark:hover:text-brand-300"
           >
             네이버 블로그 바로가기 →
           </a>

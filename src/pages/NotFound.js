@@ -6,7 +6,7 @@ import { FiHome, FiArrowRight } from 'react-icons/fi';
 import company from '../data/company';
 
 const NotFound = () => (
-  <div className="min-h-screen bg-gray-50 flex items-center justify-center px-5 py-24">
+  <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center px-5 py-24">
     <Helmet>
       <title>페이지를 찾을 수 없습니다 | 블루하우징</title>
       <meta name="robots" content="noindex, nofollow" />
@@ -14,15 +14,15 @@ const NotFound = () => (
 
     <div className="text-center max-w-md">
       {/* 숫자 */}
-      <p className="text-[120px] font-black leading-none text-brand-100 select-none">
+      <p className="text-[120px] font-black leading-none text-brand-100 dark:text-gray-700 select-none">
         404
       </p>
 
       {/* 메시지 */}
-      <h1 className="mt-2 text-2xl font-bold text-ink">
+      <h1 className="mt-2 text-2xl font-bold text-ink dark:text-gray-100">
         페이지를 찾을 수 없습니다
       </h1>
-      <p className="mt-3 text-ink-muted leading-relaxed">
+      <p className="mt-3 text-ink-muted dark:text-gray-400 leading-relaxed">
         요청하신 페이지가 존재하지 않거나 이동되었습니다.<br />
         아래 버튼으로 원하시는 곳으로 이동해 보세요.
       </p>
@@ -44,7 +44,7 @@ const NotFound = () => (
       </div>
 
       {/* 전화 안내 */}
-      <p className="mt-8 text-sm text-ink-muted">
+      <p className="mt-8 text-sm text-ink-muted dark:text-gray-400">
         도움이 필요하시면{' '}
         <a
           href={`tel:${company.phone.raw}`}

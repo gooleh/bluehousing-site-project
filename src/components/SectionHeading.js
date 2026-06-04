@@ -22,11 +22,11 @@ const SectionHeading = ({
       >
         <div className={isCenter ? 'space-y-2' : 'space-y-1.5'}>
           {english && (
-            <p className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.28em] text-accent-600">
+            <p className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.28em] text-accent-600 dark:text-accent-400">
               {english}
             </p>
           )}
-          <h2 className="text-2xl md:text-[1.75rem] font-bold tracking-tightish text-ink leading-snug">
+          <h2 className="text-2xl md:text-[1.75rem] font-bold tracking-tightish text-ink dark:text-gray-100 leading-snug">
             {title}
           </h2>
         </div>
@@ -34,7 +34,7 @@ const SectionHeading = ({
         {moreLink && (
           <Link
             to={moreLink}
-            className="group inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-800 transition-colors whitespace-nowrap"
+            className="group inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-800 dark:text-brand-400 dark:hover:text-brand-300 transition-colors whitespace-nowrap"
           >
             {moreLabel}
             <FiArrowUpRight className="text-base transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

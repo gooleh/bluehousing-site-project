@@ -50,8 +50,8 @@ const EstimateRequest = () => {
             className="absolute inset-0 bg-ink/60 backdrop-blur-sm"
             onClick={() => setShowModal(false)}
           />
-          <div className="relative z-10 w-full max-w-md rounded-2xl bg-white p-8 shadow-card-hover">
-            <h3 className="text-xl font-bold mb-6 text-ink text-center">
+          <div className="relative z-10 w-full max-w-md rounded-2xl bg-white dark:bg-gray-800 p-8 shadow-card-hover">
+            <h3 className="text-xl font-bold mb-6 text-ink dark:text-gray-100 text-center">
               원하시는 방법을 선택해 주세요
             </h3>
             <div className="flex flex-col gap-3">
@@ -63,14 +63,14 @@ const EstimateRequest = () => {
               </button>
               <button
                 onClick={handleNavigate}
-                className="flex items-center justify-center gap-2 rounded-xl border-2 border-brand-600 px-5 py-3.5 text-brand-700 font-semibold transition-colors hover:bg-brand-50"
+                className="flex items-center justify-center gap-2 rounded-xl border-2 border-brand-600 px-5 py-3.5 text-brand-700 dark:text-brand-300 font-semibold transition-colors hover:bg-brand-50 dark:hover:bg-brand-900/30"
               >
                 <RiArrowRightUpLine className="text-xl" /> 견적문의 페이지로 이동
               </button>
             </div>
             <button
               onClick={() => setShowModal(false)}
-              className="mt-5 w-full text-center text-sm text-ink-muted hover:text-ink"
+              className="mt-5 w-full text-center text-sm text-ink-muted dark:text-gray-400 hover:text-ink dark:hover:text-gray-200"
             >
               닫기
             </button>

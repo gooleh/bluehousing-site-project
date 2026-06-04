@@ -8,7 +8,7 @@ const SNSLinks = () => {
   const previewPosts = blogPosts.slice(0, 6);
 
   return (
-    <section className="py-16 md:py-20 bg-gray-50">
+    <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container-content">
         <SectionHeading title="블로그 소식" english="Blog News" moreLink="/blog" />
 

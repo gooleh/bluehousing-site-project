@@ -27,7 +27,7 @@ const strengths = [
 ];
 
 const WhyUs = () => (
-  <section className="py-16 md:py-20 bg-white">
+  <section className="py-16 md:py-20 bg-white dark:bg-gray-900">
     <div className="container-content">
       <SectionHeading title="왜 블루하우징인가" english="Why BlueHousing" align="center" />
 
@@ -35,13 +35,13 @@ const WhyUs = () => (
         {strengths.map(({ icon: Icon, title, desc }) => (
           <div
             key={title}
-            className="group text-center rounded-2xl border border-ink/5 bg-white p-7 shadow-soft transition-all duration-300 hover:shadow-card hover:-translate-y-1"
+            className="group text-center rounded-2xl border border-ink/5 dark:border-gray-700 bg-white dark:bg-gray-800 p-7 shadow-soft transition-all duration-300 hover:shadow-card hover:-translate-y-1"
           >
             <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 text-white shadow-soft transition-transform duration-300 group-hover:scale-110">
               <Icon className="text-3xl" />
             </div>
-            <h3 className="text-lg font-bold text-ink mb-2">{title}</h3>
-            <p className="text-sm leading-relaxed text-ink-muted">{desc}</p>
+            <h3 className="text-lg font-bold text-ink dark:text-gray-100 mb-2">{title}</h3>
+            <p className="text-sm leading-relaxed text-ink-muted dark:text-gray-400">{desc}</p>
           </div>
         ))}
       </div>

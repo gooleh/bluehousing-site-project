@@ -21,7 +21,7 @@ const galleryImages = [
 ];
 
 const GallerySection = () => (
-  <section className="py-16 md:py-20 bg-white">
+  <section className="py-16 md:py-20 bg-white dark:bg-gray-900">
     <div className="container-content">
       <SectionHeading title="갤러리" english="Our Projects" moreLink="/gallery" />
 

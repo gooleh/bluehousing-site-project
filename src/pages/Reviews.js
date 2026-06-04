@@ -10,7 +10,7 @@ import bannerReviews from '../assets/images/slide1.webp';
 
 const Reviews = () => {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
       <Helmet>
         <title>이용후기 | 블루하우징</title>
         <meta name="description" content="블루하우징에서 욕실·주택 리모델링을 진행한 고객들의 생생한 이용후기를 확인하세요." />
@@ -20,7 +20,7 @@ const Reviews = () => {
         <meta property="og:title" content="이용후기 | 블루하우징" />
         <meta property="og:description" content="블루하우징에서 욕실·주택 리모델링을 진행한 고객들의 생생한 이용후기를 확인하세요." />
         <meta property="og:url" content="https://bluehousing.co.kr/reviews" />
-        <meta property="og:image" content="https://bluehousing.co.kr/logo512.png" />
+        <meta property="og:image" content="https://bluehousing.co.kr/og-image.png" />
         <meta property="og:locale" content="ko_KR" />
       </Helmet>
 
@@ -33,14 +33,14 @@ const Reviews = () => {
 
       <section className="py-14 md:py-20">
         <div className="container-content">
-          <p className="text-xs text-ink-muted text-right mb-6">
+          <p className="text-xs text-ink-muted dark:text-gray-400 text-right mb-6">
             ※ 실제 고객 후기를 바탕으로 재구성한 내용입니다.
           </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews.map((review, index) => (
             <div
               key={index}
-              className="relative bg-white rounded-2xl shadow-card p-7 flex flex-col transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
+              className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-card p-7 flex flex-col transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
             >
               <RiDoubleQuotesL className="text-3xl text-brand-100 absolute top-5 right-5" />
               <div className="flex text-accent-400 mb-3">
@@ -48,18 +48,18 @@ const Reviews = () => {
                   <RiStarFill key={i} />
                 ))}
               </div>
-              <p className="text-ink-soft text-[15px] leading-relaxed flex-grow">
+              <p className="text-ink-soft dark:text-gray-300 text-[15px] leading-relaxed flex-grow">
                 "{review.text}"
               </p>
-              <div className="mt-5 pt-4 border-t border-ink/10 flex items-end justify-between gap-2">
+              <div className="mt-5 pt-4 border-t border-ink/10 dark:border-gray-700 flex items-end justify-between gap-2">
                 <div>
-                  <span className="font-bold text-ink">{maskName(review.name)}</span>
+                  <span className="font-bold text-ink dark:text-gray-100">{maskName(review.name)}</span>
                   {review.location && (
-                    <span className="block text-xs text-ink-muted mt-0.5">{review.location}</span>
+                    <span className="block text-xs text-ink-muted dark:text-gray-400 mt-0.5">{review.location}</span>
                   )}
                 </div>
                 {review.date && (
-                  <span className="text-xs text-ink-muted shrink-0">{review.date}</span>
+                  <span className="text-xs text-ink-muted dark:text-gray-400 shrink-0">{review.date}</span>
                 )}
               </div>
             </div>

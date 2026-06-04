@@ -60,7 +60,7 @@ const GUARANTEES = [
 ];
 
 const Services = () => (
-  <div className="bg-white">
+  <div className="bg-white dark:bg-gray-900">
     <Helmet>
       <title>서비스 | 블루하우징</title>
       <meta name="description" content="욕실·주택 리모델링, 실내장식, 건축 컨설팅까지. 블루하우징의 체계적인 시공 프로세스와 책임 A/S를 확인하세요." />
@@ -70,7 +70,7 @@ const Services = () => (
       <meta property="og:title" content="서비스 | 블루하우징" />
       <meta property="og:description" content="욕실·주택 리모델링, 실내장식, 건축 컨설팅까지. 블루하우징의 체계적인 시공 프로세스와 책임 A/S를 확인하세요." />
       <meta property="og:url" content="https://bluehousing.co.kr/services" />
-      <meta property="og:image" content="https://bluehousing.co.kr/logo512.png" />
+      <meta property="og:image" content="https://bluehousing.co.kr/og-image.png" />
       <meta property="og:locale" content="ko_KR" />
     </Helmet>
 
@@ -82,7 +82,7 @@ const Services = () => (
     />
 
     {/* ===== 서비스 카드 ===== */}
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
       <div className="container-content space-y-8 md:space-y-6">
         {SERVICES.map((s, i) => {
           const Icon = s.icon;
@@ -109,15 +109,15 @@ const Services = () => (
               </div>
 
               {/* 텍스트 */}
-              <div className="flex flex-col justify-center p-8 md:p-12 bg-white lg:[direction:ltr]">
+              <div className="flex flex-col justify-center p-8 md:p-12 bg-white dark:bg-gray-800 lg:[direction:ltr]">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-600 mb-6 shadow-soft group-hover:scale-110 transition-transform duration-300">
                   <Icon className="w-7 h-7 text-white" strokeWidth={1.5} />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-ink mb-4 tracking-tightish">{s.title}</h2>
-                <p className="text-ink-muted leading-relaxed mb-6">{s.description}</p>
+                <h2 className="text-2xl md:text-3xl font-bold text-ink dark:text-gray-100 mb-4 tracking-tightish">{s.title}</h2>
+                <p className="text-ink-muted dark:text-gray-400 leading-relaxed mb-6">{s.description}</p>
                 <ul className="space-y-2">
                   {s.points.map((p) => (
-                    <li key={p} className="flex items-center gap-2.5 text-sm text-ink-soft">
+                    <li key={p} className="flex items-center gap-2.5 text-sm text-ink-soft dark:text-gray-300">
                       <span className="h-1.5 w-1.5 rounded-full bg-accent-500 flex-shrink-0" />
                       {p}
                     </li>
@@ -161,20 +161,20 @@ const Services = () => (
     </section>
 
     {/* ===== 안심 보증 ===== */}
-    <section className="py-16 md:py-20 bg-gray-50">
+    <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container-content">
         <div className="text-center mb-12">
-          <span className="text-xs font-semibold uppercase tracking-widest text-accent-600">Guarantee</span>
-          <h2 className="mt-3 text-2xl md:text-3xl font-bold text-ink">안심 보증</h2>
+          <span className="text-xs font-semibold uppercase tracking-widest text-accent-600 dark:text-accent-400">Guarantee</span>
+          <h2 className="mt-3 text-2xl md:text-3xl font-bold text-ink dark:text-gray-100">안심 보증</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {GUARANTEES.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="bg-white rounded-2xl p-8 shadow-card text-center hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-50 mx-auto mb-5">
+            <div key={title} className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-card text-center hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-50 dark:bg-brand-900/30 mx-auto mb-5">
                 <Icon className="w-8 h-8 text-brand-600" strokeWidth={1.5} />
               </div>
-              <h3 className="font-bold text-ink mb-2">{title}</h3>
-              <p className="text-sm text-ink-muted leading-relaxed">{desc}</p>
+              <h3 className="font-bold text-ink dark:text-gray-100 mb-2">{title}</h3>
+              <p className="text-sm text-ink-muted dark:text-gray-400 leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
