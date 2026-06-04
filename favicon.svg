@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Navy background with rounded corners -->
+  <rect width="100" height="100" rx="20" fill="#1a345c"/>
+  <!-- Left wing (lighter — catching light) -->
+  <path d="M50 13 L13 57 L36 57 L50 40 Z" fill="#aec8ea"/>
+  <!-- Right wing (darker — in shadow) -->
+  <path d="M50 13 L87 57 L64 57 L50 40 Z" fill="#4f82c7"/>
+  <!-- Base bar -->
+  <rect x="13" y="62" width="74" height="11" rx="3" fill="#7ea7db"/>
+</svg>
