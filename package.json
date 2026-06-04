@@ -27,7 +27,7 @@
     "fetch-blog": "node scripts/fetch-naver-blog.js",
     "prebuild": "npm run fetch-blog",
     "build": "react-scripts build",
-    "postbuild": "powershell Copy-Item -Path build\\index.html -Destination build\\404.html",
+    "postbuild": "node scripts/postbuild.js",
     "predeploy": "npm run build",
     "deploy": "npx gh-pages -d build",
     "test": "react-scripts test",

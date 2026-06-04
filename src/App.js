@@ -21,11 +21,20 @@ import Notice from './pages/Notice';
 import Estimate from './pages/Estimate';
 import Location from './pages/Location';
 import Reviews from './pages/Reviews';
+import NotFound from './pages/NotFound';
+import usePageTracking from './hooks/usePageTracking';
+
+// GA4 페이지 트래킹 — Router 내부에서 useLocation을 사용하기 위해 별도 컴포넌트로 분리
+const Analytics = () => {
+  usePageTracking();
+  return null;
+};
 
 function App() {
   return (
     <HelmetProvider>
       <Router basename="">
+        <Analytics />
         <ScrollToTop />
         <Header />
 
@@ -47,6 +56,7 @@ function App() {
             <Route path="/estimate" element={<Estimate />} />
             <Route path="/location" element={<Location />} />
             <Route path="/reviews" element={<Reviews />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
 
