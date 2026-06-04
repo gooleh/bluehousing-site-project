@@ -96,6 +96,7 @@ npm test           # CRA test runner (watch mode)
 | 카카오 SDK 동적 로드로 전환 (parser-blocking 경고 제거) | `src/components/KakaoMap.js`, `public/index.html` | 2026-06-04 |
 | 파비콘 + OG 이미지 로고 교체 | `public/favicon.png`, `public/og-image.png` | 2026-06-05 |
 | 전사 다크모드 적용 (클래스 기반) | `tailwind.config.js`, `src/context/ThemeContext.js`, 전 컴포넌트 | 2026-06-05 |
+| 파비콘 아이콘 전용 크롭 + SVG 파비콘 추가 | `public/favicon.svg`, `public/favicon.png`(512×512), `logo192/512.png` | 2026-06-05 |
 
 ### 현재 콘텐츠 현황
 
@@ -134,6 +135,12 @@ npm test           # CRA test runner (watch mode)
 - **다크모드**: `src/context/ThemeContext.js` — `localStorage` + `prefers-color-scheme` 기반. `tailwind.config.js`의 `darkMode: 'class'`. 헤더 토글 버튼(☀/🌙)으로 전환.
 - **서비스워커 배포 시**: `CACHE_VERSION` 올릴 것 (`public/service-worker.js`).
 
+### 파비콘 관련
+- **파비콘 우선순위**: SVG(`favicon.svg`) → PNG(`favicon.png`, 512×512) 순. 브라우저 탭 변경 시 Ctrl+Shift+R 강력 새로고침 필요.
+- **파비콘 이미지 생성 방법**: `logo33.png`(1179×912)에서 순수 Node.js(zlib)로 아이콘 영역 크롭·쌍선형 보간 리사이즈. 파비콘 수정 필요 시 `CLAUDE.md` 근처 스크립트 참고.
+- **SVG 파비콘**: `public/favicon.svg` — 브랜드 컬러(#1a345c 배경, 블루 하우스 아이콘). 모든 해상도에서 선명.
+
 ### 디자인
 - [x] 다크모드 대응 — 2026-06-05 완료
+- [x] 파비콘 — SVG+PNG 아이콘 전용 (텍스트 제거) 2026-06-05 완료
 - [x] OG 이미지 — `public/og-image.png` (블루하우징 로고). 더 나은 소셜 카드 이미지 원할 경우 1200×630 교체 가능.
