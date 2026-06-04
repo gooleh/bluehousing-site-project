@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 // ⚠️  본인의 GA4 측정 ID로 교체하세요 (예: G-ABCDE12345)
-export const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+export const GA_MEASUREMENT_ID = 'G-JZB82JLC71';
 
 const usePageTracking = () => {
   const location = useLocation();
