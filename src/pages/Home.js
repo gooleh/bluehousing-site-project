@@ -6,6 +6,7 @@ import ImageSlider from '../components/ImageSlider';
 import SectionWrapper from '../components/SectionWrapper';
 import { FiArrowRight, FiPhone, FiChevronDown } from 'react-icons/fi';
 import company from '../data/company';
+import { trackCall, trackEstimateClick } from '../utils/analytics';
 import AlternatingText from '../components/AlternatingText';
 
 // 슬라이드 이미지 임포트
@@ -81,6 +82,7 @@ const Home = () => {
           <div className="mt-9 flex flex-col sm:flex-row items-center gap-3 pointer-events-auto animate-fade-up">
             <Link
               to="/estimate"
+              onClick={() => trackEstimateClick('hero')}
               className="group inline-flex items-center gap-2 rounded-full bg-accent-500 px-7 py-3.5 text-base font-semibold text-white shadow-card-hover transition-all hover:bg-accent-600 hover:scale-[1.03]"
             >
               무료 견적 받기
@@ -88,6 +90,7 @@ const Home = () => {
             </Link>
             <a
               href={`tel:${company.phone.raw}`}
+              onClick={() => trackCall('hero')}
               className="inline-flex items-center gap-2 rounded-full bg-white/10 px-7 py-3.5 text-base font-semibold text-white ring-1 ring-white/50 backdrop-blur-sm transition-all hover:bg-white/20"
             >
               <FiPhone />

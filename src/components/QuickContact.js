@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FiPhone, FiEdit3, FiArrowUp, FiMessageSquare } from 'react-icons/fi';
 import { SiNaver } from 'react-icons/si';
 import company from '../data/company';
+import { trackCall, trackEstimateClick } from '../utils/analytics';
 
 /**
  * 전 디바이스 빠른 연락 수단.
@@ -28,6 +29,7 @@ const QuickContact = () => {
       <div className="hidden md:flex fixed right-5 bottom-6 z-40 flex-col items-end gap-2.5">
         <a
           href={`tel:${company.phone.raw}`}
+          onClick={() => trackCall('desktop_floating')}
           className="group flex items-center gap-2 rounded-full bg-brand-600 pl-4 pr-4 py-3 text-white shadow-card-hover transition-all hover:bg-brand-700 hover:pr-5"
         >
           <FiPhone className="text-xl" />
@@ -38,6 +40,7 @@ const QuickContact = () => {
 
         <Link
           to="/estimate"
+          onClick={() => trackEstimateClick('desktop_floating')}
           className="group flex items-center gap-2 rounded-full bg-accent-500 pl-4 pr-4 py-3 text-white shadow-card-hover transition-all hover:bg-accent-600 hover:pr-5"
         >
           <FiEdit3 className="text-xl" />
@@ -85,6 +88,7 @@ const QuickContact = () => {
       <div className="md:hidden fixed inset-x-0 bottom-0 z-40 grid grid-cols-4 bg-white/95 backdrop-blur-md border-t border-ink/10 shadow-[0_-4px_20px_-8px_rgba(16,28,51,0.25)]">
         <a
           href={`tel:${company.phone.raw}`}
+          onClick={() => trackCall('mobile_bar')}
           className="flex flex-col items-center justify-center gap-1 py-2.5 text-ink-soft active:bg-ink/5"
         >
           <FiPhone className="text-xl text-brand-600" />
@@ -92,6 +96,7 @@ const QuickContact = () => {
         </a>
         <Link
           to="/estimate"
+          onClick={() => trackEstimateClick('mobile_bar')}
           className="flex flex-col items-center justify-center gap-1 py-2.5 text-ink-soft active:bg-ink/5 border-x border-ink/10"
         >
           <FiEdit3 className="text-xl text-accent-500" />

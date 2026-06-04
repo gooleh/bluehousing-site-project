@@ -5,6 +5,7 @@ import emailjs from 'emailjs-com';
 import { FiCamera } from 'react-icons/fi';
 import PageHero from '../components/PageHero';
 import company from '../data/company';
+import { trackLead } from '../utils/analytics';
 import bannerEstimate from '../assets/images/slide1.webp';
 
 const SERVICE_OPTIONS = ['욕실 리모델링', '주방 리모델링', '주택 리모델링', '실내장식', '건축 컨설팅', '기타'];
@@ -81,6 +82,7 @@ const Estimate = () => {
       .then(
         () => {
           setFeedback({ loading: false, message: '견적 요청이 성공적으로 전송되었습니다! 빠른 시일 내에 연락드리겠습니다.', type: 'success' });
+          trackLead(formData.serviceType);
           setFormData(INIT);
           setErrors({});
         },

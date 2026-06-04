@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FiPhone, FiMenu, FiX } from 'react-icons/fi';
 import logo from '../assets/images/logo.png';
 import company from '../data/company';
+import { trackCall } from '../utils/analytics';
 
 const NAV_ITEMS = [
   { path: '/', label: '홈', en: 'Home' },
@@ -110,6 +111,7 @@ const Header = () => {
           <div className="flex items-center gap-2">
             <a
               href={`tel:${company.phone.raw}`}
+              onClick={() => trackCall('header')}
               className={`hidden sm:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all ${
                 solid
                   ? 'bg-brand-600 text-white hover:bg-brand-700 shadow-soft'
@@ -201,6 +203,7 @@ const Header = () => {
           <div className="p-5 border-t border-ink/10">
             <a
               href={`tel:${company.phone.raw}`}
+              onClick={() => trackCall('mobile_drawer')}
               className="flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-3 text-white font-semibold hover:bg-brand-700 transition-colors"
             >
               <FiPhone /> {company.phone.display} 전화 상담
