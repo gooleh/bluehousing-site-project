@@ -4,7 +4,7 @@
  * 버전 업데이트 시 CACHE_VERSION 숫자를 올려주세요.
  */
 
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_NAME = `bluehousing-${CACHE_VERSION}`;
 
 const OFFLINE_FALLBACK = '/index.html';
@@ -51,7 +51,11 @@ self.addEventListener('fetch', (event) => {
         if (cached) return cached;
         return fetch(request).then((response) => {
           if (response.ok) {
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, response.clone()));
+            // response.clone()은 return 전에 동기적으로 실행해야 함.
+            // caches.open()이 비동기라 나중에 clone()을 호출하면
+            // 이미 body가 소비된 후라 "body is already used" 오류 발생.
+            const cloned = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, cloned));
           }
           return response;
         });
