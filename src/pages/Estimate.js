@@ -96,6 +96,14 @@ const Estimate = () => {
       <Helmet>
         <title>견적문의 | 블루하우징</title>
         <meta name="description" content="블루하우징 무료 견적 문의. 시공 종류, 위치, 희망 일정, 예산 등을 남겨주시면 30년 경력 마이스터가 빠르게 상담해 드립니다." />
+        <link rel="canonical" href="https://bluehousing.co.kr/estimate" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="블루하우징" />
+        <meta property="og:title" content="무료 견적문의 | 블루하우징" />
+        <meta property="og:description" content="30년 경력 마이스터에게 무료로 견적을 받아보세요. 욕실·주택 리모델링, 실내장식, 건축 컨설팅." />
+        <meta property="og:url" content="https://bluehousing.co.kr/estimate" />
+        <meta property="og:image" content="https://bluehousing.co.kr/logo512.png" />
+        <meta property="og:locale" content="ko_KR" />
       </Helmet>
 
       <PageHero

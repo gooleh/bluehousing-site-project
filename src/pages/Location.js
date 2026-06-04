@@ -14,6 +14,14 @@ const Location = () => {
       <Helmet>
         <title>오시는 길 | 블루하우징</title>
         <meta name="description" content="블루하우징 본사 위치 안내. 서울 서대문구 충정로9길 15 라인빌딩 1층, 5호선 서대문역 1번 출구 도보 3분." />
+        <link rel="canonical" href="https://bluehousing.co.kr/location" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="블루하우징" />
+        <meta property="og:title" content="오시는 길 | 블루하우징" />
+        <meta property="og:description" content="서울 서대문구 충정로9길 15 라인빌딩 1층. 5호선 서대문역 1번 출구 도보 3분." />
+        <meta property="og:url" content="https://bluehousing.co.kr/location" />
+        <meta property="og:image" content="https://bluehousing.co.kr/logo512.png" />
+        <meta property="og:locale" content="ko_KR" />
       </Helmet>
 
       <PageHero

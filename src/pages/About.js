@@ -65,6 +65,14 @@ const About = () => (
     <Helmet>
       <title>기업소개 | 블루하우징</title>
       <meta name="description" content="30년 경력 마이스터가 직접 시공하는 블루하우징. 하청 없는 책임 시공, 투명한 견적, 완벽한 A/S로 고객의 공간을 완성합니다." />
+      <link rel="canonical" href="https://bluehousing.co.kr/about" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="블루하우징" />
+      <meta property="og:title" content="기업소개 | 블루하우징" />
+      <meta property="og:description" content="30년 경력 마이스터가 직접 시공하는 블루하우징. 하청 없는 책임 시공, 투명한 견적, 완벽한 A/S로 고객의 공간을 완성합니다." />
+      <meta property="og:url" content="https://bluehousing.co.kr/about" />
+      <meta property="og:image" content="https://bluehousing.co.kr/logo512.png" />
+      <meta property="og:locale" content="ko_KR" />
     </Helmet>
 
     <PageHero
@@ -148,10 +156,10 @@ const About = () => (
     <section className="py-16 md:py-20 bg-white">
       <div className="container-content grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         <div className="overflow-hidden rounded-2xl aspect-[4/3] bg-ink/5">
-          <img src={ab1} alt="블루하우징 쇼룸" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+          <img src={ab1} alt="블루하우징 쇼룸 전시장 내부" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
         </div>
         <div className="overflow-hidden rounded-2xl aspect-[4/3] bg-ink/5">
-          <img src={ab2} alt="블루하우징 시공 현장" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+          <img src={ab2} alt="블루하우징 욕실 리모델링 시공 현장" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
         </div>
       </div>
     </section>

@@ -64,6 +64,14 @@ const Services = () => (
     <Helmet>
       <title>서비스 | 블루하우징</title>
       <meta name="description" content="욕실·주택 리모델링, 실내장식, 건축 컨설팅까지. 블루하우징의 체계적인 시공 프로세스와 책임 A/S를 확인하세요." />
+      <link rel="canonical" href="https://bluehousing.co.kr/services" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="블루하우징" />
+      <meta property="og:title" content="서비스 | 블루하우징" />
+      <meta property="og:description" content="욕실·주택 리모델링, 실내장식, 건축 컨설팅까지. 블루하우징의 체계적인 시공 프로세스와 책임 A/S를 확인하세요." />
+      <meta property="og:url" content="https://bluehousing.co.kr/services" />
+      <meta property="og:image" content="https://bluehousing.co.kr/logo512.png" />
+      <meta property="og:locale" content="ko_KR" />
     </Helmet>
 
     <PageHero
@@ -90,8 +98,9 @@ const Services = () => (
               <div className="relative overflow-hidden h-64 lg:h-auto min-h-[280px] lg:[direction:ltr]">
                 <img
                   src={s.imgSrc}
-                  alt={s.title}
+                  alt={`블루하우징 ${s.title} 시공 사례`}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
                 <span className="absolute bottom-4 left-4 rounded-full bg-white/15 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/30">

@@ -124,10 +124,15 @@ const Gallery = () => {
     <div className="bg-white min-h-screen">
       <Helmet>
         <title>갤러리 | 블루하우징 시공 사례</title>
-        <meta
-          name="description"
-          content="블루하우징의 욕실·주택 리모델링 및 인테리어 시공 사례 갤러리. 시공 전후 비교와 다양한 실제 시공 사진을 확인하세요."
-        />
+        <meta name="description" content="블루하우징의 욕실·주택 리모델링 및 인테리어 시공 사례 갤러리. 시공 전후 비교와 다양한 실제 시공 사진을 확인하세요." />
+        <link rel="canonical" href="https://bluehousing.co.kr/gallery" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="블루하우징" />
+        <meta property="og:title" content="갤러리 | 블루하우징 시공 사례" />
+        <meta property="og:description" content="블루하우징의 욕실·주택 리모델링 및 인테리어 시공 사례 갤러리. 시공 전후 비교와 다양한 실제 시공 사진을 확인하세요." />
+        <meta property="og:url" content="https://bluehousing.co.kr/gallery" />
+        <meta property="og:image" content="https://bluehousing.co.kr/logo512.png" />
+        <meta property="og:locale" content="ko_KR" />
       </Helmet>
 
       <PageHero

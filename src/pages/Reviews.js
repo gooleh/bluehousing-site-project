@@ -14,6 +14,14 @@ const Reviews = () => {
       <Helmet>
         <title>이용후기 | 블루하우징</title>
         <meta name="description" content="블루하우징에서 욕실·주택 리모델링을 진행한 고객들의 생생한 이용후기를 확인하세요." />
+        <link rel="canonical" href="https://bluehousing.co.kr/reviews" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="블루하우징" />
+        <meta property="og:title" content="이용후기 | 블루하우징" />
+        <meta property="og:description" content="블루하우징에서 욕실·주택 리모델링을 진행한 고객들의 생생한 이용후기를 확인하세요." />
+        <meta property="og:url" content="https://bluehousing.co.kr/reviews" />
+        <meta property="og:image" content="https://bluehousing.co.kr/logo512.png" />
+        <meta property="og:locale" content="ko_KR" />
       </Helmet>
 
       <PageHero
