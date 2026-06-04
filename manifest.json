@@ -1,6 +1,13 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "블루하우징 | 종합 인테리어 전문기업",
+  "short_name": "블루하우징",
+  "description": "30년 경력 마이스터가 책임 시공하는 욕실·주택 리모델링 전문기업",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#1a345c",
+  "background_color": "#ffffff",
+  "lang": "ko",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,16 +17,14 @@
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }
