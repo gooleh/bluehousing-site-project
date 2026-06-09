@@ -2,11 +2,45 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import emailjs from 'emailjs-com';
-import { FiCamera } from 'react-icons/fi';
+import { FiCamera, FiChevronDown } from 'react-icons/fi';
 import PageHero from '../components/PageHero';
 import company from '../data/company';
 import { trackLead } from '../utils/analytics';
 import bannerEstimate from '../assets/images/slide1.webp';
+
+// 자주 묻는 질문 — FAQPage 구조화 데이터(JSON-LD)와 공유
+const FAQ_ITEMS = [
+  {
+    q: '견적 상담은 정말 무료인가요?',
+    a: `네, 견적 상담은 무료입니다. 아래 양식을 작성하시거나 전화(${company.phone.display}), 네이버 톡톡으로 문의주시면 빠르게 안내해 드립니다.`,
+  },
+  {
+    q: '어떤 공사를 의뢰할 수 있나요?',
+    a: '욕실 리모델링, 주방 리모델링, 주택 전체 리모델링, 실내장식, 건축 컨설팅까지 종합 인테리어 전반을 진행합니다. 부분 시공도 가능합니다.',
+  },
+  {
+    q: '더 정확한 견적을 받으려면 어떻게 하나요?',
+    a: `시공 종류·위치·희망 일정과 함께 현장 사진을 보내주시면 훨씬 정확한 견적이 가능합니다. 사진은 네이버 톡톡 또는 이메일(${company.email})로 보내주세요.`,
+  },
+  {
+    q: '시공 후 A/S는 보장되나요?',
+    a: '네, 블루하우징은 30년 경력 마이스터가 직접 책임 시공하며, 시공 후 A/S까지 책임지고 보장합니다.',
+  },
+  {
+    q: '전시장에 직접 방문해서 상담할 수 있나요?',
+    a: `네, 가능합니다. 전시장은 ${company.roadAddress}에 있으며, 5호선 서대문역 1번 출구에서 도보 3분 거리입니다.`,
+  },
+];
+
+const faqJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_ITEMS.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+});
 
 const SERVICE_OPTIONS = ['욕실 리모델링', '주방 리모델링', '주택 리모델링', '실내장식', '건축 컨설팅', '기타'];
 const SCHEDULE_OPTIONS = ['1개월 이내', '1~3개월', '3~6개월', '시기 미정'];
@@ -35,6 +69,7 @@ const Estimate = () => {
   const [formData, setFormData] = useState(INIT);
   const [feedback, setFeedback] = useState({ loading: false, message: '', type: '' });
   const [errors, setErrors] = useState({});
+  const [openFaq, setOpenFaq] = useState(null);
 
   const validateEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
   const validatePhone = (v) => /^[0-9\-+\s()]{10,20}$/.test(v);
@@ -106,6 +141,7 @@ const Estimate = () => {
         <meta property="og:url" content="https://bluehousing.co.kr/estimate" />
         <meta property="og:image" content="https://bluehousing.co.kr/og-image.png" />
         <meta property="og:locale" content="ko_KR" />
+        <script type="application/ld+json">{faqJsonLd}</script>
       </Helmet>
 
       <PageHero
@@ -284,6 +320,37 @@ const Estimate = () => {
               {feedback.message}
             </div>
           )}
+        </div>
+
+        {/* 자주 묻는 질문 */}
+        <div className="mt-10 bg-white dark:bg-gray-800 rounded-2xl shadow-card p-7 md:p-10">
+          <p className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.28em] text-accent-600 dark:text-accent-400 mb-2">FAQ</p>
+          <h2 className="text-xl md:text-2xl font-bold text-ink dark:text-gray-100 mb-6">자주 묻는 질문</h2>
+          <div className="divide-y divide-ink/10 dark:divide-gray-700">
+            {FAQ_ITEMS.map((item, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <div key={item.q}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    aria-expanded={isOpen}
+                    className="flex w-full items-center justify-between gap-3 py-4 text-left font-semibold text-ink dark:text-gray-100 transition-colors hover:text-brand-600 dark:hover:text-brand-400"
+                  >
+                    <span>{item.q}</span>
+                    <FiChevronDown
+                      className={`shrink-0 text-ink-muted dark:text-gray-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <p className="pb-5 text-[15px] leading-relaxed text-ink-soft dark:text-gray-300">
+                      {item.a}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </main>

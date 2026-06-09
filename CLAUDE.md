@@ -97,6 +97,10 @@ npm test           # CRA test runner (watch mode)
 | 파비콘 + OG 이미지 로고 교체 | `public/favicon.png`, `public/og-image.png` | 2026-06-05 |
 | 전사 다크모드 적용 (클래스 기반) | `tailwind.config.js`, `src/context/ThemeContext.js`, 전 컴포넌트 | 2026-06-05 |
 | 파비콘 아이콘 전용 크롭 + SVG 파비콘 추가 | `public/favicon.svg`, `public/favicon.png`(512×512), `logo192/512.png` | 2026-06-05 |
+| 라우트 코드 스플리팅 (메인 번들 185→129kB gzip, -30%) | `src/App.js` | 2026-06-10 |
+| 이용후기 페이지네이션 (9개/페이지) | `src/pages/Reviews.js` | 2026-06-10 |
+| 갤러리 카테고리 퀵 내비게이션 (스티키 칩 바 + 이미지 수) | `src/pages/Gallery.js` | 2026-06-10 |
+| 견적 페이지 FAQ 아코디언 + FAQPage 구조화 데이터 | `src/pages/Estimate.js` | 2026-06-10 |
 
 ### 현재 콘텐츠 현황
 
@@ -110,7 +114,7 @@ npm test           # CRA test runner (watch mode)
 
 - **OG 프리렌더링**: `scripts/generate-og-pages.js`가 빌드 시 9개 라우트의 정적 HTML을 생성. 카카오톡 등 SNS 공유 시 페이지별 OG 태그가 올바르게 표시됨.
 - **SPA 라우팅**: `build/404.html` = `build/index.html` 복사본. GitHub Pages가 없는 경로 접근 시 404.html을 서빙하고 React Router가 라우팅 처리.
-- **서비스워커**: `public/service-worker.js` — 정적 자산 Cache-First, HTML Network-First 전략. 현재 `CACHE_VERSION = 'v2'`. 코드 변경 후 배포 시 버전 숫자를 올려야 기존 캐시가 갱신됨. 브라우저가 구버전 SW를 실행 중이면 탭 닫고 재오픈하면 자동 교체.
+- **서비스워커**: `public/service-worker.js` — 정적 자산 Cache-First, HTML Network-First 전략. 현재 `CACHE_VERSION = 'v3'`. 코드 변경 후 배포 시 버전 숫자를 올려야 기존 캐시가 갱신됨. 브라우저가 구버전 SW를 실행 중이면 탭 닫고 재오픈하면 자동 교체.
 - **로컬 개발 시 카카오 지도**: SDK 키가 `bluehousing.co.kr` 도메인 고정 → localhost에서 지도 빈 화면 정상.
 
 ---
@@ -124,7 +128,7 @@ npm test           # CRA test runner (watch mode)
 
 ### 기능
 - [ ] 카카오 지도 마커 정보 업데이트 (`components/KakaoMap.js`)
-- [ ] 이용후기 페이지 페이지네이션 (리뷰가 많아질 경우)
+- [x] 이용후기 페이지 페이지네이션 — 2026-06-10 완료 (9개/페이지)
 
 ### SEO (직접 해야 하는 것)
 - [ ] Google Search Console 사이트맵 제출 (`https://bluehousing.co.kr/sitemap.xml`)

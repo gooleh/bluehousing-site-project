@@ -1,14 +1,27 @@
 // src/pages/Reviews.js
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { RiStarFill, RiDoubleQuotesL } from 'react-icons/ri';
-import { FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import PageHero from '../components/PageHero';
 import reviews, { maskName } from '../data/reviews';
 import bannerReviews from '../assets/images/slide1.webp';
 
+const REVIEWS_PER_PAGE = 9;
+
 const Reviews = () => {
+  const [page, setPage] = useState(1);
+  const listTopRef = useRef(null);
+
+  const totalPages = Math.ceil(reviews.length / REVIEWS_PER_PAGE);
+  const pagedReviews = reviews.slice((page - 1) * REVIEWS_PER_PAGE, page * REVIEWS_PER_PAGE);
+
+  const goToPage = (next) => {
+    setPage(next);
+    listTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
       <Helmet>
@@ -33,13 +46,15 @@ const Reviews = () => {
 
       <section className="py-14 md:py-20">
         <div className="container-content">
+          {/* 고정 헤더에 가리지 않도록 scroll-mt 적용한 페이지네이션 스크롤 기준점 */}
+          <div ref={listTopRef} className="scroll-mt-24 md:scroll-mt-28" aria-hidden="true" />
           <p className="text-xs text-ink-muted dark:text-gray-400 text-right mb-6">
             ※ 실제 고객 후기를 바탕으로 재구성한 내용입니다.
           </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reviews.map((review, index) => (
+          {pagedReviews.map((review, index) => (
             <div
-              key={index}
+              key={`${page}-${index}`}
               className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-card p-7 flex flex-col transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
             >
               <RiDoubleQuotesL className="text-3xl text-brand-100 absolute top-5 right-5" />
@@ -65,6 +80,45 @@ const Reviews = () => {
             </div>
           ))}
         </div>
+
+        {/* 페이지네이션 */}
+        {totalPages > 1 && (
+          <nav className="mt-10 flex items-center justify-center gap-2" aria-label="후기 페이지">
+            <button
+              type="button"
+              onClick={() => goToPage(page - 1)}
+              disabled={page === 1}
+              aria-label="이전 페이지"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 dark:border-gray-600 text-ink-soft dark:text-gray-300 transition-colors hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400 disabled:opacity-40 disabled:pointer-events-none"
+            >
+              <FiChevronLeft />
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+              <button
+                key={n}
+                type="button"
+                onClick={() => goToPage(n)}
+                aria-current={page === n ? 'page' : undefined}
+                className={`h-10 w-10 rounded-full text-sm font-semibold transition-colors ${
+                  page === n
+                    ? 'bg-brand-600 text-white'
+                    : 'border border-ink/15 dark:border-gray-600 text-ink-soft dark:text-gray-300 hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400'
+                }`}
+              >
+                {n}
+              </button>
+            ))}
+            <button
+              type="button"
+              onClick={() => goToPage(page + 1)}
+              disabled={page === totalPages}
+              aria-label="다음 페이지"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 dark:border-gray-600 text-ink-soft dark:text-gray-300 transition-colors hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400 disabled:opacity-40 disabled:pointer-events-none"
+            >
+              <FiChevronRight />
+            </button>
+          </nav>
+        )}
         </div>
       </section>
 

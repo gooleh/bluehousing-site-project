@@ -74,7 +74,8 @@ const Gallery = () => {
   const renderGridSection = (group, columns, sectionIndex) => (
     <section
       key={group.title}
-      className={`py-14 md:py-20 ${
+      id={`gallery-section-${sectionIndex}`}
+      className={`scroll-mt-28 md:scroll-mt-36 py-14 md:py-20 ${
         sectionIndex % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gradient-to-b from-slate-50/80 to-white dark:from-gray-800 dark:to-gray-900'
       }`}
     >
@@ -111,14 +112,18 @@ const Gallery = () => {
   );
 
   const sections = [
-    { group: groupA, layout: 2 },
-    { group: groupB, layout: 3 },
-    { group: groupC, layout: 3 },
-    { group: groupE, layout: 3 },
-    { group: groupH1, layout: 3 },
-    { group: groupH2, layout: 2 },
-    { group: groupI, layout: 3 },
+    { group: groupA, layout: 2, nav: '전시장' },
+    { group: groupB, layout: 3, nav: '욕실 디자인' },
+    { group: groupC, layout: 3, nav: '시공사례' },
+    { group: groupE, layout: 3, nav: '인조대리석' },
+    { group: groupH1, layout: 3, nav: '포천 욕실 H-1' },
+    { group: groupH2, layout: 2, nav: '포천 욕실 H-2' },
+    { group: groupI, layout: 3, nav: '욕실 시공' },
   ];
+
+  const scrollToSection = (index) => {
+    document.getElementById(`gallery-section-${index}`)?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
@@ -142,6 +147,26 @@ const Gallery = () => {
         subtitle="블루하우징이 완성한 실제 시공 사례를 만나보세요."
         height="lg"
       />
+
+      {/* 카테고리 퀵 내비게이션 — 고정 헤더 바로 아래에 스티키 */}
+      <nav
+        aria-label="갤러리 카테고리"
+        className="sticky top-16 md:top-20 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-ink/10 dark:border-gray-700"
+      >
+        <div className="container-content flex gap-2 overflow-x-auto scrollbar-hide py-3">
+          {sections.map((section, index) => (
+            <button
+              key={section.nav}
+              type="button"
+              onClick={() => scrollToSection(index)}
+              className="shrink-0 rounded-full border border-ink/15 dark:border-gray-600 px-4 py-1.5 text-sm font-medium text-ink-soft dark:text-gray-300 transition-colors hover:border-brand-400 hover:text-brand-600 dark:hover:border-brand-500 dark:hover:text-brand-400"
+            >
+              {section.nav}
+              <span className="ml-1.5 text-xs text-ink-muted dark:text-gray-500">{section.group.images.length}</span>
+            </button>
+          ))}
+        </div>
+      </nav>
 
       {sections.map((section, index) =>
         renderGridSection(section.group, section.layout, index)
