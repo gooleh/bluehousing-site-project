@@ -4,7 +4,7 @@
  * 버전 업데이트 시 CACHE_VERSION 숫자를 올려주세요.
  */
 
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const CACHE_NAME = `bluehousing-${CACHE_VERSION}`;
 
 const OFFLINE_FALLBACK = '/index.html';
