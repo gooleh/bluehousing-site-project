@@ -153,7 +153,7 @@ const ShowroomDetail = () => {
 };
 
 const ShowroomSection = ({ title, images, description, onImageClick }) => (
-  <section className="py-14 md:py-20 border-t border-ink/5 bg-white even:bg-gradient-to-b even:from-slate-50/80 even:to-white">
+  <section className="py-14 md:py-20 border-t border-ink/5 bg-white dark:bg-gray-800 even:bg-gradient-to-b even:from-slate-50/80 even:to-white dark:even:from-gray-800 dark:even:to-gray-900">
     <div className="container-content">
       <SectionHeading title={title} english="Showroom Style" />
 
@@ -181,14 +181,14 @@ const ShowroomSection = ({ title, images, description, onImageClick }) => (
         ))}
       </div>
 
-      <div className="max-w-2xl rounded-2xl bg-white/80 p-6 md:p-8 ring-1 ring-ink/5 shadow-soft">
-        <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-600 mb-4">
+      <div className="max-w-2xl rounded-2xl bg-white/80 dark:bg-gray-700/60 p-6 md:p-8 ring-1 ring-ink/5 dark:ring-gray-600 shadow-soft">
+        <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-600 dark:text-accent-400 mb-4">
           욕실 시공 구성
         </h3>
-        <ul className="text-ink-soft leading-relaxed space-y-2.5">
+        <ul className="text-ink-soft dark:text-gray-300 leading-relaxed space-y-2.5">
           {description.map((desc, idx) => (
             <li key={idx} className="flex items-start gap-3">
-              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-50 text-xs font-bold text-brand-700">
+              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-50 dark:bg-brand-900/40 text-xs font-bold text-brand-700 dark:text-brand-300">
                 {idx + 1}
               </span>
               <span>{desc}</span>
